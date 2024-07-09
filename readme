@@ -1,0 +1,16 @@
+------------------------------ 1 -------------------------------
+logic of packs being processed by server
+is it good? VS processed by client
+less requests more processing
+packages are returned with data to be used by client similar to TD api
+------------------------------ 2 -----------------------------------
+evalution size? easy test just 4 expressions vs hard test 20 expressions
+test after 5 minutes a bit cheating
+check what expressions were tested track pack.. but pack can have changes then we loose track
+or save all evaluations as packs
+THIS IS KIND OF SOLVED in --- 3 ---
+------------------------------ 3 -------------------------------
+evaluation should have:
+evalType: listen, speak, read, write
+type: pack, test, review .... etc
+--------------------------------------------
