@@ -1,223 +1,13 @@
-# import json
-# import socket
-# import sqlite3
-#
-# from flask import Flask, request, jsonify
-#
-# app = Flask(__name__)
-#
-#
-# @app.route('/swipes', methods=['POST'])
-# def add_swipe():
-#     data = request.json
-#     if not data:
-#         return jsonify({"error": "Invalid JSON."}), 400
-#
-#     profile_id = data.get('profileId')
-#     location_id = data.get('locationId')
-#     bond_swipes = data.get('bondSwipes')
-#
-#     if not bond_swipes:
-#         return jsonify({"error": "No swipes data found."}), 400
-#
-#     try:
-#         with sqlite3.connect('swipe_info.db') as conn:
-#             c = conn.cursor()
-#
-#             for swipe in bond_swipes:
-#                 swipe_value = swipe.get('swipeValue')
-#                 if swipe_value is None:
-#                     continue
-#                 utc_timestamp = swipe.get('utcTimeStamp')
-#                 td_swipe = swipe.get('tdSwipe')
-#                 user_data = td_swipe.get('user') if td_swipe else None
-#
-#                 if user_data:
-#                     # TODO from here user can be extracted to function used here and on endpoint just to update user
-#                     user_id = user_data.get('_id')
-#                     existing_user = c.execute('SELECT * FROM Users WHERE userId = ?', (user_id,)).fetchone()
-#
-#                     if existing_user:
-#                         # only update if something is different or not cause fields might change think about it
-#                         print(f"User {user_id} already exists with details: {existing_user}")
-#                         c.execute('''UPDATE Users SET name = ?, dateOfBirth = ?, city = ?, bio = ? WHERE userId = ?''',
-#                                   (user_data.get('name'), user_data.get('birth_date'), user_data.get('city'),
-#                                    user_data.get('bio'),
-#                                    user_id))
-#                     else:
-#                         c.execute('''INSERT INTO Users (userId, name, dateOfBirth, city, bio) VALUES (?, ?, ?, ?, ?)''',
-#                                   (user_id, user_data.get('name'), user_data.get('birth_date'), user_data.get('city'),
-#                                    user_data.get('bio')))
-#
-#                     photos = user_data.get('photos')
-#                     if photos:
-#                         for photo in photos:
-#                             photo_id = photo.get('id')
-#                             c.execute('''INSERT OR IGNORE INTO Photos (photoId, userId) VALUES (?, ?)''',
-#                                       (photo_id, user_id))
-#
-#                     c.execute('''INSERT INTO Swipes (profileId, locationId, swipeValue, tdSwipeValue, timestamp, userId)
-#                                 VALUES (?, ?, ?, ?, ?, ?)''',
-#                               (profile_id, location_id, swipe_value, None, utc_timestamp,
-#                                user_data.get('_id') if user_data else None))
-#
-#             conn.commit()
-#
-#         return jsonify({"message": "Swipe added successfully!"})
-#
-#     except sqlite3.Error as e:
-#         return jsonify({"error": f"Database error: {e}."}), 500
-#     except Exception as e:
-#         return jsonify({"error": f"Unexpected error: {e}."}), 500
-#
-#
-# @app.route('/users_update', methods=['POST'])
-# def create_or_update_user():
-#     data = request.json
-#     if not data:
-#         return jsonify({"error": "Invalid JSON."}), 400
-#
-#     user_data = data.get('user')
-#     user_id = user_data.get('_id')
-#     user_name = user_data.get('name')
-#     user_birth_date = user_data.get('birth_date')
-#     if user_data.get('city'):
-#         user_city = user_data.get('city').get("name")
-#     else:
-#         user_city = ""
-#     user_bio = user_data.get('bio')
-#
-#     if not user_id:
-#         return jsonify({"error": "No user id found."}), 400
-#
-#     try:
-#         with sqlite3.connect('swipe_info.db') as conn:
-#             c = conn.cursor()
-#
-#         existing_user = c.execute('SELECT * FROM Users WHERE userId = ?', (user_id,)).fetchone()
-#
-#         city_text = f", user city = {user_city}" if user_city else ""
-#
-#         print(f"{user_name}, id = {user_id}{city_text}")
-#
-#         if existing_user:
-#             # only update if something is different or not cause fields might change think about it
-#             print(f"User {user_id} already exists with details: {existing_user}")
-#             c.execute('''UPDATE Users SET name = ?, dateOfBirth = ?, city = ?, bio = ? WHERE userId = ?''',
-#                       (user_name, user_birth_date, user_city, user_bio, user_id))
-#         else:
-#             c.execute('''INSERT INTO Users (userId, name, dateOfBirth, city, bio) VALUES (?, ?, ?, ?, ?)''',
-#                       (user_id, user_name, user_birth_date, user_city,
-#                        user_bio))
-#
-#         conn.commit()
-#
-#         if existing_user:
-#             return jsonify({"message": f"User {user_id} was updated"})
-#         else:
-#             return jsonify({"message": f"User {user_id} was created"})
-#
-#     except sqlite3.Error as e:
-#         return jsonify({"error": f"Database error: {e}."}), 500
-#     except Exception as e:
-#         return jsonify({"error": f"Unexpected error: {e}."}), 500
-#
-#
-# @app.route('/locations', methods=['GET'])
-# def get_locations():
-#     with sqlite3.connect('swipe_info.db') as conn:
-#         c = conn.cursor()
-#         c.execute('SELECT * FROM Locations')
-#         locations = c.fetchall()
-#
-#     # Convert the locations to a dictionary with shortName as key
-#     location_dict = {}
-#     for location in locations:
-#         shortName = location[3]
-#         location_dict[shortName] = {
-#             'locationId': location[0],
-#             'latitude': location[1],
-#             'longitude': location[2],
-#             'city': location[4],
-#             'country': location[5]
-#         }
-#
-#     return jsonify(location_dict)
-#
-#
-# @app.route('/get_users_cities', methods=['GET'])
-# def get_users_cities():
-#     data = request.json
-#     user_ids = data['userIds']
-#     profile_id = data['profileId']
-#
-#     user_ids_placeholder = ','.join(['?'] * len(user_ids))  # Create a placeholder for SQL query
-#
-#     query = '''SELECT u.userId, l.city, u.city
-#     FROM Users u
-#     LEFT JOIN Swipes s ON u.userId = s.userId AND s.profileId = ?
-#     LEFT JOIN Locations l ON s.locationId = l.locationId
-#     WHERE u.userId IN (%s)''' % user_ids_placeholder  # Use placeholder for IN clause
-#
-#     #
-#     #
-#     # query = '''
-#     #     SELECT u.userId, l.city, u.city
-#     #     FROM Users u
-#     #     LEFT JOIN Swipes s ON u.userId = s.userId
-#     #     LEFT JOIN Locations l ON s.locationId = l.locationId
-#     #     WHERE s.profileId = ? AND u.userId IN (%s)
-#     # ''' % user_ids_placeholder  # Use placeholder for IN clause
-#
-#     with sqlite3.connect('swipe_info.db') as conn:
-#         c = conn.cursor()
-#         c.execute(query, [profile_id, *user_ids])  # Provide profileId and user_ids dynamically
-#         locations = c.fetchall()
-#
-#     users_cities = {location[0]: {'swipe_city': location[1], 'user_city': location[2]} for location in locations}
-#
-#     conn.close()
-#
-#     return jsonify(users_cities)
-#
-#
-# def save_json_file(filename: str, json_dict: dict, folder_path="", indent=4):
-#     with open(f"{folder_path}/{filename}", "w") as outfile:
-#         json.dump(json_dict, outfile, indent=indent)
-#
-#
-# if __name__ == '__main__':
-#     folder_path = "C:/Users/pedro/StudioProjects/bond_swipes_manual/jsons"
-#     filename = "db_info.json"
-#     # Get the hostname
-#     hostname = socket.gethostname()
-#     # Get the IP address
-#     ip_address = socket.gethostbyname(hostname)
-#
-#     print("Hostname:", hostname)
-#     print("IP:", ip_address)
-#
-#     port = input("select PORT NUMBER - press enter for default 8888\n")
-#     if port == "":
-#         port = 8888
-#
-#     db_ip_port = f"{ip_address}:{port}"
-#     db_info = {"ip": ip_address, "port": port}
-#
-#     save_json_file(filename, db_info, folder_path)
-#
-#     print("db ip port were saved to:")
-#     print(f"{folder_path}{filename}")
-#
-#     app.run(host=ip_address, port=port)
 import json
 from datetime import datetime
+import socket
 
 from flask import Flask, request, jsonify
 import sqlite3
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)  # This will enable CORS for all routes JUST FOR WEB mobile we can delete it
 
 def get_language_packs(target_language_id, base_language_id):
     """
@@ -432,5 +222,33 @@ def update_phonetic_text():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
+def save_json_file(filename: str, json_dict: dict, folder_path="", indent=4):
+    with open(f"{folder_path}/{filename}", "w") as outfile:
+        json.dump(json_dict, outfile, indent=indent)
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    folder_path = "C:/Users/pedro/StudioProjects/langum/jsons"
+    filename = "db_info.json"
+    # Get the hostname
+    hostname = socket.gethostname()
+    # Get the IP address
+    ip_address = socket.gethostbyname(hostname)
+
+    print("Hostname:", hostname)
+    print("IP:", ip_address)
+
+    port = input("select PORT NUMBER - press enter for default 8888\n")
+    if port == "":
+        port = 8888
+
+    db_ip_port = f"{ip_address}:{port}"
+    db_info = {"ip": ip_address, "port": port}
+
+    save_json_file(filename, db_info, folder_path)
+
+    print("db ip port were saved to:")
+    print(f"{folder_path}{filename}")
+
+    app.run(host=ip_address, port=port)
