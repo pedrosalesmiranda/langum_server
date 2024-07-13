@@ -2,12 +2,18 @@ import json
 from datetime import datetime
 import socket
 
-from flask import Flask, request, jsonify
+from flask import Flask, send_from_directory, request, abort, jsonify
 import sqlite3
 from flask_cors import CORS
 
+import os
+
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes JUST FOR WEB mobile we can delete it
+
+# Ensure this path points to the directory where your sound files are stored
+SOUND_FILES_DIRECTORY = 'sounds'
+
 
 def get_language_packs(target_language_id, base_language_id):
     """
@@ -80,9 +86,25 @@ WHERE L.id IN (:target_language_id, :base_language_id)
     for pack_key, pack_value in packs.items():
         expressions_list = []
         expressions_list.append(list(pack_value[expressions_key].values()))
-        packs_list.append({"pack_id": pack_value["pack_id"], "pack_title": pack_value["pack_title"], expressions_key: expressions_list})
+        packs_list.append({"pack_id": pack_value["pack_id"], "pack_title": pack_value["pack_title"],
+                           expressions_key: expressions_list})
 
+    # return [packs_list[0]]
     return packs_list
+
+
+@app.route('/download_sound', methods=['GET'])
+def download_file():
+    filename = request.args.get('filename')
+    if not filename:
+        abort(400, description="Filename parameter is missing.")
+
+    # Check if the file exists
+    if not os.path.exists(os.path.join(SOUND_FILES_DIRECTORY, filename)):
+        abort(404, description="File not found.")
+
+    return send_from_directory(SOUND_FILES_DIRECTORY, filename, as_attachment=True)
+
 
 @app.route('/create_evaluation', methods=['POST'])
 def add_evaluation():
@@ -136,6 +158,7 @@ def add_evaluation():
     finally:
         conn.close()
 
+
 @app.route('/list_packs', methods=['GET'])
 def get_packs_endpoint():
     target_language_id = request.args.get('targetLanguageId')
@@ -152,6 +175,7 @@ def get_packs_endpoint():
 
     packs = get_language_packs(target_language_id, base_language_id)
     return jsonify(packs)
+
 
 @app.route('/create_phonetic', methods=['POST'])
 def create_phonetic():
@@ -184,9 +208,11 @@ def create_phonetic():
             conn.commit()
             phonetic_id = cursor.lastrowid
             conn.close()
-            return jsonify({'id': phonetic_id, 'text': text, 'language_id': language_id, 'expression_id': expression_id}), 201
+            return jsonify(
+                {'id': phonetic_id, 'text': text, 'language_id': language_id, 'expression_id': expression_id}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
 
 @app.route('/update_phonetic_text', methods=['PATCH'])
 def update_phonetic_text():
@@ -226,6 +252,78 @@ def update_phonetic_text():
 def save_json_file(filename: str, json_dict: dict, folder_path="", indent=4):
     with open(f"{folder_path}/{filename}", "w") as outfile:
         json.dump(json_dict, outfile, indent=indent)
+
+
+@app.route('/evaluation/<int:evaluation_id>', methods=['GET'])
+def get_evaluation(evaluation_id):
+    conn = sqlite3.connect('langum.db')  # Replace 'your_database.db' with your actual database file
+    cursor = conn.cursor()
+
+    query_evaluation = '''
+    SELECT E.id    AS eval_id,
+       E.start AS eval_start,
+       e.end   AS eval_end,
+       E.goal  AS eval_goal,
+       E.type  AS eval_type,
+       E.size  AS eval_size
+FROM Evaluations E WHERE id = :evaluation_id'''
+
+    params = {
+        'evaluation_id': evaluation_id,
+    }
+    cursor.execute(query_evaluation, params)
+    evaluation = cursor.fetchone()
+
+    if evaluation is None:
+        return jsonify({'error': 'Evaluation not found'}), 404
+
+    eval_id, eval_start, eval_end, eval_goal, eval_type, eval_size = evaluation
+
+    # Convert evaluation to a dictionary
+    evaluation_dict = {
+        'id': eval_id,
+        'type': eval_type,
+        'goal': eval_goal,
+        'start': eval_start,
+        'end': eval_end,
+        'size': eval_size
+    }
+
+
+    query_evaluation_expression = '''SELECT EE.id AS ee_id,
+       EE.expression_id AS expression_id,
+       EE.evaluation_id AS evaluation_id,
+       EE.duration  AS evaluation_duration,
+       EE.grade AS evaluation_grade
+FROM EvaluationExpression EE WHERE evaluation_id = :evaluation_id'''
+
+    # Fetch the associated evaluation expressions
+    params = {
+        'evaluation_id': evaluation_id,
+    }
+    cursor.execute(query_evaluation_expression, params)
+    evaluation_expressions = cursor.fetchall()
+
+
+    # Convert evaluation expressions to a list of dictionaries
+    evaluation_expressions_list = []
+    for expression in evaluation_expressions:
+        ee_id, expression_id, evaluation_id, evaluation_duration, evaluation_grade = expression
+        evaluation_expressions_list.append({
+            'id': ee_id,
+            'expression_id': expression_id,
+            'evaluation_id': evaluation_id,
+            'grade': evaluation_grade,
+            'duration': evaluation_duration
+        })
+
+    # Combine both into a single response
+    response = {
+        'evaluation': evaluation_dict,
+        'evaluation_expressions': evaluation_expressions_list
+    }
+
+    return jsonify(response)
 
 
 if __name__ == '__main__':
