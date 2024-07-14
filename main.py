@@ -82,10 +82,11 @@ WHERE L.id IN (:target_language_id, :base_language_id)
             packs[pack_id][expressions_key][meaning_id]["expression_base_sound"] = expression_sound
             packs[pack_id][expressions_key][meaning_id]["language_base_id"] = language_id
 
+
+    # TODO list of list of expressions must be fixed in dart model too
     packs_list = []
     for pack_key, pack_value in packs.items():
-        expressions_list = []
-        expressions_list.append(list(pack_value[expressions_key].values()))
+        expressions_list = list(pack_value[expressions_key].values())
         packs_list.append({"pack_id": pack_value["pack_id"], "pack_title": pack_value["pack_title"],
                            expressions_key: expressions_list})
 
