@@ -88,7 +88,6 @@ WHERE L.id IN (:target_language_id, :base_language_id)
         packs_list.append({"pack_id": pack_value["pack_id"], "pack_title": pack_value["pack_title"],
                            expressions_key: expressions_list})
 
-    # return [packs_list[0]]
     return packs_list
 
 
@@ -288,6 +287,7 @@ FROM Evaluations E WHERE id = :evaluation_id'''
         'size': eval_size
     }
 
+
     query_evaluation_expression = '''SELECT EE.id AS ee_id,
        EE.expression_id AS expression_id,
        EE.evaluation_id AS evaluation_id,
@@ -301,6 +301,7 @@ FROM EvaluationExpression EE WHERE evaluation_id = :evaluation_id'''
     }
     cursor.execute(query_evaluation_expression, params)
     evaluation_expressions = cursor.fetchall()
+
 
     # Convert evaluation expressions to a list of dictionaries
     evaluation_expressions_list = []
