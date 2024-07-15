@@ -1,4 +1,14 @@
+"""
+TODO
+- initialize database conn cursor modulo scope not init all the time
+- can be class
+
+list of tuples in format ( expression, phonetic native reading of expression split in syllabus read by PORTUGUESE speaker )
+make me a list of tuples where will be in the format ( original expression, phonetic reading of expression split in syllabs but has read by portuguese speaker)
+"""
+
 import json
+import re
 from datetime import datetime
 import socket
 
@@ -14,6 +24,8 @@ CORS(app)  # This will enable CORS for all routes JUST FOR WEB mobile we can del
 # Ensure this path points to the directory where your sound files are stored
 SOUND_FILES_DIRECTORY = 'sounds'
 
+def remove_special_characters(expression):
+    return re.sub(r'[^a-zA-Z0-9\s_]', '', expression)
 
 def get_language_packs(target_language_id, base_language_id):
     """
@@ -324,27 +336,210 @@ FROM EvaluationExpression EE WHERE evaluation_id = :evaluation_id'''
     return jsonify(response)
 
 
-if __name__ == '__main__':
-    folder_path = "C:/Users/pedro/StudioProjects/langum/jsons"
-    filename = "db_info.json"
-    # Get the hostname
-    hostname = socket.gethostname()
-    # Get the IP address
-    ip_address = socket.gethostbyname(hostname)
+import sqlite3
+from sqlite3 import Error
 
-    print("Hostname:", hostname)
-    print("IP:", ip_address)
 
-    port = input("select PORT NUMBER - press enter for default 8888\n")
-    if port == "":
-        port = 8888
+def create_expressions(expressions, languageEng):
+    """
+    Create new expressions in the Expressions table.
 
-    db_ip_port = f"{ip_address}:{port}"
-    db_info = {"ip": ip_address, "port": port}
+    :param expressions: list of tuples (text, meaningEng)
+    :param languageEng: language in English
+    """
+    try:
+        # Connect to the SQLite database
+        conn = sqlite3.connect("langum.db")
+        cursor = conn.cursor()
 
-    save_json_file(filename, db_info, folder_path)
+        # Check if the languageEng exists in the Languages table
+        cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (languageEng,))
+        language_row = cursor.fetchone()
 
-    print("db ip port were saved to:")
-    print(f"{folder_path}{filename}")
+        if language_row is None:
+            raise ValueError(f"Language '{languageEng}' does not exist.")
 
-    app.run(host=ip_address, port=port)
+        language_id = language_row[0]
+
+        for text, meaningEng in expressions:
+            # Check if the meaningEng already exists in the Meanings table
+            cursor.execute("SELECT id FROM Meanings WHERE meaningEng = ?", (meaningEng,))
+            meaning_row = cursor.fetchone()
+
+            if meaning_row is not None:
+                print(f"Meaning '{meaningEng}' already exists.")
+                continue
+
+            # Check if the expression text already exists in the Expressions table
+            cursor.execute("SELECT id FROM Expressions WHERE text = ?", (text,))
+            expression_row = cursor.fetchone()
+
+            if expression_row is not None:
+                print(f"Expression text '{text}' already exists.")
+                continue
+
+            # Insert the new meaningEng into the Meanings table
+            cursor.execute("INSERT INTO Meanings (meaningEng) VALUES (?)", (meaningEng,))
+            conn.commit()
+            meaning_id = cursor.lastrowid
+
+            # Generate the sound_filename
+            sound_filename = f"{languageEng.lower()}__{remove_special_characters(meaningEng.lower().replace(' ', '_'))}"
+
+            # Insert the new expression into the Expressions table
+            cursor.execute('''
+                INSERT INTO Expressions (text, sound_filename, language_id, meaning_id)
+                VALUES (?, ?, ?, ?)
+            ''', (text, sound_filename, language_id, meaning_id))
+
+        # Commit the transaction
+        conn.commit()
+
+        print("Expressions created successfully.")
+
+        # Close the connection
+        cursor.close()
+        conn.close()
+
+    except Error as e:
+        print(f"Error: {e}")
+
+def insert_expressions_console():
+
+    common_russian_expressions = [
+    ("Привет", "Hello"),
+    ("Как дела?", "How are you?"),
+    ("Спасибо", "Thank you"),
+    ("Пожалуйста", "Please"),
+    ("Пожалуйста", "You're welcome"),
+    ("Да", "Yes"),
+    ("Нет", "No"),
+    ("Извините", "Excuse me"),
+    ("Извините", "Sorry"),
+    ("До свидания", "Goodbye"),
+    ("Доброе утро", "Good morning"),
+    ("Добрый день", "Good afternoon"),
+    ("Добрый вечер", "Good evening"),
+    ("Спокойной ночи", "Good night"),
+    ("Я не понимаю", "I don't understand"),
+    ("Где находится...?", "Where is...?"),
+    ("Сколько это стоит?", "How much does it cost?"),
+    ("Меня зовут...", "My name is..."),
+    ("Как вас зовут?", "What's your name?"),
+    ("Очень приятно", "Nice to meet you"),
+    ("До скорого", "See you soon"),
+    ("Я люблю тебя", "I love you"),
+    ("Помогите!", "Help!"),
+    ("Можно ли...?", "Is it possible...?"),
+    ("Что это?", "What is this?"),
+    ("Когда?", "When?"),
+    ("Почему?", "Why?"),
+    ("Кто?", "Who?"),
+    ("Как?", "How?"),
+    ("Где?", "Where?"),
+    ("Что вы сказали?", "What did you say?"),
+    ("Повторите, пожалуйста", "Please repeat"),
+    ("Я не знаю", "I don't know"),
+    ("Я заблудился", "I'm lost"),
+    ("Какой адрес?", "What is the address?"),
+    ("У вас есть...?", "Do you have...?"),
+    ("Можно мне...?", "Can I have...?"),
+    ("Я хочу...", "I want..."),
+    ("Могу я...?", "May I...?"),
+    ("Вы говорите по-английски?", "Do you speak English?"),
+    ("Говорите медленнее, пожалуйста", "Speak slower, please"),
+    ("Счастливого пути", "Have a good trip"),
+    ("Поздравляю", "Congratulations"),
+    ("Удачи", "Good luck"),
+    ("С праздником", "Happy holiday"),
+    ("С Днём Рождения", "Happy Birthday"),
+    ("Мои соболезнования", "My condolences"),
+    ("До встречи", "See you later"),
+    ("Это правда?", "Is it true?"),
+    ("Я согласен", "I agree"),
+    ("Я не согласен", "I disagree"),
+    ("Мне нравится", "I like it"),
+    ("Мне не нравится", "I don't like it"),
+    ("Я устал", "I'm tired"),
+    ("Я голоден", "I'm hungry"),
+    ("Я хочу пить", "I'm thirsty"),
+    ("Я болею", "I'm sick"),
+    ("У меня болит...", "I have a pain in..."),
+    ("Как тебя зовут?", "What’s your name?"),
+    ("Какой сегодня день?", "What day is it today?"),
+    ("Который час?", "What time is it?"),
+    ("Сколько вам лет?", "How old are you?"),
+    ("Где ты живёшь?", "Where do you live?"),
+    ("Откуда ты?", "Where are you from?"),
+    ("Что ты делаешь?", "What are you doing?"),
+    ("Что случилось?", "What happened?"),
+    ("Ты замужем?", "Are you married? (to a woman)"),
+    ("Ты женат?", "Are you married? (to a man)"),
+    ("У вас есть дети?", "Do you have children?"),
+    ("Какой ваш телефон?", "What’s your phone number?"),
+    ("Какие планы на сегодня?", "What are your plans for today?"),
+    ("Ты любишь читать?", "Do you like reading?"),
+    ("Какая твоя любимая книга?", "What is your favorite book?"),
+    ("Какая твоя любимая музыка?", "What is your favorite music?"),
+    ("Какие фильмы ты любишь?", "What movies do you like?"),
+    ("Ты занимаешься спортом?", "Do you do sports?"),
+    ("Как пройти до...?", "How to get to...?"),
+    ("Можно вашу помощь?", "Can I have your help?"),
+    ("Могу я вам помочь?", "Can I help you?"),
+    ("Не беспокойтесь", "Don’t worry"),
+    ("Скорую помощь", "Call an ambulance"),
+    ("Вызовите полицию", "Call the police"),
+    ("Мне нужно к врачу", "I need a doctor"),
+    ("Где ближайшая аптека?", "Where is the nearest pharmacy?"),
+    ("Я забронировал номер", "I have a reservation"),
+    ("Мне нужен номер на одну ночь", "I need a room for one night"),
+    ("Сколько стоит за ночь?", "How much is per night?"),
+    ("Вы принимаете кредитные карты?", "Do you accept credit cards?"),
+    ("Где ближайший банкомат?", "Where is the nearest ATM?"),
+    ("Сколько времени займёт?", "How long will it take?"),
+    ("Это далеко?", "Is it far?"),
+    ("Можно счет, пожалуйста?", "Can I have the bill, please?"),
+    ("Могу я расплатиться наличными?", "Can I pay in cash?"),
+    ("Где ближайшая станция метро?", "Where is the nearest metro station?"),
+    ("Как доехать до центра города?", "How to get to the city center?"),
+    ("Вы можете мне помочь?", "Can you help me?"),
+    ("У меня есть вопрос", "I have a question"),
+    ("Говорите громче, пожалуйста", "Speak louder, please"),
+    ("Скажите ещё раз", "Say it again"),
+    ("Откройте, пожалуйста", "Open, please"),
+    ("Закройте, пожалуйста", "Close, please"),
+    ("Войдите", "Come in"),
+    ("Выходите", "Go out"),
+    ("Приятного аппетита", "Enjoy your meal"),
+    ("Сколько вам лет?", "How old are you?")]
+
+    languageEng = 'Russian'
+
+    create_expressions(common_russian_expressions, languageEng)
+
+# if __name__ == '__main__':
+    # folder_path = "C:/Users/pedro/StudioProjects/langum/jsons"
+    # filename = "db_info.json"
+    # # Get the hostname
+    # hostname = socket.gethostname()
+    # # Get the IP address
+    # ip_address = socket.gethostbyname(hostname)
+    #
+    # print("Hostname:", hostname)
+    # print("IP:", ip_address)
+    #
+    # port = input("select PORT NUMBER - press enter for default 8888\n")
+    # if port == "":
+    #     port = 8888
+    #
+    # db_ip_port = f"{ip_address}:{port}"
+    # db_info = {"ip": ip_address, "port": port}
+    #
+    # save_json_file(filename, db_info, folder_path)
+    #
+    # print("db ip port were saved to:")
+    # print(f"{folder_path}{filename}")
+    #
+    # app.run(host=ip_address, port=port)
+
+insert_expressions_console()
