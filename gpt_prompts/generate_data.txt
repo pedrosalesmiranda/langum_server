@@ -1,0 +1,9 @@
+REQUIRES
+expression in target language
+PROMPTS
+list of python tuples in format ( expression, phonetic native reading of expression split in syllabus separated by -  read by a english speaker )
+TO
+phonetics table
+
+TEMP
+make me a list of tuples where will be in the format ( original expression, phonetic reading of expression split in syllabs but has read by portuguese speaker)
