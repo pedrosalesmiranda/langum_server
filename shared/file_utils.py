@@ -1,4 +1,9 @@
 import os
+from datetime import datetime
+
+
+def get_timestamp():
+    return datetime.now().strftime('%Y%m%d_%H%M%S')
 
 
 def create_folder_if_not_exists(folder_path: str):

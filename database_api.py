@@ -1,7 +1,19 @@
 import sqlite3
 
-from shared.file_utils import create_folder_if_not_exists
+import shared.constants
 from shared.string_utils import remove_special_characters
+
+database_file_path = shared.constants.DATABASE_FILE_PATH
+
+
+def create_pack_meanings(description_eng: str, meanings_eng: list):
+    # get pack_id
+    # check if description is in Packs if not create a pack, if pack exists print a message
+
+    # for each meaning check get meaning_id
+    # check if meaning is in Meanings if not create a meaning, if pack exists print a message
+    # if pack or meaning was create create a PackMeaning
+    pass
 
 
 def create_expressions(expressions, languageEng):
@@ -13,7 +25,7 @@ def create_expressions(expressions, languageEng):
     """
     try:
         # Connect to the SQLite database
-        conn = sqlite3.connect("database/langum.db")
+        conn = sqlite3.connect(database_file_path)
         cursor = conn.cursor()
 
         # Check if the languageEng exists in the Languages table
@@ -67,6 +79,7 @@ def create_expressions(expressions, languageEng):
     except sqlite3.Error as e:
         print(f"Error: {e}")
 
+
 # TODO not working yet
 def create_phonetics(data_list):
     """
@@ -82,7 +95,7 @@ def create_phonetics(data_list):
     """
     try:
         # Connect to the SQLite database
-        conn = sqlite3.connect("database/langum.db")
+        conn = sqlite3.connect(database_file_path)
         cursor = conn.cursor()
 
         # Begin a transaction
@@ -116,4 +129,3 @@ def create_phonetics(data_list):
         # Close the database connection
         if conn:
             conn.close()
-
