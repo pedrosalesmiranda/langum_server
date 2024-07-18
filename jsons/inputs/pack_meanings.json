@@ -1,15 +1,21 @@
 {
-    "pack": "gym",
+    "pack": "beach",
     "meanings": [
-        "equipment",
-        "workout",
-        "exercise",
-        "class",
-        "trainer",
-        "member",
-        "routine",
-        "machine",
-        "session",
-        "fitness"
+        "sandcastle",
+        "waves",
+        "seashell",
+        "tide",
+        "sunbather",
+        "beachball",
+        "surfboard",
+        "seagull",
+        "lifeguard",
+        "towel",
+        "sunset",
+        "beach umbrella",
+        "flip flops",
+        "driftwood",
+        "sand dune",
+        "pier"
     ]
 }

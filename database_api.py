@@ -6,66 +6,103 @@ from shared.string_utils import remove_special_characters
 database_file_path = shared.constants.DATABASE_FILE_PATH
 
 
+# def create_pack_meanings(description_eng: str, meanings_eng: list):
+#     # get pack_id
+#     # check if description is in Packs if not create a pack, if pack exists print a message
+#
+#     # for each meaning check get meaning_id
+#     # check if meaning is in Meanings if not create a meaning, if pack exists print a message
+#     # if pack or meaning was create create a PackMeaning
+#     pass
+
+
 def create_pack_meanings(description_eng: str, meanings_eng: list):
-    # get pack_id
-    # check if description is in Packs if not create a pack, if pack exists print a message
+    connection = sqlite3.connect(database_file_path)
+    cursor = connection.cursor()
 
-    # for each meaning check get meaning_id
-    # check if meaning is in Meanings if not create a meaning, if pack exists print a message
-    # if pack or meaning was create create a PackMeaning
-    pass
+    # Get or create pack
+    cursor.execute("SELECT id FROM Packs WHERE descriptionEng = ?", (description_eng,))
+    pack_row = cursor.fetchone()
+
+    if pack_row:
+        pack_id = pack_row[0]
+        print(f"Pack with description '{description_eng}' already exists with id {pack_id}.")
+    else:
+        cursor.execute("INSERT INTO Packs (descriptionEng) VALUES (?)", (description_eng,))
+        pack_id = cursor.lastrowid
+        print(f"Created new pack with description '{description_eng}' and id {pack_id}.")
+
+    # Get or create meanings
+    for meaning_eng in meanings_eng:
+        cursor.execute("SELECT id FROM Meanings WHERE meaningEng = ?", (meaning_eng,))
+        meaning_row = cursor.fetchone()
+
+        if meaning_row:
+            meaning_id = meaning_row[0]
+            print(f"Meaning '{meaning_eng}' already exists with id {meaning_id}.")
+        else:
+            cursor.execute("INSERT INTO Meanings (meaningEng) VALUES (?)", (meaning_eng,))
+            meaning_id = cursor.lastrowid
+            print(f"Created new meaning '{meaning_eng}' with id {meaning_id}.")
+
+        # Create PackMeaning if not exists
+        cursor.execute("SELECT id FROM PackMeaning WHERE pack_id = ? AND meaning_id = ?", (pack_id, meaning_id))
+        pack_meaning_row = cursor.fetchone()
+
+        if pack_meaning_row:
+            print(f"PackMeaning already exists for pack_id {pack_id} and meaning_id {meaning_id}.")
+        else:
+            cursor.execute("INSERT INTO PackMeaning (pack_id, meaning_id) VALUES (?, ?)", (pack_id, meaning_id))
+            print(f"Created new PackMeaning for pack_id {pack_id} and meaning_id {meaning_id}.")
+
+    # Commit the transaction and close the connection
+    connection.commit()
+    connection.close()
 
 
-def create_expressions(expressions, languageEng):
-    """
-    Create new expressions in the Expressions table.
-
-    :param expressions: list of tuples (text, meaningEng)
-    :param languageEng: language in English
-    """
+def create_expressions(meanings_expressions: dict, language_eng: str):
     try:
         # Connect to the SQLite database
         conn = sqlite3.connect(database_file_path)
         cursor = conn.cursor()
 
         # Check if the languageEng exists in the Languages table
-        cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (languageEng,))
+        cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (language_eng,))
         language_row = cursor.fetchone()
 
         if language_row is None:
-            raise ValueError(f"Language '{languageEng}' does not exist.")
+            raise ValueError(f"Language '{language_eng}' does not exist.")
 
         language_id = language_row[0]
 
-        for text, meaningEng in expressions:
-            # Check if the meaningEng already exists in the Meanings table
-            cursor.execute("SELECT id FROM Meanings WHERE meaningEng = ?", (meaningEng,))
-            meaning_row = cursor.fetchone()
+        for meaning_expression in meanings_expressions:
+            meaning_eng = meaning_expression["meaningEng"]
+            expression_text = meaning_expression["expression"]
 
+            cursor.execute("SELECT id FROM Meanings WHERE meaningEng = ?", (meaning_eng,))
+            meaning_row = cursor.fetchone()
             if meaning_row is None:
                 # Insert the new meaningEng into the Meanings table
-                cursor.execute("INSERT INTO Meanings (meaningEng) VALUES (?)", (meaningEng,))
+                cursor.execute("INSERT INTO Meanings (meaningEng) VALUES (?)", (meaning_eng,))
                 conn.commit()
                 meaning_id = cursor.lastrowid
             else:
                 meaning_id = meaning_row[0]
 
-            # Check if the expression text already exists in the Expressions table
-            cursor.execute("SELECT id FROM Expressions WHERE text = ?", (text,))
+            cursor.execute("SELECT id FROM Expressions WHERE text = ?", (expression_text,))
             expression_row = cursor.fetchone()
-
             if expression_row is not None:
-                print(f"Expression text '{text}' already exists.")
+                print(f"Expression text '{expression_text}' already exists.")
                 continue
 
             # Generate the sound_filename
-            sound_filename = f"{languageEng.lower()}__{remove_special_characters(meaningEng.lower().replace(' ', '_'))}"
+            sound_filename = f"{language_eng.lower()}__{remove_special_characters(meaning_eng.lower().replace(' ', '_'))}"
 
             # Insert the new expression into the Expressions table
             cursor.execute('''
                 INSERT INTO Expressions (text, sound_filename, language_id, meaning_id)
                 VALUES (?, ?, ?, ?)
-            ''', (text, sound_filename, language_id, meaning_id))
+            ''', (expression_text, sound_filename, language_id, meaning_id))
 
         # Commit the transaction
         conn.commit()
