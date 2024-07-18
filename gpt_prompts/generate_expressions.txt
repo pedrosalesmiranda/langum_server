@@ -1,0 +1,18 @@
+MEANINGS = [
+        "equipment",
+        "workout",
+        "exercise",
+        "class",
+        "trainer",
+        "member",
+        "routine",
+        "machine",
+        "session",
+        "fitness"
+    ]
+TARGET_LANGUAGE = russian
+BASE_LANGUAGE = portuguese
+
+for each meaning in MEANINGS create python dict
+format {"meaningEng": meaning, "expression_{TARGET_LANGUAGE}": meaning in target_language, "expression_{BASE_LANGUAGE}: meaning in base language}
+show me only list of dicts nothing more
