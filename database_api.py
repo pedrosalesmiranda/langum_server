@@ -6,16 +6,6 @@ from shared.string_utils import remove_special_characters
 database_file_path = shared.constants.DATABASE_FILE_PATH
 
 
-# def create_pack_meanings(description_eng: str, meanings_eng: list):
-#     # get pack_id
-#     # check if description is in Packs if not create a pack, if pack exists print a message
-#
-#     # for each meaning check get meaning_id
-#     # check if meaning is in Meanings if not create a meaning, if pack exists print a message
-#     # if pack or meaning was create create a PackMeaning
-#     pass
-
-
 def create_pack_meanings(description_eng: str, meanings_eng: list):
     connection = sqlite3.connect(database_file_path)
     cursor = connection.cursor()
@@ -117,52 +107,51 @@ def create_expressions(meanings_expressions: dict, language_eng: str):
         print(f"Error: {e}")
 
 
-# TODO not working yet
-def create_phonetics(data_list):
-    """
-    Inserts a list of tuples with (expressionText, phonetics) into the Phonetics table.
+def create_phonetics(expressions_phonetics: dict, base_language: str):
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
 
-    Parameters:
-        data_list (list of tuples): List containing tuples with (expressionText, phonetics)
-        db_path (str): Path to the SQLite database file
+    # Get base language ID
+    cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (base_language,))
+    base_language_id = cursor.fetchone()
+    if base_language_id is None:
+        print(f"Language '{base_language}' not found.")
+        conn.close()
+        return
+    base_language_id = base_language_id[0]
 
-    Example:
-        data_list = [("Hello", "həˈloʊ"), ("Goodbye", "ɡʊdˈbaɪ")]
-        insert_phonetics(data_list, 'my_database.db')
-    """
-    try:
-        # Connect to the SQLite database
-        conn = sqlite3.connect(database_file_path)
-        cursor = conn.cursor()
+    for expression_phonetic in expressions_phonetics:
+        expression_text = expression_phonetic['expression']
+        phonetic_text = expression_phonetic['phonetic_text']
 
-        # Begin a transaction
-        cursor.execute("BEGIN TRANSACTION;")
+        # Find expression_id
+        cursor.execute("SELECT id FROM Expressions WHERE text = ?", (expression_text,))
+        expression_id = cursor.fetchone()
+        if expression_id is None:
+            print(f"Expression '{expression_text}' not found.")
+            continue
+        expression_id = expression_id[0]
 
-        # Prepare the SQL statement for inserting data
-        insert_sql = """
-        INSERT INTO Phonetics (text, language_id, expression_id)
-        SELECT ?, l.id, e.id
-        FROM Expressions e
-        JOIN Languages l ON l.languageEngTwoLetters = 'en'  -- Replace 'en' with the desired language code if needed
-        WHERE e.text = ? AND l.languageEngTwoLetters = 'en';  -- Adjust the conditions as per your requirements
-        """
+        # Check if phonetic already exists
+        cursor.execute("""
+            SELECT id FROM Phonetics
+            WHERE language_id = ? AND expression_id = ?
+        """, (base_language_id, expression_id))
+        phonetic_id = cursor.fetchone()
 
-        # Iterate over the list and insert each tuple
-        for expression_text, phonetic_text in data_list:
-            # Fetch the expression_id and language_id (Assuming English with code 'en')
-            cursor.execute(insert_sql, (phonetic_text, expression_text))
+        if phonetic_id:
+            # Update existing phonetic
+            cursor.execute("""
+                UPDATE Phonetics
+                SET text = ?
+                WHERE id = ?
+            """, (phonetic_text, phonetic_id[0]))
+        else:
+            # Create new phonetic
+            cursor.execute("""
+                INSERT INTO Phonetics (text, language_id, expression_id)
+                VALUES (?, ?, ?)
+            """, (phonetic_text, base_language_id, expression_id))
 
-        # Commit the transaction
-        conn.commit()
-        print(f"{len(data_list)} rows inserted successfully.")
-
-    except sqlite3.Error as e:
-        # Rollback the transaction in case of an error
-        if conn:
-            conn.rollback()
-        print(f"An error occurred: {e}")
-
-    finally:
-        # Close the database connection
-        if conn:
-            conn.close()
+    conn.commit()
+    conn.close()

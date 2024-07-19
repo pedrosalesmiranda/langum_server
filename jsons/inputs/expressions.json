@@ -1,21 +1,21 @@
 {
-  "language": "russian",
-  "meanings_expressions": [
-    {"meaningEng": "sandcastle", "expression": "песочный замок"},
-    {"meaningEng": "waves", "expression": "волны"},
-    {"meaningEng": "seashell", "expression": "ракушка"},
-    {"meaningEng": "tide", "expression": "прилив"},
-    {"meaningEng": "sunbather", "expression": "загорающий"},
-    {"meaningEng": "beachball", "expression": "пляжный мяч"},
-    {"meaningEng": "surfboard", "expression": "доска для серфинга"},
-    {"meaningEng": "seagull", "expression": "чайка"},
-    {"meaningEng": "lifeguard", "expression": "спасатель"},
-    {"meaningEng": "towel", "expression": "полотенце"},
-    {"meaningEng": "sunset", "expression": "закат"},
-    {"meaningEng": "beach umbrella", "expression": "пляжный зонтик"},
-    {"meaningEng": "flip flops", "expression": "шлёпанцы"},
-    {"meaningEng": "driftwood", "expression": "коряга"},
-    {"meaningEng": "sand dune", "expression": "песчаная дюна"},
-    {"meaningEng": "pier", "expression": "пирс"}
-  ]
+    "language": "portuguese",
+    "meanings_expressions": [
+        {"meaningEng": "sandcastle", "expression": "castelo de areia"},
+        {"meaningEng": "waves", "expression": "ondas"},
+        {"meaningEng": "seashell", "expression": "concha"},
+        {"meaningEng": "tide", "expression": "maré"},
+        {"meaningEng": "sunbather", "expression": "banhista"},
+        {"meaningEng": "beach ball", "expression": "bola de praia"},
+        {"meaningEng": "surfboard", "expression": "prancha de surfe"},
+        {"meaningEng": "seagull", "expression": "gaivota"},
+        {"meaningEng": "lifeguard", "expression": "salva-vidas"},
+        {"meaningEng": "towel", "expression": "toalha"},
+        {"meaningEng": "sunset", "expression": "pôr do sol"},
+        {"meaningEng": "beach umbrella", "expression": "guarda-sol"},
+        {"meaningEng": "flip-flops", "expression": "chinelo"},
+        {"meaningEng": "driftwood", "expression": "madeira flutuante"},
+        {"meaningEng": "sand dune", "expression": "duna de areia"},
+        {"meaningEng": "pier", "expression": "pier"}
+    ]
 }

@@ -17,9 +17,9 @@ EXPRESSIONS = [
     "пирс"
 ]
 TARGET_LANGUAGE = russian
-BASE_LANGUAGE = english
 
-phonetic is TARGET_LANGUAGE reading of expression then split in syllabus separated by - then phonetic transcription in TARGET_BASE
+phonetic TARGET_LANGUAGE split in syllabus separated by -
+all strings in lower case
 output is python dictionary
 output = ("expression": expression from EXPRESSIONS, "phonetic_text":  phonetic )
 show me only list of dicts nothing more

@@ -2,11 +2,13 @@ import sqlite3
 
 from gtts import gTTS
 
+import shared.constants
 from shared.file_utils import file_exists, create_folder_if_not_exists
 
 
 def generateSoundExpression(expression: str, sound_filename: str, lang_2_letters: str):
-    file_path = f"{lang_2_letters}/{sound_filename.lower()}.mp3"
+    sound_folder_path = shared.constants.SOUND_FILES_DIRECTORY
+    file_path = f"{sound_folder_path}/{lang_2_letters}/{sound_filename.lower()}.mp3"
     if file_exists(file_path):
         return
     tts = gTTS(expression.lower(), lang=lang_2_letters)

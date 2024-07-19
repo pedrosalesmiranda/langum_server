@@ -13,9 +13,10 @@ import shared.constants
 from flask import Flask, send_from_directory, request, abort, jsonify
 from flask_cors import CORS
 
-from console_inputs import create_pack_meanings_from_json, create_expressions_from_json
+from console_inputs import create_pack_meanings_from_json, create_expressions_from_json, create_phonetics_from_json
 from shared.file_utils import file_exists
 from shared.json_utils import save_json_file
+from sound.sound_generation import generate_all_language_sounds
 
 app = Flask(__name__)
 CORS(app)  # This will enable CORS for all routes JUST FOR WEB mobile we can delete it
@@ -49,5 +50,6 @@ def run_flask_server():
 if __name__ == '__main__':
     # run_flask_server()
     # create_pack_meanings_from_json()
-    create_expressions_from_json()
+    # create_expressions_from_json()
+    create_phonetics_from_json()
     # generate_all_language_sounds('portuguese')

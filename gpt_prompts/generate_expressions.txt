@@ -4,14 +4,14 @@ MEANINGS = [
         "seashell",
         "tide",
         "sunbather",
-        "beachball",
+        "beach ball",
         "surfboard",
         "seagull",
         "lifeguard",
         "towel",
         "sunset",
         "beach umbrella",
-        "flip flops",
+        "flip-flops",
         "driftwood",
         "sand dune",
         "pier"
@@ -19,6 +19,7 @@ MEANINGS = [
 TARGET_LANGUAGE = russian
 BASE_LANGUAGE = portuguese
 
-for each meaning in MEANINGS create python dict
-format {"meaningEng": meaning, "expression_{TARGET_LANGUAGE}": meaning in target_language, "expression_{BASE_LANGUAGE}: meaning in base language}
+create two dicts
+dict_target = {"language": TARGET_LANGUAGE, "meanings_expressions": [{"meaningEng": meaning, "expression": meaning in target language}]}
+dict_base = {"language": BASE_LANGUAGE, "meanings_expressions": [{"meaningEng": meaning, "expression": meaning in base language}]}
 show me only list of dicts nothing more
