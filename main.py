@@ -9,7 +9,7 @@ from flask import request, abort, send_from_directory, jsonify, Flask
 from flask_cors import CORS
 
 import database_api
-from console_inputs import create_pack_meanings_from_json, create_expressions_from_json, create_phonetics_from_json
+from console_inputs import create_pack_meanings_from_json, create_expressions_from_json, create_phonetics_from_json, create_all_from_topic
 from shared.json_utils import save_json_file
 from sound.sound_generation import generate_all_language_sounds
 
@@ -274,8 +274,9 @@ def run_flask_server():
     app.run(host=ip_address, port=port)
 
 if __name__ == '__main__':
-    run_flask_server()
+    # run_flask_server()
     # create_pack_meanings_from_json()
     # create_expressions_from_json()
     # create_phonetics_from_json("portuguese")
     # generate_all_language_sounds('russian')
+    create_all_from_topic("nightclub", "nouns", 10, "russian", "portuguese")

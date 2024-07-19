@@ -37,5 +37,6 @@ def generate_all_language_sounds(langEng: str):
     # Generate sound for each expression
     for expression, sound_filename in expressions:
         generateSoundExpression(expression, sound_filename, lang_2_letters)
+        print(f"{sound_filename} was created in {lang_2_letters}")
 
     conn.close()
