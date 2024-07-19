@@ -4,6 +4,9 @@ import shared.file_utils
 import shared.constants
 
 
+def create_all_from_topic(topic: str, target_lang: str, base_lang):
+    pass
+
 def create_pack_meanings_from_json():
     filename_no_extension = shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION
     pack_meanings = shared.json_utils.load_json_file(filename_no_extension, folder_path="inputs")
