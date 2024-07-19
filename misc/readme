@@ -1,3 +1,6 @@
+script to generate everything from pack_meanings giving prompts to put on chatgpt and outputs creates all jsons and runs all functions
+to generate everything via console
+--------------------------------------
 no phonetic no id bug cant change id
 not packtitle language no expressions
 - move flask server and routes to other files

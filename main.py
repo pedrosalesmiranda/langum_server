@@ -274,8 +274,8 @@ def run_flask_server():
     app.run(host=ip_address, port=port)
 
 if __name__ == '__main__':
-    # run_flask_server()
+    run_flask_server()
     # create_pack_meanings_from_json()
-    create_expressions_from_json()
-    # create_phonetics_from_json()
-    # generate_all_language_sounds('portuguese')
+    # create_expressions_from_json()
+    # create_phonetics_from_json("portuguese")
+    # generate_all_language_sounds('russian')

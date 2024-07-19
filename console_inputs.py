@@ -18,10 +18,10 @@ def create_expressions_from_json():
     _save_processed(expressions, filename_no_extension)
 
 
-def create_phonetics_from_json():
+def create_phonetics_from_json(language_eng: str):
     filename_no_extension = shared.constants.PHONETICS_JSON_FILENAME_NO_EXTENSION
     phonetics = shared.json_utils.load_json_file(filename_no_extension, folder_path="inputs")
-    create_phonetics(phonetics, "portuguese")
+    create_phonetics(phonetics, language_eng)
     _save_processed(phonetics, filename_no_extension)
 
 
