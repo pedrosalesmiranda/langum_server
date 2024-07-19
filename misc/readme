@@ -1,3 +1,11 @@
+no phonetic no id bug cant change id
+not packtitle language no expressions
+- move flask server and routes to other files
+"""
+TODO
+- initialize database conn cursor modulo scope not init all the time
+- can be class
+"""
 ------------------------------ 1 -------------------------------
 logic of packs being processed by server
 is it good? VS processed by client

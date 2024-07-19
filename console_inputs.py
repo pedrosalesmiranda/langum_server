@@ -13,7 +13,7 @@ def create_pack_meanings_from_json():
 
 def create_expressions_from_json():
     filename_no_extension = shared.constants.EXPRESSIONS_JSON_FILENAME_NO_EXTENSION
-    expressions = shared.json_utils.load_json_file(filename_no_extension, folder_path="inputs")
+    expressions = shared.json_utils.load_json_file(filename_no_extension, folder_path="inputs", )
     create_expressions(expressions["meanings_expressions"], expressions["language"])
     _save_processed(expressions, filename_no_extension)
 
