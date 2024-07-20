@@ -4,9 +4,8 @@ def generate_pack_meanings_prompt(topic: str, expression_type: str, num_elements
     NUM_ELEMENTS(int) = {num_elements}
     TYPE = {expression_type}
 
-    output is python dictionary
-    output = ("pack": PACK, "meanings": MEANINGS)
-    MEANINGS(list of strings with NUM_ELEMENTS) - TYPE related to PACK
+    MEANINGS is a list of strings with NUM_ELEMENTS - where each element is TYPE related to PACK
+    output = ("pack": {topic}, "meanings": MEANINGS)
     show me only the output no explanations
     """
 

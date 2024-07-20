@@ -1,8 +1,0 @@
-PACK (string) = gym
-NUM_ELEMENTS (int) = 10
-TYPE = nouns
-
-output is python dictionary
-output = ("pack": PACK, "meanings": MEANINGS)
-MEANINGS (list of strings with NUM_ELEMENTS) - TYPE related to PACK
-show me only the output no explanations

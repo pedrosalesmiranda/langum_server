@@ -4,12 +4,12 @@ import sqlite3
 from datetime import datetime
 import shared.constants
 
-
 from flask import request, abort, send_from_directory, jsonify, Flask
 from flask_cors import CORS
 
 import database_api
-from console_inputs import create_pack_meanings_from_json, create_expressions_from_json, create_phonetics_from_json, create_all_from_topic
+from console_inputs import create_pack_meanings_from_json, create_expressions_from_json, create_phonetics_from_json, \
+    create_all_from_topic
 from shared.json_utils import save_json_file
 from sound.sound_generation import generate_all_language_sounds
 
@@ -249,6 +249,7 @@ FROM EvaluationExpression EE WHERE evaluation_id = :evaluation_id'''
 
     return jsonify(response)
 
+
 def run_flask_server():
     filename_no_extension = shared.constants.FILENAME_NO_EXTENSION
     folder_path = shared.constants.TARGET_FOLDER_PATH_DB_INFO
@@ -273,10 +274,7 @@ def run_flask_server():
 
     app.run(host=ip_address, port=port)
 
+
 if __name__ == '__main__':
-    # run_flask_server()
-    # create_pack_meanings_from_json()
-    # create_expressions_from_json()
-    # create_phonetics_from_json("portuguese")
-    # generate_all_language_sounds('russian')
-    create_all_from_topic("nightclub", "nouns", 10, "russian", "portuguese")
+    run_flask_server()
+    # create_all_from_topic("most used verbs", "expressions", 10, "russian", "portuguese")
