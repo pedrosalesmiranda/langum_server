@@ -13,7 +13,7 @@ def get_language_packs(target_language_id, base_language_id):
     :param base_language_id:
     :return:
     """
-    conn = sqlite3.connect('database/langum.db')  # Replace 'your_database.db' with your actual database file
+    conn = sqlite3.connect(database_file_path)
     cursor = conn.cursor()
 
     query_language = '''
@@ -124,7 +124,6 @@ def create_pack_meanings(description_eng: str, meanings_eng: list):
     connection.commit()
     connection.close()
 
-
 def create_expressions(meanings_expressions: dict, language_eng: str):
     try:
         # Connect to the SQLite database
@@ -180,7 +179,6 @@ def create_expressions(meanings_expressions: dict, language_eng: str):
 
     except sqlite3.Error as e:
         print(f"Error: {e}")
-
 
 def create_phonetics(expressions_phonetics: dict, base_language: str):
     conn = sqlite3.connect(database_file_path)

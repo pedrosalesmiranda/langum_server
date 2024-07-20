@@ -13,6 +13,8 @@ from console_inputs import create_pack_meanings_from_json, create_expressions_fr
 from shared.json_utils import save_json_file
 from sound.sound_generation import generate_all_language_sounds
 
+database_file_path = shared.constants.DATABASE_FILE_PATH
+
 app = Flask(__name__)
 CORS(app)
 
@@ -52,7 +54,7 @@ def add_evaluation():
     if not type_ or not goal or not start or not end or not expressions:
         return jsonify({'error': 'Missing required fields'}), 400
 
-    conn = sqlite3.connect('langum.db')  # Replace 'your_database.db' with your actual database file
+    conn = sqlite3.connect(database_file_path)
     cursor = conn.cursor()
 
     try:
@@ -119,7 +121,7 @@ def create_phonetic():
         return jsonify({'error': 'Missing data'}), 400
 
     try:
-        conn = sqlite3.connect('langum.db')  # Replace 'your_database.db' with your actual database file
+        conn = sqlite3.connect(database_file_path)
         cursor = conn.cursor()
 
         # Check if the phonetic already exists
@@ -155,7 +157,7 @@ def update_phonetic_text():
         return jsonify({'error': 'Missing phoneticId or text'}), 400
 
     try:
-        conn = sqlite3.connect('langum.db')  # Replace 'your_database.db' with your actual database file
+        conn = sqlite3.connect(database_file_path)
         cursor = conn.cursor()
 
         # Check if the phonetic exists
@@ -182,7 +184,7 @@ def update_phonetic_text():
 
 @app.route('/evaluation/<int:evaluation_id>', methods=['GET'])
 def get_evaluation(evaluation_id):
-    conn = sqlite3.connect('langum.db')  # Replace 'your_database.db' with your actual database file
+    conn = sqlite3.connect(database_file_path)
     cursor = conn.cursor()
 
     query_evaluation = '''
