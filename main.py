@@ -279,4 +279,4 @@ def run_flask_server():
 
 if __name__ == '__main__':
     run_flask_server()
-    # create_all_from_topic("most used verbs", "expressions", 10, "russian", "portuguese")
+    # create_all_from_topic("greetings", "expressions", 1000, "russian", "portuguese")
