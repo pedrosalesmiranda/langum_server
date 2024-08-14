@@ -18,6 +18,105 @@ database_file_path = shared.constants.DATABASE_FILE_PATH
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/list_packs', methods=['GET'])
+def get_packs_endpoint():
+    target_language_id = request.args.get('targetLanguageId')
+    base_language_id = request.args.get('baseLanguageId')
+
+    if not target_language_id or not base_language_id:
+        return jsonify({'error': 'targetLanguageId and baseLanguageId are required'}), 400
+
+    try:
+        target_language_id = int(target_language_id)
+        base_language_id = int(base_language_id)
+    except ValueError:
+        return jsonify({'error': 'Invalid language ID format'}), 400
+
+    packs = database_api.get_language_packs(target_language_id, base_language_id)
+    return jsonify(packs)
+
+@app.route('/list_evaluations', methods=['GET'])
+def get_evaluations_endpoint():
+    """
+        ASSUMES that evaluations with same target and base language
+        :return: a list of all the evaluations
+    """
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+
+    # Query to fetch all evaluations
+    query_all_evaluations = '''
+    SELECT E.id    AS eval_id,
+           E.start AS eval_start,
+           E.end   AS eval_end,
+           E.goal  AS eval_goal,
+           E.type  AS eval_type,
+           E.size  AS eval_size
+    FROM Evaluations E
+    '''
+    cursor.execute(query_all_evaluations)
+    evaluations = cursor.fetchall()
+
+    # If no evaluations found, return an empty list
+    if not evaluations:
+        return jsonify([])
+
+    # List to hold all evaluation data
+    evaluations_list = []
+
+    for evaluation in evaluations:
+        eval_id, eval_start, eval_end, eval_goal, eval_type, eval_size = evaluation
+
+        # Query to fetch associated evaluation expressions for each evaluation
+        query_evaluation_expression = '''
+        SELECT
+            EE.expression_id AS expression_id,
+            EE.duration  AS evaluation_duration,
+            EE.grade AS evaluation_grade,
+            EE.language_skill AS language_skill
+        FROM EvaluationExpression EE WHERE evaluation_id = :evaluation_id
+        '''
+
+        # Fetch the associated evaluation expressions
+        params = {'evaluation_id': eval_id}
+        cursor.execute(query_evaluation_expression, params)
+        evaluation_expressions = cursor.fetchall()
+
+        # Convert evaluation expressions to a list of dictionaries
+        evaluation_expressions_list = []
+        for expression in evaluation_expressions:
+            expression_id, evaluation_duration, evaluation_grade, language_skill = expression
+            evaluation_expressions_list.append({
+                'expression_id': expression_id,
+                'grade': evaluation_grade,
+                'language_skill': language_skill,
+                'duration': evaluation_duration
+            })
+
+        # Combine evaluation details with its expressions
+        evaluation_data = {
+            'id': eval_id,
+            'type': eval_type,
+            'goal': eval_goal,
+            'start': eval_start,
+            'end': eval_end,
+            'size': eval_size,
+            'evaluation_expressions': evaluation_expressions_list
+        }
+
+        # Append the evaluation data to the list
+        evaluations_list.append(evaluation_data)
+
+    return jsonify(evaluations_list)
+
+
+
+
+@app.route('/list_evaluation_expression', methods=['GET'])
+def get_evaluation_expression():
+    evaluation_expressions = database_api.get_all_evaluation_expressions()
+    return jsonify(evaluation_expressions)
+
 
 @app.route('/download_sound', methods=['GET'])
 def download_file():
@@ -70,6 +169,7 @@ def add_evaluation():
         for expr in expressions:
             expression_id = expr.get('expression_id')
             grade = expr.get('grade')
+            language_skill = expr.get('language_skill')
             duration = expr.get('duration')
 
             if expression_id is None or grade is None or duration is None:
@@ -77,9 +177,9 @@ def add_evaluation():
                 return jsonify({'error': 'Missing fields in expressions'}), 400
 
             cursor.execute('''
-                INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration)
-                VALUES (?, ?, ?, ?)
-            ''', (expression_id, evaluation_id, grade, duration))
+                INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, language_skill, duration)
+                VALUES (?, ?, ?, ?, ?)
+            ''', (expression_id, evaluation_id, grade, language_skill, duration))
 
         conn.commit()
         return jsonify({'message': 'Evaluation added successfully'}), 201
@@ -90,24 +190,6 @@ def add_evaluation():
 
     finally:
         conn.close()
-
-
-@app.route('/list_packs', methods=['GET'])
-def get_packs_endpoint():
-    target_language_id = request.args.get('targetLanguageId')
-    base_language_id = request.args.get('baseLanguageId')
-
-    if not target_language_id or not base_language_id:
-        return jsonify({'error': 'targetLanguageId and baseLanguageId are required'}), 400
-
-    try:
-        target_language_id = int(target_language_id)
-        base_language_id = int(base_language_id)
-    except ValueError:
-        return jsonify({'error': 'Invalid language ID format'}), 400
-
-    packs = database_api.get_language_packs(target_language_id, base_language_id)
-    return jsonify(packs)
 
 
 @app.route('/create_phonetic', methods=['POST'])
@@ -207,21 +289,11 @@ FROM Evaluations E WHERE id = :evaluation_id'''
 
     eval_id, eval_start, eval_end, eval_goal, eval_type, eval_size = evaluation
 
-    # Convert evaluation to a dictionary
-    evaluation_dict = {
-        'id': eval_id,
-        'type': eval_type,
-        'goal': eval_goal,
-        'start': eval_start,
-        'end': eval_end,
-        'size': eval_size
-    }
-
-    query_evaluation_expression = '''SELECT EE.id AS ee_id,
+    query_evaluation_expression = '''SELECT
        EE.expression_id AS expression_id,
-       EE.evaluation_id AS evaluation_id,
        EE.duration  AS evaluation_duration,
-       EE.grade AS evaluation_grade
+       EE.grade AS evaluation_grade,
+       EE.language_skill AS language_skill
 FROM EvaluationExpression EE WHERE evaluation_id = :evaluation_id'''
 
     # Fetch the associated evaluation expressions
@@ -234,18 +306,22 @@ FROM EvaluationExpression EE WHERE evaluation_id = :evaluation_id'''
     # Convert evaluation expressions to a list of dictionaries
     evaluation_expressions_list = []
     for expression in evaluation_expressions:
-        ee_id, expression_id, evaluation_id, evaluation_duration, evaluation_grade = expression
+        expression_id, evaluation_duration, evaluation_grade, language_skill = expression
         evaluation_expressions_list.append({
-            'id': ee_id,
             'expression_id': expression_id,
-            'evaluation_id': evaluation_id,
             'grade': evaluation_grade,
+            'language_skill': language_skill,
             'duration': evaluation_duration
         })
 
     # Combine both into a single response
     response = {
-        'evaluation': evaluation_dict,
+        'id': eval_id,
+        'type': eval_type,
+        'goal': eval_goal,
+        'start': eval_start,
+        'end': eval_end,
+        'size': eval_size,
         'evaluation_expressions': evaluation_expressions_list
     }
 

@@ -6,6 +6,35 @@ from shared.string_utils import remove_special_characters
 database_file_path = shared.constants.DATABASE_FILE_PATH
 
 
+def get_all_evaluation_expressions():
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+
+    query_language = '''
+SELECT EE.id                AS id,
+       EE.expression_id     AS expression_id,
+       EE.evaluation_id     AS evaluation_id,
+       EE.grade             AS grade,
+       EE.duration          AS duration,
+       EE.type              AS type_,
+       EE.timestamp         AS timestamp
+
+FROM EvaluationExpression EE'''
+
+    cursor.execute(query_language)
+
+    res_evaluation_expression = cursor.fetchall()
+    conn.close()
+
+    evaluation_expressions_list = []
+
+    for row in res_evaluation_expression:
+        id, expression_id, evaluation_id, grade, duration, type_, timestamp = row
+        evaluation_expressions_list.append({"id": id, "expression_id": expression_id, "evaluation_id": evaluation_id, "grade": grade, "duration": duration, "type": type_, "timestamp": timestamp})
+
+    return evaluation_expressions_list
+
+
 def get_language_packs(target_language_id, base_language_id):
     """
     return expressions grouped per pack for a given language with base language needed fields too
@@ -81,6 +110,7 @@ WHERE L.id IN (:target_language_id, :base_language_id)
 
     return packs_list
 
+
 def create_pack_meanings(description_eng: str, meanings_eng: list):
     connection = sqlite3.connect(database_file_path)
     cursor = connection.cursor()
@@ -123,6 +153,7 @@ def create_pack_meanings(description_eng: str, meanings_eng: list):
     # Commit the transaction and close the connection
     connection.commit()
     connection.close()
+
 
 def create_expressions(meanings_expressions: dict, language_eng: str):
     try:
@@ -179,6 +210,7 @@ def create_expressions(meanings_expressions: dict, language_eng: str):
 
     except sqlite3.Error as e:
         print(f"Error: {e}")
+
 
 def create_phonetics(expressions_phonetics: dict, base_language: str):
     conn = sqlite3.connect(database_file_path)

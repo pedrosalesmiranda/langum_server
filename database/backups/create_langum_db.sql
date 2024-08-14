@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS EvaluationExpression (
     evaluation_id INTEGER NOT NULL,
     grade SMALLINT NOT NULL,
     duration INT NOT NULL,
+    language_skill TEXT NOT NULL,
     FOREIGN KEY (expression_id) REFERENCES Expressions(id),
     FOREIGN KEY (evaluation_id) REFERENCES Evaluations(id)
 );
