@@ -8,10 +8,9 @@ from flask import request, abort, send_from_directory, jsonify, Flask
 from flask_cors import CORS
 
 import database_api
-from console_inputs import create_pack_meanings_from_json, create_expressions_from_json, create_phonetics_from_json, \
-    create_all_from_topic
+from console_inputs import create_all_from_topic
 from shared.json_utils import save_json_file
-from sound.sound_generation import generate_all_language_sounds
+# from sound.sound_generation import generate_all_language_sounds
 
 database_file_path = shared.constants.DATABASE_FILE_PATH
 
@@ -355,4 +354,4 @@ def run_flask_server():
 
 if __name__ == '__main__':
     run_flask_server()
-    # create_all_from_topic("greetings", "expressions", 1000, "russian", "portuguese")
+    # create_all_from_topic("colors", "words", 12, "russian", "portuguese")
