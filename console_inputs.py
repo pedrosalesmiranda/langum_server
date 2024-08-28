@@ -8,6 +8,40 @@ from gpt_prompts.prompt_generation import generate_pack_meanings_prompt, generat
 from shared.string_utils import copy_to_clipboard, paste_from_clipboard
 from sound.sound_generation import generate_all_language_sounds
 
+def create_all_from_topic_and_meaning_list(topic: str, meanings: list, target_lang: str, base_lang):
+    input_folder_path = shared.constants.JSON_INPUT_FOLDER_PATH
+    meanings = {"pack": topic, "meanings": meanings}
+    data = meanings
+    shared.json_utils.save_json_file(data, shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION, folder_path=input_folder_path)
+    print(data)
+    res = generate_expressions_prompt(data["meanings"], target_lang, base_lang)
+    copy_to_clipboard(res)
+    input("please PASTE in GPT, COPY result. And then *** PRESS any key to continue ***")
+    data = json.loads(paste_from_clipboard())
+    shared.json_utils.save_json_file(data, shared.constants.EXPRESSIONS_JSON_FILENAME_NO_EXTENSION, folder_path=input_folder_path)
+    print(data)
+    meanings_expressions = []
+    for meaning_expression_dict in data:
+        if meaning_expression_dict["language"] == target_lang:
+            meanings_expressions = meaning_expression_dict["meanings_expressions"]
+            break
+    if len(meanings_expressions) == 0:
+        print(f"meaning_expressions not found for {target_lang}")
+        return
+    res = generate_phonetics_prompt([item['expression'] for item in meanings_expressions], target_lang, base_lang)
+    copy_to_clipboard(res)
+    input("please PASTE in GPT, COPY result. And then *** PRESS any key to continue ***")
+    data = json.loads(paste_from_clipboard())
+    shared.json_utils.save_json_file(data, shared.constants.PHONETICS_JSON_FILENAME_NO_EXTENSION, folder_path=input_folder_path)
+    print(data)
+
+    create_pack_meanings_from_json()
+    create_expressions_from_json()
+    create_phonetics_from_json(base_lang)
+
+    generate_all_language_sounds(target_lang)
+    generate_all_language_sounds(base_lang)
+
 
 def create_all_from_topic(topic: str, expression_type: str, num_expressions: int, target_lang: str, base_lang):
     input_folder_path = shared.constants.JSON_INPUT_FOLDER_PATH

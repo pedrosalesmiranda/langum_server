@@ -8,14 +8,16 @@ from flask import request, abort, send_from_directory, jsonify, Flask
 from flask_cors import CORS
 
 import database_api
-from console_inputs import create_all_from_topic
+from console_inputs import create_all_from_topic, create_all_from_topic_and_meaning_list
 from shared.json_utils import save_json_file
+
 # from sound.sound_generation import generate_all_language_sounds
 
 database_file_path = shared.constants.DATABASE_FILE_PATH
 
 app = Flask(__name__)
 CORS(app)
+
 
 @app.route('/list_packs', methods=['GET'])
 def get_packs_endpoint():
@@ -33,6 +35,7 @@ def get_packs_endpoint():
 
     packs = database_api.get_language_packs(target_language_id, base_language_id)
     return jsonify(packs)
+
 
 @app.route('/list_evaluations', methods=['GET'])
 def get_evaluations_endpoint():
@@ -109,20 +112,19 @@ def get_evaluations_endpoint():
     return jsonify(evaluations_list)
 
 
-
-
 @app.route('/list_evaluation_expression', methods=['GET'])
 def get_evaluation_expression():
     evaluation_expressions = database_api.get_all_evaluation_expressions()
     return jsonify(evaluation_expressions)
 
 
+# TODO hardcoded lang detect
 @app.route('/download_sound', methods=['GET'])
 def download_file():
     filename = request.args.get('filename')
     filename_mp3 = f"{filename}.mp3"
-    if filename[0] == "r":
-        letters2 = "ru"
+    if filename[0] == "p":
+        letters2 = "pl"
     else:
         letters2 = "pt"
     if not filename:
@@ -144,9 +146,25 @@ def add_evaluation():
     # Extract data from the JSON request
     type_ = data.get('type')
     goal = data.get('goal')
-    start = datetime.strptime(data.get('start'), '%Y-%m-%dT%H:%M:%S')
-    end = datetime.strptime(data.get('end'), '%Y-%m-%dT%H:%M:%S')
-    expressions = data.get('expressions', [])
+
+    start_str: str = data.get('start')
+    if "." in start_str:
+        seconds_precision_start = start_str.split('.')[0]
+    else:
+        seconds_precision_start = start_str
+    start = datetime.strptime(seconds_precision_start, '%Y-%m-%dT%H:%M:%S')
+
+    end_str: str = data.get('end')
+    if end_str is None:
+        end = start
+    else:
+        if "." in end_str:
+            seconds_precision_end = end_str.split('.')[0]
+        else:
+            seconds_precision_end = end_str
+        end = datetime.strptime(seconds_precision_end, '%Y-%m-%dT%H:%M:%S')
+
+    expressions = data.get('evaluation_expressions', [])
 
     # Validate data
     if not type_ or not goal or not start or not end or not expressions:
@@ -354,4 +372,10 @@ def run_flask_server():
 
 if __name__ == '__main__':
     run_flask_server()
-    # create_all_from_topic("colors", "words", 12, "russian", "portuguese")
+    # create_all_from_topic("nouns plurals (nominik case)", "words", 20, "polish", "portuguese")
+    # create_all_from_topic_and_meaning_list("numbers 1 to 20", [
+    #     "one", "two", "three", "four", "five", "six", "seven",
+    #     "eight", "nine", "ten", "eleven", "twelve", "thirteen",
+    #     "fourteen", "fifteen", "sixteen", "seventeen",
+    #     "eighteen", "nineteen", "twenty"
+    # ], "polish", "portuguese")
