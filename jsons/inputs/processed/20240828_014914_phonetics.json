@@ -1,0 +1,82 @@
+[
+    {
+        "expression": "jeden",
+        "phonetic_text": "je-den [ˈjɛ.dɛn]"
+    },
+    {
+        "expression": "dwa",
+        "phonetic_text": "dwa [dva]"
+    },
+    {
+        "expression": "trzy",
+        "phonetic_text": "trzy [tʂɨ]"
+    },
+    {
+        "expression": "cztery",
+        "phonetic_text": "czte-ry [ˈtʂtɛ.rɨ]"
+    },
+    {
+        "expression": "pięć",
+        "phonetic_text": "pięć [pjɛɲtɕ]"
+    },
+    {
+        "expression": "sześć",
+        "phonetic_text": "sześć [ʂɛɕtɕ]"
+    },
+    {
+        "expression": "siedem",
+        "phonetic_text": "sie-dem [ˈɕɛ.dɛm]"
+    },
+    {
+        "expression": "osiem",
+        "phonetic_text": "o-siem [ˈɔ.ɕɛm]"
+    },
+    {
+        "expression": "dziewięć",
+        "phonetic_text": "dzie-więć [ˈd͡ʑɛ.vjɛɲtɕ]"
+    },
+    {
+        "expression": "dziesięć",
+        "phonetic_text": "dzie-sięć [ˈd͡ʑɛ.ɕɛɲtɕ]"
+    },
+    {
+        "expression": "jedenaście",
+        "phonetic_text": "je-de-na-ście [jɛ.dɛˈnaɕ.tɕɛ]"
+    },
+    {
+        "expression": "dwanaście",
+        "phonetic_text": "dwa-na-ście [dvaˈnaɕ.tɕɛ]"
+    },
+    {
+        "expression": "trzynaście",
+        "phonetic_text": "trzy-na-ście [tʂɨˈnaɕ.tɕɛ]"
+    },
+    {
+        "expression": "czternaście",
+        "phonetic_text": "czter-na-ście [tʂtɛrˈnaɕ.tɕɛ]"
+    },
+    {
+        "expression": "piętnaście",
+        "phonetic_text": "pięt-na-ście [pjɛntˈnaɕ.tɕɛ]"
+    },
+    {
+        "expression": "szesnaście",
+        "phonetic_text": "szes-na-ście [ʂɛsˈnaɕ.tɕɛ]"
+    },
+    {
+        "expression": "siedemnaście",
+        "phonetic_text": "sie-dem-na-ście [ɕɛ.dɛmˈnaɕ.tɕɛ]"
+    },
+    {
+        "expression": "osiemnaście",
+        "phonetic_text": "o-siem-na-ście [ɔ.ɕɛmˈnaɕ.tɕɛ]"
+    },
+    {
+        "expression": "dziewiętnaście",
+        "phonetic_text": "dzie-więt-na-ście [d͡ʑɛˈvjɛnt.naɕ.tɕɛ]"
+    },
+    {
+        "expression": "dwadzieścia",
+        "phonetic_text": "dwa-dzie-ścia [dvaˈd͡ʑɛɕ.tɕa]"
+    }
+]

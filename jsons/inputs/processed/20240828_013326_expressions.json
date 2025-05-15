@@ -1,0 +1,172 @@
+[
+    {
+        "language": "polish",
+        "meanings_expressions": [
+            {
+                "meaningEng": "one",
+                "expression": "jeden"
+            },
+            {
+                "meaningEng": "two",
+                "expression": "dwa"
+            },
+            {
+                "meaningEng": "three",
+                "expression": "trzy"
+            },
+            {
+                "meaningEng": "four",
+                "expression": "cztery"
+            },
+            {
+                "meaningEng": "five",
+                "expression": "pięć"
+            },
+            {
+                "meaningEng": "six",
+                "expression": "sześć"
+            },
+            {
+                "meaningEng": "seven",
+                "expression": "siedem"
+            },
+            {
+                "meaningEng": "eight",
+                "expression": "osiem"
+            },
+            {
+                "meaningEng": "nine",
+                "expression": "dziewięć"
+            },
+            {
+                "meaningEng": "ten",
+                "expression": "dziesięć"
+            },
+            {
+                "meaningEng": "eleven",
+                "expression": "jedenaście"
+            },
+            {
+                "meaningEng": "twelve",
+                "expression": "dwanaście"
+            },
+            {
+                "meaningEng": "thirteen",
+                "expression": "trzynaście"
+            },
+            {
+                "meaningEng": "fourteen",
+                "expression": "czternaście"
+            },
+            {
+                "meaningEng": "fifteen",
+                "expression": "piętnaście"
+            },
+            {
+                "meaningEng": "sixteen",
+                "expression": "szesnaście"
+            },
+            {
+                "meaningEng": "seventeen",
+                "expression": "siedemnaście"
+            },
+            {
+                "meaningEng": "eighteen",
+                "expression": "osiemnaście"
+            },
+            {
+                "meaningEng": "nineteen",
+                "expression": "dziewiętnaście"
+            },
+            {
+                "meaningEng": "twenty",
+                "expression": "dwadzieścia"
+            }
+        ]
+    },
+    {
+        "language": "portuguese",
+        "meanings_expressions": [
+            {
+                "meaningEng": "one",
+                "expression": "um"
+            },
+            {
+                "meaningEng": "two",
+                "expression": "dois"
+            },
+            {
+                "meaningEng": "three",
+                "expression": "três"
+            },
+            {
+                "meaningEng": "four",
+                "expression": "quatro"
+            },
+            {
+                "meaningEng": "five",
+                "expression": "cinco"
+            },
+            {
+                "meaningEng": "six",
+                "expression": "seis"
+            },
+            {
+                "meaningEng": "seven",
+                "expression": "sete"
+            },
+            {
+                "meaningEng": "eight",
+                "expression": "oito"
+            },
+            {
+                "meaningEng": "nine",
+                "expression": "nove"
+            },
+            {
+                "meaningEng": "ten",
+                "expression": "dez"
+            },
+            {
+                "meaningEng": "eleven",
+                "expression": "onze"
+            },
+            {
+                "meaningEng": "twelve",
+                "expression": "doze"
+            },
+            {
+                "meaningEng": "thirteen",
+                "expression": "treze"
+            },
+            {
+                "meaningEng": "fourteen",
+                "expression": "quatorze"
+            },
+            {
+                "meaningEng": "fifteen",
+                "expression": "quinze"
+            },
+            {
+                "meaningEng": "sixteen",
+                "expression": "dezesseis"
+            },
+            {
+                "meaningEng": "seventeen",
+                "expression": "dezessete"
+            },
+            {
+                "meaningEng": "eighteen",
+                "expression": "dezoito"
+            },
+            {
+                "meaningEng": "nineteen",
+                "expression": "dezenove"
+            },
+            {
+                "meaningEng": "twenty",
+                "expression": "vinte"
+            }
+        ]
+    }
+]

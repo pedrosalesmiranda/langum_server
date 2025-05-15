@@ -1,0 +1,108 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "dog",
+                "expression": "собака"
+            },
+            {
+                "meaningEng": "cat",
+                "expression": "кот"
+            },
+            {
+                "meaningEng": "horse",
+                "expression": "лошадь"
+            },
+            {
+                "meaningEng": "cow",
+                "expression": "корова"
+            },
+            {
+                "meaningEng": "sheep",
+                "expression": "овца"
+            },
+            {
+                "meaningEng": "pig",
+                "expression": "свинья"
+            },
+            {
+                "meaningEng": "goat",
+                "expression": "коза"
+            },
+            {
+                "meaningEng": "chicken",
+                "expression": "курица"
+            },
+            {
+                "meaningEng": "duck",
+                "expression": "утка"
+            },
+            {
+                "meaningEng": "rabbit",
+                "expression": "кролик"
+            },
+            {
+                "meaningEng": "fish",
+                "expression": "рыба"
+            },
+            {
+                "meaningEng": "bird",
+                "expression": "птица"
+            }
+        ]
+    },
+    {
+        "language": "portuguese",
+        "meanings_expressions": [
+            {
+                "meaningEng": "dog",
+                "expression": "cachorro"
+            },
+            {
+                "meaningEng": "cat",
+                "expression": "gato"
+            },
+            {
+                "meaningEng": "horse",
+                "expression": "cavalo"
+            },
+            {
+                "meaningEng": "cow",
+                "expression": "vaca"
+            },
+            {
+                "meaningEng": "sheep",
+                "expression": "ovelha"
+            },
+            {
+                "meaningEng": "pig",
+                "expression": "porco"
+            },
+            {
+                "meaningEng": "goat",
+                "expression": "cabra"
+            },
+            {
+                "meaningEng": "chicken",
+                "expression": "frango"
+            },
+            {
+                "meaningEng": "duck",
+                "expression": "pato"
+            },
+            {
+                "meaningEng": "rabbit",
+                "expression": "coelho"
+            },
+            {
+                "meaningEng": "fish",
+                "expression": "peixe"
+            },
+            {
+                "meaningEng": "bird",
+                "expression": "pássaro"
+            }
+        ]
+    }
+]

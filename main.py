@@ -122,13 +122,24 @@ def get_evaluation_expression():
 @app.route('/download_sound', methods=['GET'])
 def download_file():
     filename = request.args.get('filename')
-    filename_mp3 = f"{filename}.mp3"
-    if filename[0] == "p":
-        letters2 = "pl"
-    else:
-        letters2 = "pt"
     if not filename:
         abort(400, description="Filename parameter is missing.")
+
+    filename_mp3 = f"{filename}.mp3"
+
+    letters2 = ""
+    language = filename.split("__")[0]
+    if language == "polish":
+        letters2 = "pl"
+    elif language == "portuguese":
+        letters2 = "pt"
+    elif language == "russian":
+        letters2 = "rs"
+    elif language == "english":
+        letters2 = "en"
+
+    if letters2 == "":
+        abort(400, description=f"language in filename: {language} was not detected.")
 
     file_path = f"{shared.constants.SOUND_FILES_DIRECTORY}/{letters2}"
 

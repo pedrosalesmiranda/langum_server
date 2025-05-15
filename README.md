@@ -1,6 +1,6 @@
 put the expressions generation apart from flask server code is all in main
 
-check database integrity meaning should have at leasts 2 expressions (base/target)
+check database integrity meaning should have at least 2 expressions (base/target)
 list packs should also filter out is some problem like this and log
 ------------------------------------
 script to generate everything from pack_meanings giving prompts to put on chatgpt and outputs creates all jsons and runs all functions

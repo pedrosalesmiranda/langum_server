@@ -1,0 +1,140 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "apple",
+                "expression": "яблоко"
+            },
+            {
+                "meaningEng": "banana",
+                "expression": "банан"
+            },
+            {
+                "meaningEng": "cherry",
+                "expression": "вишня"
+            },
+            {
+                "meaningEng": "date",
+                "expression": "финик"
+            },
+            {
+                "meaningEng": "elderberry",
+                "expression": "бузина"
+            },
+            {
+                "meaningEng": "fig",
+                "expression": "инжир"
+            },
+            {
+                "meaningEng": "grape",
+                "expression": "виноград"
+            },
+            {
+                "meaningEng": "honeydew",
+                "expression": "медовая дыня"
+            },
+            {
+                "meaningEng": "kiwi",
+                "expression": "киви"
+            },
+            {
+                "meaningEng": "lemon",
+                "expression": "лимон"
+            },
+            {
+                "meaningEng": "mango",
+                "expression": "манго"
+            },
+            {
+                "meaningEng": "nectarine",
+                "expression": "нектарин"
+            },
+            {
+                "meaningEng": "orange",
+                "expression": "апельсин"
+            },
+            {
+                "meaningEng": "pear",
+                "expression": "груша"
+            },
+            {
+                "meaningEng": "quince",
+                "expression": "айва"
+            },
+            {
+                "meaningEng": "raspberry",
+                "expression": "малина"
+            }
+        ]
+    },
+    {
+        "language": "portuguese",
+        "meanings_expressions": [
+            {
+                "meaningEng": "apple",
+                "expression": "maçã"
+            },
+            {
+                "meaningEng": "banana",
+                "expression": "banana"
+            },
+            {
+                "meaningEng": "cherry",
+                "expression": "cereja"
+            },
+            {
+                "meaningEng": "date",
+                "expression": "tâmara"
+            },
+            {
+                "meaningEng": "elderberry",
+                "expression": "sabugueiro"
+            },
+            {
+                "meaningEng": "fig",
+                "expression": "figo"
+            },
+            {
+                "meaningEng": "grape",
+                "expression": "uva"
+            },
+            {
+                "meaningEng": "honeydew",
+                "expression": "melão"
+            },
+            {
+                "meaningEng": "kiwi",
+                "expression": "kiwi"
+            },
+            {
+                "meaningEng": "lemon",
+                "expression": "limão"
+            },
+            {
+                "meaningEng": "mango",
+                "expression": "manga"
+            },
+            {
+                "meaningEng": "nectarine",
+                "expression": "nectarina"
+            },
+            {
+                "meaningEng": "orange",
+                "expression": "laranja"
+            },
+            {
+                "meaningEng": "pear",
+                "expression": "pêra"
+            },
+            {
+                "meaningEng": "quince",
+                "expression": "marmelo"
+            },
+            {
+                "meaningEng": "raspberry",
+                "expression": "framboesa"
+            }
+        ]
+    }
+]

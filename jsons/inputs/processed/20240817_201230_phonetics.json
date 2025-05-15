@@ -1,0 +1,50 @@
+[
+    {
+        "expression": "красный",
+        "phonetic_text": "kra-snyy | /ˈkræsnɨj/"
+    },
+    {
+        "expression": "синий",
+        "phonetic_text": "si-niy | /ˈsʲinʲɪj/"
+    },
+    {
+        "expression": "зеленый",
+        "phonetic_text": "ze-lyo-nyy | /zʲɪˈlʲɵnɨj/"
+    },
+    {
+        "expression": "желтый",
+        "phonetic_text": "zhel-tyy | /ˈʐol.tɨj/"
+    },
+    {
+        "expression": "оранжевый",
+        "phonetic_text": "a-ran-zhe-vyy | /ɐˈranʐɨvɨj/"
+    },
+    {
+        "expression": "фиолетовый",
+        "phonetic_text": "fi-o-le-to-vyy | /fʲɪɐˈlʲetəvɨj/"
+    },
+    {
+        "expression": "розовый",
+        "phonetic_text": "ro-zo-vyy | /ˈrozəvɨj/"
+    },
+    {
+        "expression": "коричневый",
+        "phonetic_text": "ka-rich-ne-vyy | /kɐˈrʲit͡ɕnʲɪvɨj/"
+    },
+    {
+        "expression": "черный",
+        "phonetic_text": "chyor-nyy | /ˈt͡ɕornɨj/"
+    },
+    {
+        "expression": "белый",
+        "phonetic_text": "be-lyy | /ˈbʲelɨj/"
+    },
+    {
+        "expression": "серый",
+        "phonetic_text": "se-ryy | /ˈsʲerɨj/"
+    },
+    {
+        "expression": "бирюзовый",
+        "phonetic_text": "bi-ryu-zo-vyy | /bʲɪrʲɪˈzovɨj/"
+    }
+]

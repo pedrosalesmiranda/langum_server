@@ -1,0 +1,23 @@
+{
+    "pack": "time",
+    "meanings": [
+        "second",
+        "minute",
+        "hour",
+        "day'",
+        "weekday",
+        "weekend",
+        "week",
+        "month",
+        "year",
+        "yesterday",
+        "today",
+        "tomorrow",
+        "last week",
+        "next week",
+        "previous month",
+        "following month",
+        "be right back",
+        "wait moment"
+    ]
+}

@@ -1,0 +1,156 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "second",
+                "expression": "секунда"
+            },
+            {
+                "meaningEng": "minute",
+                "expression": "минута"
+            },
+            {
+                "meaningEng": "hour",
+                "expression": "час"
+            },
+            {
+                "meaningEng": "day",
+                "expression": "день"
+            },
+            {
+                "meaningEng": "weekday",
+                "expression": "будний день"
+            },
+            {
+                "meaningEng": "weekend",
+                "expression": "выходные"
+            },
+            {
+                "meaningEng": "week",
+                "expression": "неделя"
+            },
+            {
+                "meaningEng": "month",
+                "expression": "месяц"
+            },
+            {
+                "meaningEng": "year",
+                "expression": "год"
+            },
+            {
+                "meaningEng": "yesterday",
+                "expression": "вчера"
+            },
+            {
+                "meaningEng": "today",
+                "expression": "сегодня"
+            },
+            {
+                "meaningEng": "tomorrow",
+                "expression": "завтра"
+            },
+            {
+                "meaningEng": "last week",
+                "expression": "прошлая неделя"
+            },
+            {
+                "meaningEng": "next week",
+                "expression": "следующая неделя"
+            },
+            {
+                "meaningEng": "previous month",
+                "expression": "прошлый месяц"
+            },
+            {
+                "meaningEng": "following month",
+                "expression": "следующий месяц"
+            },
+            {
+                "meaningEng": "be right back",
+                "expression": "скоро вернусь"
+            },
+            {
+                "meaningEng": "wait moment",
+                "expression": "подождите момент"
+            }
+        ]
+    },
+    {
+        "language": "portuguese",
+        "meanings_expressions": [
+            {
+                "meaningEng": "second",
+                "expression": "segundo"
+            },
+            {
+                "meaningEng": "minute",
+                "expression": "minuto"
+            },
+            {
+                "meaningEng": "hour",
+                "expression": "hora"
+            },
+            {
+                "meaningEng": "day",
+                "expression": "dia"
+            },
+            {
+                "meaningEng": "weekday",
+                "expression": "dia da semana"
+            },
+            {
+                "meaningEng": "weekend",
+                "expression": "fim de semana"
+            },
+            {
+                "meaningEng": "week",
+                "expression": "semana"
+            },
+            {
+                "meaningEng": "month",
+                "expression": "mês"
+            },
+            {
+                "meaningEng": "year",
+                "expression": "ano"
+            },
+            {
+                "meaningEng": "yesterday",
+                "expression": "ontem"
+            },
+            {
+                "meaningEng": "today",
+                "expression": "hoje"
+            },
+            {
+                "meaningEng": "tomorrow",
+                "expression": "amanhã"
+            },
+            {
+                "meaningEng": "last week",
+                "expression": "semana passada"
+            },
+            {
+                "meaningEng": "next week",
+                "expression": "próxima semana"
+            },
+            {
+                "meaningEng": "previous month",
+                "expression": "mês passado"
+            },
+            {
+                "meaningEng": "following month",
+                "expression": "próximo mês"
+            },
+            {
+                "meaningEng": "be right back",
+                "expression": "já volto"
+            },
+            {
+                "meaningEng": "wait moment",
+                "expression": "espere um momento"
+            }
+        ]
+    }
+]

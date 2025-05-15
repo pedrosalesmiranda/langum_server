@@ -1,0 +1,46 @@
+[
+    {
+        "expression": "Вы живете здесь?",
+        "phonetic_text": "vy zhiv-yo-te zdes? - vɨ ʐɨv-jo-tʲe zdʲesʲ?"
+    },
+    {
+        "expression": "В каком городе вы живете?",
+        "phonetic_text": "v ka-kom go-ro-de vy zhiv-yo-te? - f kɐ-kom ˈgo-rə-dʲe vɨ ʐɨv-jo-tʲe?"
+    },
+    {
+        "expression": "Откуда вы?",
+        "phonetic_text": "ot-ku-da vy? - ɐt-ˈku-də vɨ?"
+    },
+    {
+        "expression": "Какое ваше любимое блюдо?",
+        "phonetic_text": "ka-ko-ye va-she lyu-bi-mo-ye blu-do? - kɐ-ˈko-je ˈva-ʂe lʲʊ-ˈbʲi-mə-je ˈblu-də?"
+    },
+    {
+        "expression": "В каких странах вы побывали?",
+        "phonetic_text": "v ka-kikh stra-nakh vy po-by-va-li? - f kɐ-ˈkʲix ˈstra-nəx vɨ pə-bɨ-ˈva-lʲi?"
+    },
+    {
+        "expression": "У вас есть братья или сестры?",
+        "phonetic_text": "u vas yest bra-tya i-li syos-try? - u vas jestʲ ˈbra-tʲə ˈi-lʲi ˈsʲos-trɨ?"
+    },
+    {
+        "expression": "Вы женаты? / Вы замужем?",
+        "phonetic_text": "vy zhe-na-ty? / vy za-mu-zhem? - vɨ ʐɨ-ˈna-tɨ? / vɨ ˈza-mʊ-ʐɨm?"
+    },
+    {
+        "expression": "У вас есть дети?",
+        "phonetic_text": "u vas yest de-ti? - u vas jestʲ ˈdʲe-tʲi?"
+    },
+    {
+        "expression": "Кем вы работаете?",
+        "phonetic_text": "kem vy ra-bo-ta-e-te? - kʲem vɨ rɐ-ˈbo-tə-ɪ-tʲe?"
+    },
+    {
+        "expression": "Что вы любите делать в свободное время?",
+        "phonetic_text": "chto vy lyu-bi-te de-lat v svo-bod-no-ye vre-mya? - ʂto vɨ ˈlʲʊ-bʲɪ-tʲe ˈdʲe-lətʲ f svɐ-ˈbod-nə-je ˈvrʲe-mʲə?"
+    },
+    {
+        "expression": "У вас есть домашние животные?",
+        "phonetic_text": "u vas yest do-mash-ni-ye zhi-vot-ny-ye? - u vas jestʲ dɐ-ˈmaʂ-nʲɪ-je ʐɨ-ˈvot-nɨ-je?"
+    }
+]

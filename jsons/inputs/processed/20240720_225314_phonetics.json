@@ -1,0 +1,58 @@
+[
+    {
+        "expression": "счастливый",
+        "phonetic_text": "schas-li-vyy | [ʃɐs-lʲɪ-vɨɪ]"
+    },
+    {
+        "expression": "грустный",
+        "phonetic_text": "grus-nyy | [ɡrust-nɨɪ]"
+    },
+    {
+        "expression": "злой",
+        "phonetic_text": "zloy | [zloj]"
+    },
+    {
+        "expression": "взволнованный",
+        "phonetic_text": "vzvol-no-van-nyy | [vzvɐl-nə-vɐ-nɨɪ]"
+    },
+    {
+        "expression": "нервный",
+        "phonetic_text": "ner-vnyy | [nʲer-vnɨɪ]"
+    },
+    {
+        "expression": "спокойный",
+        "phonetic_text": "spa-koy-nyy | [spɐ-ˈkoɪ̯-nɨɪ]"
+    },
+    {
+        "expression": "скучающий",
+        "phonetic_text": "sku-cha-yu-shchiy | [sku-ˈt͡ɕa-jʊ-ɕɕɪɪ̯]"
+    },
+    {
+        "expression": "тревожный",
+        "phonetic_text": "tre-vozh-nyy | [trʲɪ-ˈvoʐ-nɨɪ]"
+    },
+    {
+        "expression": "смущённый",
+        "phonetic_text": "smu-shchyon-nyy | [smʊ-ˈɕːɵn-nɨɪ]"
+    },
+    {
+        "expression": "расслабленный",
+        "phonetic_text": "ras-slabl-len-nyy | [rɐ-ˈslablʲɪn-nɨɪ]"
+    },
+    {
+        "expression": "расстроенный",
+        "phonetic_text": "ras-stroy-en-nyy | [rɐs-ˈtroɪ̯-ɪn-nɨɪ]"
+    },
+    {
+        "expression": "усталый",
+        "phonetic_text": "us-ta-lyy | [us-ˈta-lɨɪ]"
+    },
+    {
+        "expression": "удивленный",
+        "phonetic_text": "u-div-lyon-nyy | [ʊ-dʲɪ-ˈvlʲɵn-nɨɪ]"
+    },
+    {
+        "expression": "разочарованный",
+        "phonetic_text": "ra-zo-cha-ro-van-nyy | [rə-zɐ-t͡ɕɪ-ˈrovɐ-nɨɪ]"
+    }
+]

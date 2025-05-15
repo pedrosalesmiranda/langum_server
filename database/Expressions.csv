@@ -1,0 +1,184 @@
+1,яблоко,russian__apple,2,1
+2,банан,russian__banana,2,2
+3,вишня,russian__cherry,2,3
+4,финик,russian__date,2,4
+5,бузина,russian__elderberry,2,5
+6,инжир,russian__fig,2,6
+7,виноград,russian__grape,2,7
+8,медовая дыня,russian__honeydew,2,8
+9,киви,russian__kiwi,2,9
+10,лимон,russian__lemon,2,10
+11,манго,russian__mango,2,11
+12,нектарин,russian__nectarine,2,12
+13,апельсин,russian__orange,2,13
+14,груша,russian__pear,2,14
+15,айва,russian__quince,2,15
+16,малина,russian__raspberry,2,16
+17,maçã,portuguese__apple,1,1
+18,banana,portuguese__banana,1,2
+19,cereja,portuguese__cherry,1,3
+20,tâmara,portuguese__date,1,4
+21,sabugueiro,portuguese__elderberry,1,5
+22,figo,portuguese__fig,1,6
+23,uva,portuguese__grape,1,7
+24,melão,portuguese__honeydew,1,8
+25,kiwi,portuguese__kiwi,1,9
+26,limão,portuguese__lemon,1,10
+27,manga,portuguese__mango,1,11
+28,nectarina,portuguese__nectarine,1,12
+29,laranja,portuguese__orange,1,13
+30,pêra,portuguese__pear,1,14
+31,marmelo,portuguese__quince,1,15
+32,framboesa,portuguese__raspberry,1,16
+33,собака,russian__dog,2,17
+34,кот,russian__cat,2,18
+35,лошадь,russian__horse,2,19
+36,корова,russian__cow,2,20
+37,овца,russian__sheep,2,21
+38,свинья,russian__pig,2,22
+39,коза,russian__goat,2,23
+40,курица,russian__chicken,2,24
+41,утка,russian__duck,2,25
+42,кролик,russian__rabbit,2,26
+43,рыба,russian__fish,2,27
+44,птица,russian__bird,2,28
+45,cachorro,portuguese__dog,1,17
+46,gato,portuguese__cat,1,18
+47,cavalo,portuguese__horse,1,19
+48,vaca,portuguese__cow,1,20
+49,ovelha,portuguese__sheep,1,21
+50,porco,portuguese__pig,1,22
+51,cabra,portuguese__goat,1,23
+52,frango,portuguese__chicken,1,24
+53,pato,portuguese__duck,1,25
+54,coelho,portuguese__rabbit,1,26
+55,peixe,portuguese__fish,1,27
+56,pássaro,portuguese__bird,1,28
+57,Я счастлив.,russian__i_am_happy,2,29
+58,У тебя есть кошка.,russian__you_have_a_cat,2,30
+59,Я делаю домашнее задание.,russian__i_do_my_homework,2,31
+60,Ты сказал привет.,russian__you_said_hello,2,32
+61,Мы встаём рано.,russian__we_get_up_early,2,33
+62,Я приготовил кофе.,russian__i_made_coffee,2,34
+63,Мы идём в школу.,russian__we_go_to_school,2,35
+64,Я знаю ответ.,russian__i_know_the_answer,2,36
+65,Ты едешь на автобусе.,russian__you_take_the_bus,2,37
+66,Мы видим звёзды.,russian__we_see_the_stars,2,38
+67,Я пришёл домой.,russian__i_came_home,2,39
+68,Я много думаю.,russian__i_think_a_lot,2,40
+69,Ты смотришь на меня.,russian__you_look_at_me,2,41
+70,Я хочу пиццу.,russian__i_want_pizza,2,42
+71,Я подарил подарок.,russian__i_gave_a_gift,2,43
+72,Мы используем инструменты.,russian__we_use_tools,2,44
+73,Я нашёл свои ключи.,russian__i_found_my_keys,2,45
+74,Я расскажу шутку.,russian__i_will_tell_a_joke,2,46
+75,Ты задал вопрос.,russian__you_asked_a_question,2,47
+76,Мы будем работать усердно.,russian__we_will_work_hard,2,48
+77,Это кажется лёгким.,russian__it_seems_easy,2,49
+78,Я чувствую усталость.,russian__i_feel_tired,2,50
+79,Мы попробуем снова.,russian__we_will_try_again,2,51
+80,Я скоро уеду.,russian__i_will_leave_soon,2,52
+81,Ты позвонишь мне.,russian__you_call_me,2,53
+82,Ты хранишь секреты.,russian__you_keep_secrets,2,54
+83,Мне нужна помощь.,russian__i_need_help,2,55
+84,Я держу напиток.,russian__i_hold_the_drink,2,56
+85,Мы поворачиваем налево.,russian__we_turn_left,2,57
+86,Я следую за тобой.,russian__i_follow_you,2,58
+87,Я только начинаю.,russian__i_just_begin,2,79
+88,Ты приносишь закуски.,russian__you_bring_snacks,2,60
+89,Мне нравится музыка.,russian__i_like_music,2,61
+90,Я пишу книги.,russian__i_write_books,2,62
+91,Мы сидим вместе.,russian__we_sit_together,2,63
+92,Мы встаём.,russian__we_stand_up,2,64
+93,Я потерял свои ключи.,russian__i_lost_my_keys,2,65
+94,Я оплачиваю счета.,russian__i_pay_the_bills,2,66
+95,Мы встречаем друзей.,russian__we_meet_friends,2,67
+96,Мы включаем всех.,russian__we_include_everyone,2,68
+97,Ты продолжаешь говорить.,russian__you_continue_talking,2,69
+98,Я накрываю на стол.,russian__i_set_the_table,2,70
+99,Мы быстро учимся.,russian__we_learn_fast,2,71
+100,Я меняю одежду.,russian__i_change_clothes,2,72
+101,Я веду группу.,russian__i_lead_the_group,2,73
+102,Ты понимаешь математику.,russian__you_understand_math,2,74
+103,Мы смотрим фильмы.,russian__we_watch_movies,2,75
+104,Ты следуешь инструкциям.,russian__you_follow_instructions,2,76
+105,Я прекращаю петь.,russian__i_stop_singing,2,77
+106,Я создаю искусство.,russian__i_create_art,2,78
+107,Estou feliz.,portuguese__i_am_happy,1,29
+108,Você tem um gato.,portuguese__you_have_a_cat,1,30
+109,Eu faço minha lição de casa.,portuguese__i_do_my_homework,1,31
+110,Você disse olá.,portuguese__you_said_hello,1,32
+111,Nós levantamos cedo.,portuguese__we_get_up_early,1,33
+112,Eu fiz café.,portuguese__i_made_coffee,1,34
+113,Nós vamos para a escola.,portuguese__we_go_to_school,1,35
+114,Eu sei a resposta.,portuguese__i_know_the_answer,1,36
+115,Você pega o ônibus.,portuguese__you_take_the_bus,1,37
+116,Nós vemos as estrelas.,portuguese__we_see_the_stars,1,38
+117,Eu cheguei em casa.,portuguese__i_came_home,1,39
+118,Eu penso muito.,portuguese__i_think_a_lot,1,40
+119,Você olha para mim.,portuguese__you_look_at_me,1,41
+120,Eu quero pizza.,portuguese__i_want_pizza,1,42
+121,Eu dei um presente.,portuguese__i_gave_a_gift,1,43
+122,Nós usamos ferramentas.,portuguese__we_use_tools,1,44
+123,Eu encontrei minhas chaves.,portuguese__i_found_my_keys,1,45
+124,Eu vou contar uma piada.,portuguese__i_will_tell_a_joke,1,46
+125,Você fez uma pergunta.,portuguese__you_asked_a_question,1,47
+126,Nós vamos trabalhar duro.,portuguese__we_will_work_hard,1,48
+127,Parece fácil.,portuguese__it_seems_easy,1,49
+128,Eu me sinto cansado.,portuguese__i_feel_tired,1,50
+129,Nós vamos tentar de novo.,portuguese__we_will_try_again,1,51
+130,Eu vou sair em breve.,portuguese__i_will_leave_soon,1,52
+131,Você me liga.,portuguese__you_call_me,1,53
+132,Você guarda segredos.,portuguese__you_keep_secrets,1,54
+133,Eu preciso de ajuda.,portuguese__i_need_help,1,55
+134,Eu seguro a bebida.,portuguese__i_hold_the_drink,1,56
+135,Nós viramos à esquerda.,portuguese__we_turn_left,1,57
+136,Eu sigo você.,portuguese__i_follow_you,1,58
+137,Eu acabei de começar.,portuguese__i_just_begin,1,79
+138,Você traz lanches.,portuguese__you_bring_snacks,1,60
+139,Eu gosto de música.,portuguese__i_like_music,1,61
+140,Eu escrevo livros.,portuguese__i_write_books,1,62
+141,Nós sentamos juntos.,portuguese__we_sit_together,1,63
+142,Nós nos levantamos.,portuguese__we_stand_up,1,64
+143,Eu perdi minhas chaves.,portuguese__i_lost_my_keys,1,65
+144,Eu pago as contas.,portuguese__i_pay_the_bills,1,66
+145,Nós encontramos amigos.,portuguese__we_meet_friends,1,67
+146,Nós incluímos todos.,portuguese__we_include_everyone,1,68
+147,Você continua falando.,portuguese__you_continue_talking,1,69
+148,Eu ponho a mesa.,portuguese__i_set_the_table,1,70
+149,Nós aprendemos rápido.,portuguese__we_learn_fast,1,71
+150,Eu troco de roupa.,portuguese__i_change_clothes,1,72
+151,Eu lidero o grupo.,portuguese__i_lead_the_group,1,73
+152,Você entende matemática.,portuguese__you_understand_math,1,74
+153,Nós assistimos a filmes.,portuguese__we_watch_movies,1,75
+154,Você segue as instruções.,portuguese__you_follow_instructions,1,76
+155,Eu paro de cantar.,portuguese__i_stop_singing,1,77
+156,Eu crio arte.,portuguese__i_create_art,1,78
+157,счастливый,russian__happy,2,80
+158,грустный,russian__sad,2,81
+159,злой,russian__angry,2,82
+160,взволнованный,russian__excited,2,83
+161,нервный,russian__nervous,2,84
+162,спокойный,russian__calm,2,85
+163,скучающий,russian__bored,2,86
+164,тревожный,russian__anxious,2,87
+165,смущённый,russian__confused,2,88
+166,расслабленный,russian__relaxed,2,89
+167,расстроенный,russian__frustrated,2,90
+168,усталый,russian__tired,2,91
+169,удивленный,russian__surprised,2,92
+170,разочарованный,russian__disappointed,2,93
+171,feliz,portuguese__happy,1,80
+172,triste,portuguese__sad,1,81
+173,zangado,portuguese__angry,1,82
+174,animado,portuguese__excited,1,83
+175,nervoso,portuguese__nervous,1,84
+176,calmo,portuguese__calm,1,85
+177,entediado,portuguese__bored,1,86
+178,ansioso,portuguese__anxious,1,87
+179,confuso,portuguese__confused,1,88
+180,relaxado,portuguese__relaxed,1,89
+181,frustrado,portuguese__frustrated,1,90
+182,cansado,portuguese__tired,1,91
+183,surpreso,portuguese__surprised,1,92
+184,decepcionado,portuguese__disappointed,1,93

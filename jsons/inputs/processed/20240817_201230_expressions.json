@@ -1,0 +1,108 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "red",
+                "expression": "красный"
+            },
+            {
+                "meaningEng": "blue",
+                "expression": "синий"
+            },
+            {
+                "meaningEng": "green",
+                "expression": "зеленый"
+            },
+            {
+                "meaningEng": "yellow",
+                "expression": "желтый"
+            },
+            {
+                "meaningEng": "orange",
+                "expression": "оранжевый"
+            },
+            {
+                "meaningEng": "purple",
+                "expression": "фиолетовый"
+            },
+            {
+                "meaningEng": "pink",
+                "expression": "розовый"
+            },
+            {
+                "meaningEng": "brown",
+                "expression": "коричневый"
+            },
+            {
+                "meaningEng": "black",
+                "expression": "черный"
+            },
+            {
+                "meaningEng": "white",
+                "expression": "белый"
+            },
+            {
+                "meaningEng": "gray",
+                "expression": "серый"
+            },
+            {
+                "meaningEng": "teal",
+                "expression": "бирюзовый"
+            }
+        ]
+    },
+    {
+        "language": "portuguese",
+        "meanings_expressions": [
+            {
+                "meaningEng": "red",
+                "expression": "vermelho"
+            },
+            {
+                "meaningEng": "blue",
+                "expression": "azul"
+            },
+            {
+                "meaningEng": "green",
+                "expression": "verde"
+            },
+            {
+                "meaningEng": "yellow",
+                "expression": "amarelo"
+            },
+            {
+                "meaningEng": "orange",
+                "expression": "laranja"
+            },
+            {
+                "meaningEng": "purple",
+                "expression": "roxo"
+            },
+            {
+                "meaningEng": "pink",
+                "expression": "rosa"
+            },
+            {
+                "meaningEng": "brown",
+                "expression": "marrom"
+            },
+            {
+                "meaningEng": "black",
+                "expression": "preto"
+            },
+            {
+                "meaningEng": "white",
+                "expression": "branco"
+            },
+            {
+                "meaningEng": "gray",
+                "expression": "cinza"
+            },
+            {
+                "meaningEng": "teal",
+                "expression": "verde-azulado"
+            }
+        ]
+    }
+]

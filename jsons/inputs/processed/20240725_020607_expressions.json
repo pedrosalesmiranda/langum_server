@@ -1,0 +1,100 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "Do you live here?",
+                "expression": "Вы живете здесь?"
+            },
+            {
+                "meaningEng": "What city do you live?",
+                "expression": "В каком городе вы живете?"
+            },
+            {
+                "meaningEng": "Where are you from?",
+                "expression": "Откуда вы?"
+            },
+            {
+                "meaningEng": "What's your favorite food?",
+                "expression": "Какое ваше любимое блюдо?"
+            },
+            {
+                "meaningEng": "What countries have you been?",
+                "expression": "В каких странах вы побывали?"
+            },
+            {
+                "meaningEng": "Do you have any siblings?",
+                "expression": "У вас есть братья или сестры?"
+            },
+            {
+                "meaningEng": "Are you married?",
+                "expression": "Вы женаты? / Вы замужем?"
+            },
+            {
+                "meaningEng": "Do you have any children?",
+                "expression": "У вас есть дети?"
+            },
+            {
+                "meaningEng": "What's your job?",
+                "expression": "Кем вы работаете?"
+            },
+            {
+                "meaningEng": "What do you like to do in your free time?",
+                "expression": "Что вы любите делать в свободное время?"
+            },
+            {
+                "meaningEng": "Do you have any pets?",
+                "expression": "У вас есть домашние животные?"
+            }
+        ]
+    },
+    {
+        "language": "portuguese",
+        "meanings_expressions": [
+            {
+                "meaningEng": "Do you live here?",
+                "expression": "Você mora aqui?"
+            },
+            {
+                "meaningEng": "What city do you live?",
+                "expression": "Em que cidade você mora?"
+            },
+            {
+                "meaningEng": "Where are you from?",
+                "expression": "De onde você é?"
+            },
+            {
+                "meaningEng": "What's your favorite food?",
+                "expression": "Qual é a sua comida favorita?"
+            },
+            {
+                "meaningEng": "What countries have you been?",
+                "expression": "Em quais países você já esteve?"
+            },
+            {
+                "meaningEng": "Do you have any siblings?",
+                "expression": "Você tem irmãos?"
+            },
+            {
+                "meaningEng": "Are you married?",
+                "expression": "Você é casado/casada?"
+            },
+            {
+                "meaningEng": "Do you have any children?",
+                "expression": "Você tem filhos?"
+            },
+            {
+                "meaningEng": "What's your job?",
+                "expression": "Qual é a sua profissão?"
+            },
+            {
+                "meaningEng": "What do you like to do in your free time?",
+                "expression": "O que você gosta de fazer no seu tempo livre?"
+            },
+            {
+                "meaningEng": "Do you have any pets?",
+                "expression": "Você tem animais de estimação?"
+            }
+        ]
+    }
+]

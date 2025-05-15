@@ -1,0 +1,124 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "happy",
+                "expression": "счастливый"
+            },
+            {
+                "meaningEng": "sad",
+                "expression": "грустный"
+            },
+            {
+                "meaningEng": "angry",
+                "expression": "злой"
+            },
+            {
+                "meaningEng": "excited",
+                "expression": "взволнованный"
+            },
+            {
+                "meaningEng": "nervous",
+                "expression": "нервный"
+            },
+            {
+                "meaningEng": "calm",
+                "expression": "спокойный"
+            },
+            {
+                "meaningEng": "bored",
+                "expression": "скучающий"
+            },
+            {
+                "meaningEng": "anxious",
+                "expression": "тревожный"
+            },
+            {
+                "meaningEng": "confused",
+                "expression": "смущённый"
+            },
+            {
+                "meaningEng": "relaxed",
+                "expression": "расслабленный"
+            },
+            {
+                "meaningEng": "frustrated",
+                "expression": "расстроенный"
+            },
+            {
+                "meaningEng": "tired",
+                "expression": "усталый"
+            },
+            {
+                "meaningEng": "surprised",
+                "expression": "удивленный"
+            },
+            {
+                "meaningEng": "disappointed",
+                "expression": "разочарованный"
+            }
+        ]
+    },
+    {
+        "language": "portuguese",
+        "meanings_expressions": [
+            {
+                "meaningEng": "happy",
+                "expression": "feliz"
+            },
+            {
+                "meaningEng": "sad",
+                "expression": "triste"
+            },
+            {
+                "meaningEng": "angry",
+                "expression": "zangado"
+            },
+            {
+                "meaningEng": "excited",
+                "expression": "animado"
+            },
+            {
+                "meaningEng": "nervous",
+                "expression": "nervoso"
+            },
+            {
+                "meaningEng": "calm",
+                "expression": "calmo"
+            },
+            {
+                "meaningEng": "bored",
+                "expression": "entediado"
+            },
+            {
+                "meaningEng": "anxious",
+                "expression": "ansioso"
+            },
+            {
+                "meaningEng": "confused",
+                "expression": "confuso"
+            },
+            {
+                "meaningEng": "relaxed",
+                "expression": "relaxado"
+            },
+            {
+                "meaningEng": "frustrated",
+                "expression": "frustrado"
+            },
+            {
+                "meaningEng": "tired",
+                "expression": "cansado"
+            },
+            {
+                "meaningEng": "surprised",
+                "expression": "surpreso"
+            },
+            {
+                "meaningEng": "disappointed",
+                "expression": "decepcionado"
+            }
+        ]
+    }
+]
