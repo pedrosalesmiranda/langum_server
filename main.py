@@ -373,7 +373,7 @@ def run_flask_server():
 
     db_info = {"ip": ip_address, "port": port}
 
-    save_json_file(db_info, filename_no_extension, folder_path, root_folder_path="")
+    # save_json_file(db_info, filename_no_extension, folder_path, root_folder_path="")
 
     print("db ip port were saved to:")
     print(f"{folder_path}{filename_no_extension}.json")
@@ -382,8 +382,8 @@ def run_flask_server():
 
 
 if __name__ == '__main__':
-    run_flask_server()
-    # create_all_from_topic("nouns plurals (nominik case)", "words", 20, "polish", "portuguese")
+    # run_flask_server()
+    create_all_from_topic("verbs related to sex and fuck. In infinitive", "words", 7, "russian", "english")
     # create_all_from_topic_and_meaning_list("numbers 1 to 20", [
     #     "one", "two", "three", "four", "five", "six", "seven",
     #     "eight", "nine", "ten", "eleven", "twelve", "thirteen",

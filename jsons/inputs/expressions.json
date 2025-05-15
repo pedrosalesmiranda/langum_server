@@ -1,171 +1,67 @@
 [
     {
-        "language": "polish",
+        "language": "russian",
         "meanings_expressions": [
             {
-                "meaningEng": "one",
-                "expression": "jeden"
+                "meaningEng": "screw",
+                "expression": "трахать"
             },
             {
-                "meaningEng": "two",
-                "expression": "dwa"
+                "meaningEng": "bang",
+                "expression": "переспать"
             },
             {
-                "meaningEng": "three",
-                "expression": "trzy"
+                "meaningEng": "nail",
+                "expression": "пришпилить"
             },
             {
-                "meaningEng": "four",
-                "expression": "cztery"
+                "meaningEng": "hump",
+                "expression": "поиметь"
             },
             {
-                "meaningEng": "five",
-                "expression": "pięć"
+                "meaningEng": "shag",
+                "expression": "трахнуть"
             },
             {
-                "meaningEng": "six",
-                "expression": "sześć"
+                "meaningEng": "plow",
+                "expression": "вспахать"
             },
             {
-                "meaningEng": "seven",
-                "expression": "siedem"
-            },
-            {
-                "meaningEng": "eight",
-                "expression": "osiem"
-            },
-            {
-                "meaningEng": "nine",
-                "expression": "dziewięć"
-            },
-            {
-                "meaningEng": "ten",
-                "expression": "dziesięć"
-            },
-            {
-                "meaningEng": "eleven",
-                "expression": "jedenaście"
-            },
-            {
-                "meaningEng": "twelve",
-                "expression": "dwanaście"
-            },
-            {
-                "meaningEng": "thirteen",
-                "expression": "trzynaście"
-            },
-            {
-                "meaningEng": "fourteen",
-                "expression": "czternaście"
-            },
-            {
-                "meaningEng": "fifteen",
-                "expression": "piętnaście"
-            },
-            {
-                "meaningEng": "sixteen",
-                "expression": "szesnaście"
-            },
-            {
-                "meaningEng": "seventeen",
-                "expression": "siedemnaście"
-            },
-            {
-                "meaningEng": "eighteen",
-                "expression": "osiemnaście"
-            },
-            {
-                "meaningEng": "nineteen",
-                "expression": "dziewiętnaście"
-            },
-            {
-                "meaningEng": "twenty",
-                "expression": "dwadzieścia"
+                "meaningEng": "ride",
+                "expression": "оседлать"
             }
         ]
     },
     {
-        "language": "portuguese",
+        "language": "english",
         "meanings_expressions": [
             {
-                "meaningEng": "one",
-                "expression": "um"
+                "meaningEng": "screw",
+                "expression": "screw"
             },
             {
-                "meaningEng": "two",
-                "expression": "dois"
+                "meaningEng": "bang",
+                "expression": "bang"
             },
             {
-                "meaningEng": "three",
-                "expression": "três"
+                "meaningEng": "nail",
+                "expression": "nail"
             },
             {
-                "meaningEng": "four",
-                "expression": "quatro"
+                "meaningEng": "hump",
+                "expression": "hump"
             },
             {
-                "meaningEng": "five",
-                "expression": "cinco"
+                "meaningEng": "shag",
+                "expression": "shag"
             },
             {
-                "meaningEng": "six",
-                "expression": "seis"
+                "meaningEng": "plow",
+                "expression": "plow"
             },
             {
-                "meaningEng": "seven",
-                "expression": "sete"
-            },
-            {
-                "meaningEng": "eight",
-                "expression": "oito"
-            },
-            {
-                "meaningEng": "nine",
-                "expression": "nove"
-            },
-            {
-                "meaningEng": "ten",
-                "expression": "dez"
-            },
-            {
-                "meaningEng": "eleven",
-                "expression": "onze"
-            },
-            {
-                "meaningEng": "twelve",
-                "expression": "doze"
-            },
-            {
-                "meaningEng": "thirteen",
-                "expression": "treze"
-            },
-            {
-                "meaningEng": "fourteen",
-                "expression": "catorze"
-            },
-            {
-                "meaningEng": "fifteen",
-                "expression": "quinze"
-            },
-            {
-                "meaningEng": "sixteen",
-                "expression": "dezesseis"
-            },
-            {
-                "meaningEng": "seventeen",
-                "expression": "dezessete"
-            },
-            {
-                "meaningEng": "eighteen",
-                "expression": "dezoito"
-            },
-            {
-                "meaningEng": "nineteen",
-                "expression": "dezenove"
-            },
-            {
-                "meaningEng": "twenty",
-                "expression": "vinte"
+                "meaningEng": "ride",
+                "expression": "ride"
             }
         ]
     }

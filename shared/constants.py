@@ -1,6 +1,6 @@
 SOUND_FILES_DIRECTORY = "sound"
 DATABASE_FILE_PATH = "database/langum.db"
-TARGET_FOLDER_PATH_DB_INFO = "C:/Users/pedro/StudioProjects/langum/jsons"
+TARGET_FOLDER_PATH_DB_INFO = "C:/Users/psm19/PSM_DRIVE/PROG/TOP_PROJS/LANGUM/langum_server/jsons/DB_INFO"
 FILENAME_NO_EXTENSION = "DB_INFO"
 DEFAULT_PORT_NUMBER = 8888
 

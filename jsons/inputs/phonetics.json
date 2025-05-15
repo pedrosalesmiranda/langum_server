@@ -1,82 +1,30 @@
 [
     {
-        "expression": "jeden",
-        "phonetic_text": "je-den [ˈjɛ.dɛn]"
+        "expression": "трахать",
+        "phonetic_text": "tra-khatʹ /ˈtraxətʲ/"
     },
     {
-        "expression": "dwa",
-        "phonetic_text": "dwa [dva]"
+        "expression": "переспать",
+        "phonetic_text": "pe-re-spatʹ /pʲɪrʲɪˈspatʲ/"
     },
     {
-        "expression": "trzy",
-        "phonetic_text": "trzy [tʂɨ]"
+        "expression": "пришпилить",
+        "phonetic_text": "pri-shpi-litʹ /prʲɪˈʂpʲilʲɪtʲ/"
     },
     {
-        "expression": "cztery",
-        "phonetic_text": "czte-ry [ˈtʂtɛ.rɨ]"
+        "expression": "поиметь",
+        "phonetic_text": "po-i-metʹ /pəɪˈmʲetʲ/"
     },
     {
-        "expression": "pięć",
-        "phonetic_text": "pięć [pjɛɲtɕ]"
+        "expression": "трахнуть",
+        "phonetic_text": "trakh-nutʹ /ˈtraxnutʲ/"
     },
     {
-        "expression": "sześć",
-        "phonetic_text": "sześć [ʂɛɕtɕ]"
+        "expression": "вспахать",
+        "phonetic_text": "vs-pa-khatʹ /fspɐˈxatʲ/"
     },
     {
-        "expression": "siedem",
-        "phonetic_text": "sie-dem [ˈɕɛ.dɛm]"
-    },
-    {
-        "expression": "osiem",
-        "phonetic_text": "o-siem [ˈɔ.ɕɛm]"
-    },
-    {
-        "expression": "dziewięć",
-        "phonetic_text": "dzie-więć [ˈd͡ʑɛ.vjɛɲtɕ]"
-    },
-    {
-        "expression": "dziesięć",
-        "phonetic_text": "dzie-sięć [ˈd͡ʑɛ.ɕɛɲtɕ]"
-    },
-    {
-        "expression": "jedenaście",
-        "phonetic_text": "je-de-na-ście [jɛ.dɛˈnaɕ.tɕɛ]"
-    },
-    {
-        "expression": "dwanaście",
-        "phonetic_text": "dwa-na-ście [dvaˈnaɕ.tɕɛ]"
-    },
-    {
-        "expression": "trzynaście",
-        "phonetic_text": "trzy-na-ście [tʂɨˈnaɕ.tɕɛ]"
-    },
-    {
-        "expression": "czternaście",
-        "phonetic_text": "czter-na-ście [tʂtɛrˈnaɕ.tɕɛ]"
-    },
-    {
-        "expression": "piętnaście",
-        "phonetic_text": "pięt-na-ście [pjɛntˈnaɕ.tɕɛ]"
-    },
-    {
-        "expression": "szesnaście",
-        "phonetic_text": "szes-na-ście [ʂɛsˈnaɕ.tɕɛ]"
-    },
-    {
-        "expression": "siedemnaście",
-        "phonetic_text": "sie-dem-na-ście [ɕɛ.dɛmˈnaɕ.tɕɛ]"
-    },
-    {
-        "expression": "osiemnaście",
-        "phonetic_text": "o-siem-na-ście [ɔ.ɕɛmˈnaɕ.tɕɛ]"
-    },
-    {
-        "expression": "dziewiętnaście",
-        "phonetic_text": "dzie-więt-na-ście [d͡ʑɛˈvjɛnt.naɕ.tɕɛ]"
-    },
-    {
-        "expression": "dwadzieścia",
-        "phonetic_text": "dwa-dzie-ścia [dvaˈd͡ʑɛɕ.tɕa]"
+        "expression": "оседлать",
+        "phonetic_text": "o-syed-latʹ /ɐsʲɪdˈlatʲ/"
     }
 ]

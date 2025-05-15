@@ -145,22 +145,22 @@ INSERT INTO Evaluations (type, goal, start, end, size) VALUES
 -- Insert ExpressionEvaluation entries with grades from 0 to 2
 
 -- For expressions related to Pack evaluation (Evaluation ID: 1)
-INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration)
+INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
 VALUES
-(1, 1, 1, 120), (2, 1, 1, 120), (3, 1, 2, 120), (4, 1, 1, 120), (5, 1, 2, 120),
-(6, 1, 0, 120), (7, 1, 1, 120), (16, 1, 1, 120), (22, 1, 2, 120);
+(1, 1, 1, 120, 'listen'), (2, 1, 1, 120, 'listen'), (3, 1, 2, 120, 'listen'), (4, 1, 1, 120,'listen'), (5, 1, 2, 120, 'listen'),
+(6, 1, 0, 120, 'listen'), (7, 1, 1, 120, 'listen'), (16, 1, 1, 120, 'listen'), (22, 1, 2, 120, 'listen');
 
 -- For expressions related to Test evaluation (Evaluation ID: 2)
-INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration)
+INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
 VALUES
-(1, 2, 2, 180), (2, 2, 1, 180), (3, 2, 2, 180), (4, 2, 1, 180), (5, 2, 2, 180),
-(6, 2, 1, 180), (7, 2, 0, 180), (16, 2, 2, 180), (22, 2, 1, 180);
+(1, 2, 2, 180, 'speak'), (2, 2, 1, 180, 'speak'), (3, 2, 2, 180, 'speak'), (4, 2, 1, 180, 'speak'), (5, 2, 2, 180, 'speak'),
+(6, 2, 1, 180, 'speak'), (7, 2, 0, 180, 'speak'), (16, 2, 2, 180, 'speak'), (22, 2, 1, 180, 'speak');
 
 -- For expressions related to Review evaluation (Evaluation ID: 3)
-INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration)
+INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
 VALUES
-(1, 3, 1, 90), (2, 3, 0, 90), (3, 3, 2, 90), (4, 3, 1, 90), (5, 3, 2, 90),
-(6, 3, 1, 90), (7, 3, 0, 90), (16, 3, 1, 90), (22, 3, 2, 90);
+(1, 3, 1, 90, 'speak'), (2, 3, 0, 90, 'speak'), (3, 3, 2, 90, 'speak'), (4, 3, 1, 90, 'speak'), (5, 3, 2, 90, 'speak'),
+(6, 3, 1, 90, 'speak'), (7, 3, 0, 90, 'speak'), (16, 3, 1, 90, 'speak'), (22, 3, 2, 90, 'speak');
 
 INSERT INTO PackTitleLanguage (pack_id, language_id, title) VALUES
 -- Portuguese translations
