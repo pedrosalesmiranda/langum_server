@@ -7,7 +7,7 @@ script to generate everything from pack_meanings giving prompts to put on chatgp
 to generate everything via console
 --------------------------------------
 no phonetic no id bug cant change id
-not packtitle language no expressions
+not pack title language no expressions
 - move flask server and routes to other files
 """
 TODO
