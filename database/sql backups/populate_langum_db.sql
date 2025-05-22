@@ -17,8 +17,7 @@ INSERT INTO Meanings (meaningEng) VALUES
 INSERT INTO Languages (languageEng, languageNative, languageEngTwoLetters) VALUES
 ('portuguese', 'Português', 'pt'),
 ('russian', 'Русский', 'ru'),
-('polish', 'Polski', 'pl'),
-('english', 'English', 'en');
+('polish', 'Polski', 'pl');
 
 -- Insert expressions for each meaning in Portuguese, Russian, and Polish
 INSERT INTO Expressions (text, sound_filename, language_id, meaning_id) VALUES
@@ -57,7 +56,7 @@ INSERT INTO Packs (descriptionEng) VALUES
 ('Greetings and Farewells'), ('Polite'), ('Personal Information'), ('Common Questions'), ('Emergency Phrases');
 
 
-INSERT INTO MeaningPack (pack_id, meaning_id) VALUES
+INSERT INTO PackMeaning (pack_id, meaning_id) VALUES
 -- Greetings and Farewells
 (1, 1), -- Hello
 (1, 2), -- Goodbye
@@ -115,10 +114,10 @@ INSERT INTO MeaningPack (pack_id, meaning_id) VALUES
 (5, 47); -- Can I have the bill, please?
 
 -- Insert Evaluations with type and goal
-INSERT INTO Evaluations (type, start, end, size) VALUES
-('Pack','2024-06-27 10:00:00', '2024-06-27 12:00:00', 20),
-('Test', '2024-06-28 09:00:00', '2024-06-28 11:00:00', 55),
-('Review', '2024-06-29 13:00:00', '2024-06-29 15:00:00', 34);
+INSERT INTO Evaluations (type, goal, start, end, size) VALUES
+('Pack', 'speak', '2024-06-27 10:00:00', '2024-06-27 12:00:00', 20),
+('Test', 'speak', '2024-06-28 09:00:00', '2024-06-28 11:00:00', 55),
+('Review', 'listen', '2024-06-29 13:00:00', '2024-06-29 15:00:00', 34);
 
 -- Insert phonetics for expressions in Portuguese
 INSERT INTO Phonetics (text, language_id, expression_id) VALUES
@@ -136,11 +135,11 @@ INSERT INTO Phonetics (text, language_id, expression_id) VALUES
 ('ɲɛt', 3, 6), ('pʂɛpɾaˈʂam', 3, 7), ('t͡ʂɨ ˈmɔʐɛɕ po aŋˈɡjɛlsku', 3, 16), ('ˈt͡ʂɨ mɔʃɛɕ mi pɔˈmɔt͡ʂ', 3, 22);
 
 
--- Insert Evaluations with type
-INSERT INTO Evaluations (type, start, end, size) VALUES
-('Pack','2024-06-27 10:00:00', '2024-06-27 12:00:00', 20),
-('Test', '2024-06-28 09:00:00', '2024-06-28 11:00:00', 12),
-('Review', '2024-06-29 13:00:00', '2024-06-29 15:00:00', 55);
+-- Insert Evaluations with type and goal
+INSERT INTO Evaluations (type, goal, start, end, size) VALUES
+('Pack', 'speak', '2024-06-27 10:00:00', '2024-06-27 12:00:00', 20),
+('Test', 'speak', '2024-06-28 09:00:00', '2024-06-28 11:00:00', 12),
+('Review', 'listen', '2024-06-29 13:00:00', '2024-06-29 15:00:00', 55);
 
 
 -- Insert ExpressionEvaluation entries with grades from 0 to 2
@@ -163,7 +162,7 @@ VALUES
 (1, 3, 1, 90, 'speak'), (2, 3, 0, 90, 'speak'), (3, 3, 2, 90, 'speak'), (4, 3, 1, 90, 'speak'), (5, 3, 2, 90, 'speak'),
 (6, 3, 1, 90, 'speak'), (7, 3, 0, 90, 'speak'), (16, 3, 1, 90, 'speak'), (22, 3, 2, 90, 'speak');
 
-INSERT INTO LanguagePackWithTitle (pack_id, language_id, title) VALUES
+INSERT INTO PackTitleLanguage (pack_id, language_id, title) VALUES
 -- Portuguese translations
 (1, 1, 'Cumprimentos e Despedidas'),
 (2, 1, 'Polidez'),

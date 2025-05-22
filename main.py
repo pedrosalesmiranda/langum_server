@@ -125,7 +125,7 @@ def download_file():
     if not filename:
         abort(400, description="Filename parameter is missing.")
 
-    filename_mp3 = f"{filename}.mp3"
+    filename_mp3 = f"{filename}"
 
     letters2 = ""
     language = filename.split("__")[0]
@@ -134,7 +134,7 @@ def download_file():
     elif language == "portuguese":
         letters2 = "pt"
     elif language == "russian":
-        letters2 = "rs"
+        letters2 = "ru"
     elif language == "english":
         letters2 = "en"
 
@@ -144,10 +144,10 @@ def download_file():
     file_path = f"{shared.constants.SOUND_FILES_DIRECTORY}/{letters2}"
 
     # Check if the file exists
-    if not os.path.exists(os.path.join(file_path, filename_mp3)):
+    if not os.path.exists(os.path.join(file_path, filename_mp3 + ".mp3")):
         abort(404, description="File not found.")
 
-    return send_from_directory(file_path, filename_mp3, as_attachment=True)
+    return send_from_directory(file_path, filename_mp3 + ".mp3", as_attachment=True)
 
 
 @app.route('/create_evaluation', methods=['POST'])
@@ -382,8 +382,8 @@ def run_flask_server():
 
 
 if __name__ == '__main__':
-    # run_flask_server()
-    create_all_from_topic("verbs related to sex and fuck. In infinitive", "words", 7, "russian", "english")
+    run_flask_server()
+    # create_all_from_topic("verbs related to sex and fuck. In infinitive", "words", 7, "russian", "english")
     # create_all_from_topic_and_meaning_list("numbers 1 to 20", [
     #     "one", "two", "three", "four", "five", "six", "seven",
     #     "eight", "nine", "ten", "eleven", "twelve", "thirteen",

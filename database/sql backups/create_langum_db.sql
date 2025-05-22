@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS EvaluationExpression;
-DROP TABLE IF EXISTS LanguagePackWithTitle;
-DROP TABLE IF EXISTS MeaningPack;
+DROP TABLE IF EXISTS PackTitleLanguage;
+DROP TABLE IF EXISTS PackMeaning;
 DROP TABLE IF EXISTS Evaluations;
 DROP TABLE IF EXISTS Packs;
 DROP TABLE IF EXISTS Phonetics;
@@ -47,12 +47,13 @@ CREATE TABLE IF NOT EXISTS Packs (
 CREATE TABLE IF NOT EXISTS Evaluations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     type TEXT NOT NULL,
+    goal TEXT NOT NULL,
     start DATETIME NOT NULL,
     end DATETIME NOT NULL,
     size INTEGER NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS MeaningPack (
+CREATE TABLE IF NOT EXISTS PackMeaning (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     pack_id INTEGER NOT NULL,
     meaning_id INTEGER NOT NULL,
@@ -62,17 +63,16 @@ CREATE TABLE IF NOT EXISTS MeaningPack (
 
 CREATE TABLE IF NOT EXISTS EvaluationExpression (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     expression_id INTEGER NOT NULL,
     evaluation_id INTEGER NOT NULL,
     grade SMALLINT NOT NULL,
     duration INT NOT NULL,
-    language_skill TEXT CHECK (language_skill IN ('speak', 'listen', 'write', 'read')) NOT NULL,
+    language_skill TEXT NOT NULL,
     FOREIGN KEY (expression_id) REFERENCES Expressions(id),
     FOREIGN KEY (evaluation_id) REFERENCES Evaluations(id)
 );
 
-CREATE TABLE IF NOT EXISTS LanguagePackWithTitle (
+CREATE TABLE IF NOT EXISTS PackTitleLanguage (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     pack_id INTEGER NOT NULL,
     language_id INTEGER NOT NULL,

@@ -3,6 +3,9 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/database/backups/create_langum_db.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/database/backups/populate_langum_db.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/database/sql backups/create_langum_db.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/database/sql backups/populate_langum_db.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/database/sql backups/queries_langum.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/langum.db" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/main.py" dialect="SQLite" />
     <file url="PROJECT" dialect="SQLite" />

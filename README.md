@@ -27,9 +27,18 @@ or save all evaluations as packs
 THIS IS KIND OF SOLVED in --- 3 ---
 ------------------------------ 3 -------------------------------
 evaluation should have:
-evalType: listen, speak, read, write
+eval_skill: listen, speak, read, write
 type: pack, test, review .... etc
 --------------------------------------------
 TODO endpoint to get the last 3 evaluations of each expression
 in future can be just of test or something like that
 -------------------------------------------------------
+
+SQL naming rules
+Joining tables (many to many for example)
+singular tables joined, alphabetic order, if extra fields with extrafield
+or some custom name like gpt suggested:
+"
+student	course	enrollment	Represents the act of enrolling.
+author	book	authorship	Represents a writing relationship.
+"
