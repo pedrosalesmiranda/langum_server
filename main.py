@@ -51,7 +51,6 @@ def get_evaluations_endpoint():
     SELECT E.id    AS eval_id,
            E.start AS eval_start,
            E.end   AS eval_end,
-           E.goal  AS eval_goal,
            E.type  AS eval_type,
            E.size  AS eval_size
     FROM Evaluations E
@@ -187,8 +186,8 @@ def add_evaluation():
     try:
         # Create and add new evaluation
         cursor.execute('''
-            INSERT INTO Evaluations (type, goal, start, end, size)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO Evaluations (type, start, end, size)
+            VALUES (?, ?, ?, ?)
         ''', (type_, goal, start, end, len(expressions)))
 
         evaluation_id = cursor.lastrowid
@@ -301,7 +300,6 @@ def get_evaluation(evaluation_id):
     SELECT E.id    AS eval_id,
        E.start AS eval_start,
        e.end   AS eval_end,
-       E.goal  AS eval_goal,
        E.type  AS eval_type,
        E.size  AS eval_size
 FROM Evaluations E WHERE id = :evaluation_id'''
