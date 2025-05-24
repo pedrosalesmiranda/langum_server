@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS Packs (
 
 CREATE TABLE IF NOT EXISTS Evaluations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    type TEXT NOT NULL,
+    type TEXT CHECK (type IN ('Review', 'Pack', 'Selection', 'Test')) NOT NULL,
     start DATETIME NOT NULL,
     end DATETIME NOT NULL,
     size INTEGER NOT NULL
