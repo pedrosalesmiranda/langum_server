@@ -36,7 +36,7 @@ in future can be just of test or something like that
 
 SQL naming rules
 Joining tables (many to many for example)
-singular tables joined, alphabetic order, if extra fields with extrafield
+singular tables joined, alphabetic order, if extra fields with extra field
 or some custom name like gpt suggested:
 "
 student	course	enrollment	Represents the act of enrolling.
@@ -44,4 +44,4 @@ author	book	authorship	Represents a writing relationship.
 "
 
 Database
-Language Pack with title could be id of an expression but for simplers queries like this not so many packs for now
+Language Pack with title could be id of an expression but for simpler queries like this not so many packs for now
