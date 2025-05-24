@@ -16,8 +16,8 @@ SELECT EE.id                AS id,
        EE.evaluation_id     AS evaluation_id,
        EE.grade             AS grade,
        EE.duration          AS duration,
-       EE.type              AS type_,
-       EE.timestamp         AS timestamp
+       EE.language_skill    AS language_skill,
+       EE.created_at        AS timestamp
 
 FROM EvaluationExpression EE'''
 
@@ -52,7 +52,7 @@ SELECT PM.pack_id       AS pack_id,
        E.language_id    AS language_id,
        P.text           AS expression_phonetic,
        M.id             AS meaning_id,
-       PTL.title        AS pack_title,
+       LPWT.title        AS pack_title,
        E.id             AS expression_id,
        P.id             AS phonetic_id
 
@@ -60,10 +60,10 @@ FROM Meanings M
          JOIN Expressions E ON M.id = E.meaning_id
          JOIN Languages L ON E.language_id = L.id
          LEFT JOIN Phonetics P ON E.id = P.expression_id AND :base_language_id = P.language_id
-         JOIN PackMeaning PM ON PM.meaning_id = M.id
-         LEFT JOIN PackTitleLanguage PTL on PM.pack_id = PTL.pack_id
+         JOIN MeaningPack PM ON PM.meaning_id = M.id
+         LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
 WHERE L.id IN (:target_language_id, :base_language_id)
-  and PTL.language_id = :base_language_id;
+  and LPWT.language_id = :base_language_id;
     '''
 
     params = {
@@ -140,14 +140,14 @@ def create_pack_meanings(description_eng: str, meanings_eng: list):
             meaning_id = cursor.lastrowid
             print(f"Created new meaning '{meaning_eng}' with id {meaning_id}.")
 
-        # Create PackMeaning if not exists
-        cursor.execute("SELECT id FROM PackMeaning WHERE pack_id = ? AND meaning_id = ?", (pack_id, meaning_id))
+        # Create MeaningPack if not exists
+        cursor.execute("SELECT id FROM MeaningPack WHERE pack_id = ? AND meaning_id = ?", (pack_id, meaning_id))
         pack_meaning_row = cursor.fetchone()
 
         if pack_meaning_row:
             print(f"PackMeaning already exists for pack_id {pack_id} and meaning_id {meaning_id}.")
         else:
-            cursor.execute("INSERT INTO PackMeaning (pack_id, meaning_id) VALUES (?, ?)", (pack_id, meaning_id))
+            cursor.execute("INSERT INTO MeaningPack (pack_id, meaning_id) VALUES (?, ?)", (pack_id, meaning_id))
             print(f"Created new PackMeaning for pack_id {pack_id} and meaning_id {meaning_id}.")
 
     # Commit the transaction and close the connection

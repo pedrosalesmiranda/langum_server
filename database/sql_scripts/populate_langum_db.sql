@@ -183,5 +183,12 @@ INSERT INTO LanguagePackWithTitle (pack_id, language_id, title) VALUES
 (2, 3, 'Grzecznościowe'),
 (3, 3, 'Informacje Osobiste'),
 (4, 3, 'Powszechne Pytania'),
-(5, 3, 'Zwroty Awaryjne');
+(5, 3, 'Zwroty Awaryjne'),
+
+-- Russian translations
+(1, 3, 'aaaaaaaaaaaaa'),
+(2, 3, 'bbbbbbbbbbbbbbb'),
+(3, 3, 'cccccccccccccccc'),
+(4, 3, 'dddddddddddddd'),
+(5, 3, 'eeeeeeeeeeeeeee');
 

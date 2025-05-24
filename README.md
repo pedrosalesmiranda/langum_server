@@ -42,3 +42,6 @@ or some custom name like gpt suggested:
 student	course	enrollment	Represents the act of enrolling.
 author	book	authorship	Represents a writing relationship.
 "
+
+Database
+Language Pack with title could be id of an expression but for simplers queries like this not so many packs for now
