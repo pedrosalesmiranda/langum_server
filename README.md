@@ -1,3 +1,8 @@
+
+# Database change needed
+26 May 2025 if phonetics are associated to expression each expression has a language no need for phonetic to keep the languageID
+
+---------------------------------------------------------------------------
 put the expressions generation apart from flask server code is all in main
 
 check database integrity meaning should have at least 2 expressions (base/target)

@@ -380,8 +380,8 @@ def run_flask_server():
 
 
 if __name__ == '__main__':
-    # run_flask_server()
-    create_all_from_topic("first date common answers", "expression", 18, "russian", "english")
+    run_flask_server()
+    # create_all_from_topic("first date common answers", "expression", 18, "russian", "english")
     # create_all_from_topic("possessive pronouns, with noun (2 words)", "expression", 20, "russian", "english")
     # create_all_from_topic_and_meaning_list("numbers 1 to 20", [
     #     "one", "two", "three", "four", "five", "six", "seven",
