@@ -66,7 +66,7 @@ def get_evaluations_endpoint():
     evaluations_list = []
 
     for evaluation in evaluations:
-        eval_id, eval_start, eval_end, eval_goal, eval_type, eval_size = evaluation
+        eval_id, eval_start, eval_end, eval_type, eval_size = evaluation
 
         # Query to fetch associated evaluation expressions for each evaluation
         query_evaluation_expression = '''
@@ -98,7 +98,6 @@ def get_evaluations_endpoint():
         evaluation_data = {
             'id': eval_id,
             'type': eval_type,
-            'goal': eval_goal,
             'start': eval_start,
             'end': eval_end,
             'size': eval_size,
@@ -155,7 +154,6 @@ def add_evaluation():
 
     # Extract data from the JSON request
     type_ = data.get('type')
-    goal = data.get('goal')
 
     start_str: str = data.get('start')
     if "." in start_str:
@@ -177,7 +175,7 @@ def add_evaluation():
     expressions = data.get('evaluation_expressions', [])
 
     # Validate data
-    if not type_ or not goal or not start or not end or not expressions:
+    if not type_ or not start or not end or not expressions:
         return jsonify({'error': 'Missing required fields'}), 400
 
     conn = sqlite3.connect(database_file_path)
@@ -188,7 +186,7 @@ def add_evaluation():
         cursor.execute('''
             INSERT INTO Evaluations (type, start, end, size)
             VALUES (?, ?, ?, ?)
-        ''', (type_, goal, start, end, len(expressions)))
+        ''', (type_, start, end, len(expressions)))
 
         evaluation_id = cursor.lastrowid
 
@@ -222,11 +220,10 @@ def add_evaluation():
 @app.route('/create_phonetic', methods=['POST'])
 def create_phonetic():
     data = request.json
-    language_id = data.get('languageId')
     expression_id = data.get('expressionId')
     text = data.get('text')
 
-    if not all([language_id, expression_id, text]):
+    if not all([expression_id, text]):
         return jsonify({'error': 'Missing data'}), 400
 
     try:
@@ -235,8 +232,8 @@ def create_phonetic():
 
         # Check if the phonetic already exists
         cursor.execute('''
-                   SELECT id FROM Phonetics WHERE language_id = ? AND expression_id = ?
-               ''', (language_id, expression_id))
+                   SELECT id FROM Phonetics WHERE expression_id = ?
+               ''', (expression_id,))
         phonetic = cursor.fetchone()
 
         if phonetic:
@@ -244,14 +241,14 @@ def create_phonetic():
             return jsonify({'error': 'Phonetic already exists'}), 409  # Conflict status code
         else:
             cursor.execute('''
-                INSERT INTO Phonetics (text, language_id, expression_id)
-                VALUES (?, ?, ?)
-            ''', (text, language_id, expression_id))
+                INSERT INTO Phonetics (text, expression_id)
+                VALUES (?, ?)
+            ''', (text, expression_id))
             conn.commit()
             phonetic_id = cursor.lastrowid
             conn.close()
             return jsonify(
-                {'id': phonetic_id, 'text': text, 'language_id': language_id, 'expression_id': expression_id}), 201
+                {'id': phonetic_id, 'text': text, 'expression_id': expression_id}), 201
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -313,7 +310,7 @@ FROM Evaluations E WHERE id = :evaluation_id'''
     if evaluation is None:
         return jsonify({'error': 'Evaluation not found'}), 404
 
-    eval_id, eval_start, eval_end, eval_goal, eval_type, eval_size = evaluation
+    eval_id, eval_start, eval_end, eval_type, eval_size = evaluation
 
     query_evaluation_expression = '''SELECT
        EE.expression_id AS expression_id,
@@ -344,7 +341,6 @@ FROM EvaluationExpression EE WHERE evaluation_id = :evaluation_id'''
     response = {
         'id': eval_id,
         'type': eval_type,
-        'goal': eval_goal,
         'start': eval_start,
         'end': eval_end,
         'size': eval_size,

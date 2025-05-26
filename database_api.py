@@ -59,7 +59,7 @@ SELECT PM.pack_id       AS pack_id,
 FROM Meanings M
          JOIN Expressions E ON M.id = E.meaning_id
          JOIN Languages L ON E.language_id = L.id
-         LEFT JOIN Phonetics P ON E.id = P.expression_id AND :base_language_id = P.language_id
+         LEFT JOIN Phonetics P ON E.id = P.expression_id
          JOIN MeaningPack PM ON PM.meaning_id = M.id
          LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
 WHERE L.id IN (:target_language_id, :base_language_id)
