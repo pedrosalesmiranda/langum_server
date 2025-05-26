@@ -43,6 +43,7 @@ def create_all_from_topic_and_meaning_list(topic: str, meanings: list, target_la
     generate_all_language_sounds(base_lang)
 
 
+# TODO create also LanguagePackWithTile row pack title in base language
 def create_all_from_topic(topic: str, expression_type: str, num_expressions: int, target_lang: str, base_lang):
     input_folder_path = shared.constants.JSON_INPUT_FOLDER_PATH
     res = generate_pack_meanings_prompt(topic, expression_type, num_expressions)
