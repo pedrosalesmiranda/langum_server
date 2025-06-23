@@ -50,3 +50,5 @@ author	book	authorship	Represents a writing relationship.
 
 Database
 Language Pack with title could be id of an expression but for simpler queries like this not so many packs for now
+
+sqlite3 langum.db ".dump" > dump_23_06_2025.sql

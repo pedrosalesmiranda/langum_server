@@ -4,8 +4,11 @@
     <file url="file://$PROJECT_DIR$/database/backups/_oldBackups/old_create_langum_db.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/database/backups/_oldBackups/old_populate_langum_db.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/database/backups/_oldBackups/old_queries_langum.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/database/dump_26_05_2025.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/database/sql_scripts/create_langum_db.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/database/sql_scripts/drop_all_tables.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/database/sql_scripts/dump_23_06_2025.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/database/sql_scripts/populate_languages.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/database/sql_scripts/populate_langum_db.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/database/sql_scripts/queries_langum.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/langum.db" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/main.py" dialect="SQLite" />

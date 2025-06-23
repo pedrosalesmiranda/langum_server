@@ -120,6 +120,7 @@ INSERT INTO Evaluations (type, start, end, size) VALUES
 ('Test', '2024-06-28 09:00:00', '2024-06-28 11:00:00', 55),
 ('Review', '2024-06-29 13:00:00', '2024-06-29 15:00:00', 34);
 
+
 -- Insert phonetics for expressions in Portuguese
 INSERT INTO Phonetics (text, language_id, expression_id) VALUES
 ('zádz-vun ná pó-li-tcion', 1, 69), ('adeus', 1, 2), ('tshé-shtsh', 1, 3), ('uˈbɾiɡadu', 1, 4), ('sĩ', 1, 5),
@@ -138,30 +139,47 @@ INSERT INTO Phonetics (text, language_id, expression_id) VALUES
 
 -- Insert Evaluations with type
 INSERT INTO Evaluations (type, start, end, size) VALUES
-('Pack','2024-06-27 10:00:00', '2024-06-27 12:00:00', 20),
-('Test', '2024-06-28 09:00:00', '2024-06-28 11:00:00', 12),
-('Review', '2024-06-29 13:00:00', '2024-06-29 15:00:00', 55);
+('Pack','2024-06-27 10:00:00', '2024-06-27 12:00:00', 10),
+('Test', '2024-06-28 09:00:00', '2024-06-28 11:00:00', 10),
+('Review', '2024-06-29 13:00:00', '2024-06-29 15:00:00', 7);
 
-
--- Insert ExpressionEvaluation entries with grades from 0 to 2
 
 -- For expressions related to Pack evaluation (Evaluation ID: 1)
 INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
 VALUES
-(1, 1, 1, 120, 'listen'), (2, 1, 1, 120, 'listen'), (3, 1, 2, 120, 'listen'), (4, 1, 1, 120,'listen'), (5, 1, 2, 120, 'listen'),
-(6, 1, 0, 120, 'listen'), (7, 1, 1, 120, 'listen'), (16, 1, 1, 120, 'listen'), (22, 1, 2, 120, 'listen');
+    (80,1, 2, 12, 'speak'),
+    (81,1, 3, 12, 'speak'),
+    (82,1, 3, 10, 'speak'),
+    (83,1, 2, 9, 'speak'),
+    (84,1, 4, 8, 'speak'),
+    (85,1, 1, 10, 'speak'),
+    (86,1, 4, 6, 'speak'),
+    (87,1, 2, 8, 'speak'),
+    (88,1, 3, 10, 'speak'),
+    (89,1, 4, 7, 'speak');
 
--- For expressions related to Test evaluation (Evaluation ID: 2)
 INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
 VALUES
-(1, 2, 2, 180, 'speak'), (2, 2, 1, 180, 'speak'), (3, 2, 2, 180, 'speak'), (4, 2, 1, 180, 'speak'), (5, 2, 2, 180, 'speak'),
-(6, 2, 1, 180, 'speak'), (7, 2, 0, 180, 'speak'), (16, 2, 2, 180, 'speak'), (22, 2, 1, 180, 'speak');
+    (80,2, 3, 10, 'speak'),
+    (81,2, 3, 10, 'speak'),
+    (82,2, 3, 10, 'speak'),
+    (83,2, 4, 15, 'speak'),
+    (84,2, 4, 7, 'speak'),
+    (85,2, 1, 10, 'speak'),
+    (86,2, 4, 9, 'speak'),
+    (87,2, 4, 12, 'speak'),
+    (88,2, 4, 5, 'speak'),
+    (89,2, 4, 8, 'speak');
 
--- For expressions related to Review evaluation (Evaluation ID: 3)
 INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
 VALUES
-(1, 3, 1, 90, 'speak'), (2, 3, 0, 90, 'speak'), (3, 3, 2, 90, 'speak'), (4, 3, 1, 90, 'speak'), (5, 3, 2, 90, 'speak'),
-(6, 3, 1, 90, 'speak'), (7, 3, 0, 90, 'speak'), (16, 3, 1, 90, 'speak'), (22, 3, 2, 90, 'speak');
+    (1,3, 2, 10, 'speak'),
+    (2,3, 3, 10, 'speak'),
+    (3,3, 2, 10, 'speak'),
+    (4,3, 4, 15, 'speak'),
+    (5,3, 3, 7, 'speak'),
+    (6,3, 2, 10, 'speak'),
+    (7,3, 3, 9, 'speak');
 
 INSERT INTO LanguagePackWithTitle (pack_id, language_id, title) VALUES
 -- Portuguese translations
