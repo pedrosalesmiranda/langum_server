@@ -1,3 +1,46 @@
+WITH filtered_evaluations AS (
+    SELECT EE.*,
+           ROW_NUMBER() OVER (
+               PARTITION BY EE.expression_id, EE.language_skill
+               ORDER BY EE.created_at DESC
+           ) AS rn
+    FROM main.EvaluationExpression EE
+),
+ranked_evaluations AS (
+    SELECT PM.pack_id        AS pack_id,
+           E.text            AS expression_text,
+           E.sound_filename  AS expression_sound,
+           E.language_id     AS language_id,
+           P.text            AS expression_phonetic,
+           M.id              AS meaning_id,
+           LPWT.title        AS pack_title,
+           E.id              AS expression_id,
+           P.id              AS phonetic_id,
+           FE.grade          AS grade,
+           FE.language_skill AS language_skill,
+           FE.created_at     AS created_at,
+           FE.id             AS expressionEvaluation_id,
+           FE.duration       AS duration,
+           FE.rn             AS rn
+    FROM Meanings M
+    JOIN Expressions E ON M.id = E.meaning_id
+    JOIN Languages L ON E.language_id = L.id
+    JOIN MeaningPack PM ON PM.meaning_id = M.id
+    LEFT JOIN Phonetics P ON E.id = P.expression_id
+    LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
+    LEFT JOIN filtered_evaluations FE on E.id = FE.expression_id AND FE.rn <= 10
+    WHERE L.id IN (:target_language_id, :base_language_id)
+      AND LPWT.language_id = :base_language_id
+)
+SELECT *
+FROM ranked_evaluations
+ORDER BY pack_id, expression_id, language_skill, created_at DESC;
+
+
+
+
+
+
 SELECT PM.pack_id AS pack_id,
     E.text            AS expression_text,
     E.sound_filename  AS expression_sound,
@@ -165,3 +208,5 @@ ORDER BY
 -- SELECT *
 -- FROM Expressions
 -- WHERE language_id = 2;
+
+PRAGMA encoding;

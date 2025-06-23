@@ -116,9 +116,9 @@ INSERT INTO MeaningPack (pack_id, meaning_id) VALUES
 
 -- Insert Evaluations with type and goal
 INSERT INTO Evaluations (type, start, end, size) VALUES
-('Pack','2024-06-27 10:00:00', '2024-06-27 12:00:00', 20),
-('Test', '2024-06-28 09:00:00', '2024-06-28 11:00:00', 55),
-('Review', '2024-06-29 13:00:00', '2024-06-29 15:00:00', 34);
+('Review', '2025-06-23 20:27:00', '2024-06-23 20:28:00', 2),
+('Review', '2025-06-23 20:27:00', '2024-06-23 20:28:00', 2),
+('Review', '2025-06-23 20:27:00', '2024-06-23 20:28:00', 2);
 
 
 -- Insert phonetics for expressions in Portuguese
@@ -147,16 +147,12 @@ INSERT INTO Evaluations (type, start, end, size) VALUES
 -- For expressions related to Pack evaluation (Evaluation ID: 1)
 INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
 VALUES
-    (80,1, 2, 12, 'speak'),
-    (81,1, 3, 12, 'speak'),
-    (82,1, 3, 10, 'speak'),
-    (83,1, 2, 9, 'speak'),
-    (84,1, 4, 8, 'speak'),
-    (85,1, 1, 10, 'speak'),
-    (86,1, 4, 6, 'speak'),
-    (87,1, 2, 8, 'speak'),
-    (88,1, 3, 10, 'speak'),
-    (89,1, 4, 7, 'speak');
+    (85,4, 3, 16, 'read'),
+    (85,5, 3, 14, 'read'),
+    (85,6, 3, 12, 'read'),
+    (80,4, 4, 7, 'speak'),
+    (80,5, 3, 8, 'speak'),
+    (80,6, 4, 9, 'listen');
 
 INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
 VALUES
