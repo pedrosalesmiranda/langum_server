@@ -34,7 +34,7 @@ FROM EvaluationExpression EE'''
 
     return evaluation_expressions_list
 
-
+# TODO this method might be refactored complex logic nested objects maybe better way, break in small parts and check maybe multiple queries to DB
 def get_language_packs(target_language_id, base_language_id):
     """
     return expressions grouped per pack for a given language with base language needed fields too
@@ -46,25 +46,34 @@ def get_language_packs(target_language_id, base_language_id):
     cursor = conn.cursor()
 
     query_language = '''
-SELECT PM.pack_id       AS pack_id,
-       E.text           AS expression_text,
-       E.sound_filename AS expression_sound,
-       E.language_id    AS language_id,
-       P.text           AS expression_phonetic,
-       M.id             AS meaning_id,
-       LPWT.title        AS pack_title,
-       E.id             AS expression_id,
-       P.id             AS phonetic_id
+                     SELECT PM.pack_id        AS pack_id,
+                            E.text            AS expression_text,
+                            E.sound_filename  AS expression_sound,
+                            E.language_id     AS language_id,
+                            P.text            AS expression_phonetic,
+                            M.id              AS meaning_id,
+                            LPWT.title        AS pack_title,
+                            E.id              AS expression_id,
+                            P.id              AS phonetic_id,
+                            EE.grade          AS grade,
+                            EE.language_skill AS language_skill,
+                            EE.created_at     AS created_at,
+                            EE.id             AS expressionEvaluation_id,
+                            EE.duration       AS duration
 
-FROM Meanings M
-         JOIN Expressions E ON M.id = E.meaning_id
-         JOIN Languages L ON E.language_id = L.id
-         LEFT JOIN Phonetics P ON E.id = P.expression_id
-         JOIN MeaningPack PM ON PM.meaning_id = M.id
-         LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
-WHERE L.id IN (:target_language_id, :base_language_id)
-  and LPWT.language_id = :base_language_id;
-    '''
+                     FROM Meanings M
+                              JOIN Expressions E ON M.id = E.meaning_id
+                              JOIN Languages L ON E.language_id = L.id
+                              JOIN MeaningPack PM ON PM.meaning_id = M.id
+                              LEFT JOIN Phonetics P ON E.id = P.expression_id
+                              LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
+                              LEFT JOIN main.EvaluationExpression EE on E.id = EE.expression_id
+                     WHERE L.id IN (:target_language_id, :base_language_id)
+                       AND LPWT.language_id = :base_language_id
+                     ORDER BY PM.id,
+                              E.id,
+                              EE.created_at;
+                     '''
 
     params = {
         'target_language_id': target_language_id,
@@ -76,35 +85,63 @@ WHERE L.id IN (:target_language_id, :base_language_id)
     conn.close()
 
     # Organize data into a dictionary by packId
-    packs = {}
+    map_pack_id_to_pack = {}
+    map_expression_id_to_expression_evaluations = {}
     expressions_key = "expressions"
+    expression_evaluations_key = "expression_evaluations"
+
     for row in res_expressions:
-        pack_id, expression_text, expression_sound, language_id, expression_phonetic, meaning_id, pack_title, expression_id, phonetic_id = row
-        if pack_id not in packs:
-            packs[pack_id] = {"pack_id": pack_id, "pack_title": pack_title}
+        (pack_id, expression_text, expression_sound, language_id, expression_phonetic, meaning_id, pack_title, expression_id,
+         phonetic_id, grade,language_skill, created_at, expression_evaluation_id, duration)  = row
+        if pack_id not in map_pack_id_to_pack:
+            map_pack_id_to_pack[pack_id] = {"pack_id": pack_id, "pack_title": pack_title}
 
-        if expressions_key not in packs[pack_id]:
-            packs[pack_id][expressions_key] = {}
+        if expressions_key not in map_pack_id_to_pack[pack_id]:
+            map_pack_id_to_pack[pack_id][expressions_key] = {}
 
-        if meaning_id not in packs[pack_id][expressions_key]:
-            packs[pack_id][expressions_key][meaning_id] = {}
+        if meaning_id not in map_pack_id_to_pack[pack_id][expressions_key]:
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id] = {}
 
         if language_id == target_language_id:
-            packs[pack_id][expressions_key][meaning_id]["expression_text"] = expression_text
-            packs[pack_id][expressions_key][meaning_id]["expression_sound"] = expression_sound
-            packs[pack_id][expressions_key][meaning_id]["language_id"] = language_id
-            packs[pack_id][expressions_key][meaning_id]["expression_phonetic"] = expression_phonetic
-            packs[pack_id][expressions_key][meaning_id]["phonetic_id"] = phonetic_id
-            packs[pack_id][expressions_key][meaning_id]["meaning_id"] = meaning_id
-            packs[pack_id][expressions_key][meaning_id]["expression_id"] = expression_id
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["expression_text"] = expression_text
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["expression_sound"] = expression_sound
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["language_id"] = language_id
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["expression_phonetic"] = expression_phonetic
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["phonetic_id"] = phonetic_id
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["meaning_id"] = meaning_id
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["expression_id"] = expression_id
+
+            if expression_evaluation_id is not None:
+                if expression_id not in map_expression_id_to_expression_evaluations:
+                    map_expression_id_to_expression_evaluations[expression_id] = {}
+
+                if expression_evaluation_id not in map_expression_id_to_expression_evaluations[expression_id]:
+                    map_expression_id_to_expression_evaluations[expression_id][expression_evaluation_id] = {
+                    "id": expression_evaluation_id,
+                    "grade": grade,
+                    "created_at": created_at,
+                    "language_skill": language_skill,
+                    "duration": duration
+                    }
+
+
         if language_id == base_language_id:
-            packs[pack_id][expressions_key][meaning_id]["expression_base_text"] = expression_text
-            packs[pack_id][expressions_key][meaning_id]["expression_base_sound"] = expression_sound
-            packs[pack_id][expressions_key][meaning_id]["language_base_id"] = language_id
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["expression_base_text"] = expression_text
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["expression_base_sound"] = expression_sound
+            map_pack_id_to_pack[pack_id][expressions_key][meaning_id]["language_base_id"] = language_id
+
 
     packs_list = []
-    for pack_key, pack_value in packs.items():
+    for pack_key, pack_value in map_pack_id_to_pack.items():
         expressions_list = list(pack_value[expressions_key].values())
+        for expression in expressions_list:
+            current_expression_id = expression["expression_id"]
+            if current_expression_id in map_expression_id_to_expression_evaluations:
+                expression[expression_evaluations_key] = list(map_expression_id_to_expression_evaluations[current_expression_id].values())
+            else:
+                expression[expression_evaluations_key] = None
+
+
         packs_list.append({"pack_id": pack_value["pack_id"], "pack_title": pack_value["pack_title"],
                            expressions_key: expressions_list})
 
@@ -213,50 +250,53 @@ def create_expressions(meanings_expressions: dict, language_eng: str):
 
 
 def create_phonetics(expressions_phonetics: dict, base_language: str):
-    conn = sqlite3.connect(database_file_path)
-    cursor = conn.cursor()
+    pass
 
-    # Get base language ID
-    cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (base_language,))
-    base_language_id = cursor.fetchone()
-    if base_language_id is None:
-        print(f"Language '{base_language}' not found.")
-        conn.close()
-        return
-    base_language_id = base_language_id[0]
-
-    for expression_phonetic in expressions_phonetics:
-        expression_text = expression_phonetic['expression']
-        phonetic_text = expression_phonetic['phonetic_text']
-
-        # Find expression_id
-        cursor.execute("SELECT id FROM Expressions WHERE text = ?", (expression_text,))
-        expression_id = cursor.fetchone()
-        if expression_id is None:
-            print(f"Expression '{expression_text}' not found.")
-            continue
-        expression_id = expression_id[0]
-
-        # Check if phonetic already exists
-        cursor.execute("""
-            SELECT id FROM Phonetics
-            WHERE language_id = ? AND expression_id = ?
-        """, (base_language_id, expression_id))
-        phonetic_id = cursor.fetchone()
-
-        if phonetic_id:
-            # Update existing phonetic
-            cursor.execute("""
-                UPDATE Phonetics
-                SET text = ?
-                WHERE id = ?
-            """, (phonetic_text, phonetic_id[0]))
-        else:
-            # Create new phonetic
-            cursor.execute("""
-                INSERT INTO Phonetics (text, language_id, expression_id)
-                VALUES (?, ?, ?)
-            """, (phonetic_text, base_language_id, expression_id))
-
-    conn.commit()
-    conn.close()
+# def create_phonetics(expressions_phonetics: dict, base_language: str):
+#     conn = sqlite3.connect(database_file_path)
+#     cursor = conn.cursor()
+#
+#     # Get base language ID
+#     cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (base_language,))
+#     base_language_id = cursor.fetchone()
+#     if base_language_id is None:
+#         print(f"Language '{base_language}' not found.")
+#         conn.close()
+#         return
+#     base_language_id = base_language_id[0]
+#
+#     for expression_phonetic in expressions_phonetics:
+#         expression_text = expression_phonetic['expression']
+#         phonetic_text = expression_phonetic['phonetic_text']
+#
+#         # Find expression_id
+#         cursor.execute("SELECT id FROM Expressions WHERE text = ?", (expression_text,))
+#         expression_id = cursor.fetchone()
+#         if expression_id is None:
+#             print(f"Expression '{expression_text}' not found.")
+#             continue
+#         expression_id = expression_id[0]
+#
+#         # Check if phonetic already exists
+#         cursor.execute("""
+#             SELECT id FROM Phonetics
+#             WHERE language_id = ? AND expression_id = ?
+#         """, (base_language_id, expression_id))
+#         phonetic_id = cursor.fetchone()
+#
+#         if phonetic_id:
+#             # Update existing phonetic
+#             cursor.execute("""
+#                 UPDATE Phonetics
+#                 SET text = ?
+#                 WHERE id = ?
+#             """, (phonetic_text, phonetic_id[0]))
+#         else:
+#             # Create new phonetic
+#             cursor.execute("""
+#                 INSERT INTO Phonetics (text, language_id, expression_id)
+#                 VALUES (?, ?, ?)
+#             """, (phonetic_text, base_language_id, expression_id))
+#
+#     conn.commit()
+#     conn.close()
