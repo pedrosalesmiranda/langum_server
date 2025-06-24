@@ -28,7 +28,7 @@ ranked_evaluations AS (
     JOIN MeaningPack PM ON PM.meaning_id = M.id
     LEFT JOIN Phonetics P ON E.id = P.expression_id
     LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
-    LEFT JOIN filtered_evaluations FE on E.id = FE.expression_id AND FE.rn <= 10
+    LEFT JOIN filtered_evaluations FE on E.id = FE.expression_id AND FE.rn <= 3
     WHERE L.id IN (:target_language_id, :base_language_id)
       AND LPWT.language_id = :base_language_id
 )
