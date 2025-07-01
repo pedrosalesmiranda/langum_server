@@ -45,35 +45,69 @@ def get_language_packs(target_language_id, base_language_id):
     conn = sqlite3.connect(database_file_path)
     cursor = conn.cursor()
 
-    query_language = '''
-                     SELECT PM.pack_id        AS pack_id,
-                            E.text            AS expression_text,
-                            E.sound_filename  AS expression_sound,
-                            E.language_id     AS language_id,
-                            P.text            AS expression_phonetic,
-                            M.id              AS meaning_id,
-                            LPWT.title        AS pack_title,
-                            E.id              AS expression_id,
-                            P.id              AS phonetic_id,
-                            EE.grade          AS grade,
-                            EE.language_skill AS language_skill,
-                            EE.created_at     AS created_at,
-                            EE.id             AS expressionEvaluation_id,
-                            EE.duration       AS duration
+    query_language = '''WITH filtered_evaluations AS (SELECT EE.*,
+                                      ROW_NUMBER() OVER (
+                                          PARTITION BY EE.expression_id, EE.language_skill
+                                          ORDER BY EE.created_at DESC
+                                          ) AS rn
+                               FROM main.EvaluationExpression EE),
+      ranked_evaluations AS (SELECT PM.pack_id        AS pack_id,
+                                    E.text            AS expression_text,
+                                    E.sound_filename  AS expression_sound,
+                                    E.language_id     AS language_id,
+                                    P.text            AS expression_phonetic,
+                                    M.id              AS meaning_id,
+                                    LPWT.title        AS pack_title,
+                                    E.id              AS expression_id,
+                                    P.id              AS phonetic_id,
+                                    FE.grade          AS grade,
+                                    FE.language_skill AS language_skill,
+                                    FE.created_at     AS created_at,
+                                    FE.id             AS expressionEvaluation_id,
+                                    FE.duration       AS duration,
+                                    FE.rn             AS rn
+                             FROM Meanings M
+                                      JOIN Expressions E ON M.id = E.meaning_id
+                                      JOIN Languages L ON E.language_id = L.id
+                                      JOIN MeaningPack PM ON PM.meaning_id = M.id
+                                      LEFT JOIN Phonetics P ON E.id = P.expression_id
+                                      LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
+                                      LEFT JOIN filtered_evaluations FE on E.id = FE.expression_id AND FE.rn <= 3
+                             WHERE L.id IN (:target_language_id, :base_language_id)
+                               AND LPWT.language_id = :base_language_id)
+ SELECT *
+ FROM ranked_evaluations
+ ORDER BY pack_id, expression_id, language_skill, created_at DESC;'''
 
-                     FROM Meanings M
-                              JOIN Expressions E ON M.id = E.meaning_id
-                              JOIN Languages L ON E.language_id = L.id
-                              JOIN MeaningPack PM ON PM.meaning_id = M.id
-                              LEFT JOIN Phonetics P ON E.id = P.expression_id
-                              LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
-                              LEFT JOIN main.EvaluationExpression EE on E.id = EE.expression_id
-                     WHERE L.id IN (:target_language_id, :base_language_id)
-                       AND LPWT.language_id = :base_language_id
-                     ORDER BY PM.id,
-                              E.id,
-                              EE.created_at;
-                     '''
+    # query_language = '''
+    #                  SELECT PM.pack_id        AS pack_id,
+    #                         E.text            AS expression_text,
+    #                         E.sound_filename  AS expression_sound,
+    #                         E.language_id     AS language_id,
+    #                         P.text            AS expression_phonetic,
+    #                         M.id              AS meaning_id,
+    #                         LPWT.title        AS pack_title,
+    #                         E.id              AS expression_id,
+    #                         P.id              AS phonetic_id,
+    #                         EE.grade          AS grade,
+    #                         EE.language_skill AS language_skill,
+    #                         EE.created_at     AS created_at,
+    #                         EE.id             AS expressionEvaluation_id,
+    #                         EE.duration       AS duration
+    #
+    #                  FROM Meanings M
+    #                           JOIN Expressions E ON M.id = E.meaning_id
+    #                           JOIN Languages L ON E.language_id = L.id
+    #                           JOIN MeaningPack PM ON PM.meaning_id = M.id
+    #                           LEFT JOIN Phonetics P ON E.id = P.expression_id
+    #                           LEFT JOIN LanguagePackWithTitle LPWT on PM.pack_id = LPWT.pack_id
+    #                           LEFT JOIN main.EvaluationExpression EE on E.id = EE.expression_id
+    #                  WHERE L.id IN (:target_language_id, :base_language_id)
+    #                    AND LPWT.language_id = :base_language_id
+    #                  ORDER BY PM.id,
+    #                           E.id,
+    #                           EE.created_at DESC;
+    #                  '''
 
     params = {
         'target_language_id': target_language_id,
@@ -92,7 +126,7 @@ def get_language_packs(target_language_id, base_language_id):
 
     for row in res_expressions:
         (pack_id, expression_text, expression_sound, language_id, expression_phonetic, meaning_id, pack_title, expression_id,
-         phonetic_id, grade,language_skill, created_at, expression_evaluation_id, duration)  = row
+         phonetic_id, grade,language_skill, created_at, expression_evaluation_id, duration, rn)  = row
         if pack_id not in map_pack_id_to_pack:
             map_pack_id_to_pack[pack_id] = {"pack_id": pack_id, "pack_title": pack_title}
 
