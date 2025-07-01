@@ -50,6 +50,7 @@ INSERT INTO "EvaluationExpression" VALUES(7,'2025-06-23 13:23:07',86,1,4,6,'spea
 INSERT INTO "EvaluationExpression" VALUES(8,'2025-06-23 13:23:07',87,1,2,8,'speak');
 INSERT INTO "EvaluationExpression" VALUES(9,'2025-06-23 13:23:07',88,1,3,10,'speak');
 INSERT INTO "EvaluationExpression" VALUES(10,'2025-06-23 13:23:07',89,1,4,7,'speak');
+
 INSERT INTO "EvaluationExpression" VALUES(11,'2025-06-23 13:23:07',80,2,3,10,'speak');
 INSERT INTO "EvaluationExpression" VALUES(12,'2025-06-23 13:23:07',81,2,3,10,'speak');
 INSERT INTO "EvaluationExpression" VALUES(13,'2025-06-23 13:23:07',82,2,3,10,'speak');
@@ -60,6 +61,7 @@ INSERT INTO "EvaluationExpression" VALUES(17,'2025-06-23 13:23:07',86,2,4,9,'spe
 INSERT INTO "EvaluationExpression" VALUES(18,'2025-06-23 13:23:07',87,2,4,12,'speak');
 INSERT INTO "EvaluationExpression" VALUES(19,'2025-06-23 13:23:07',88,2,4,5,'speak');
 INSERT INTO "EvaluationExpression" VALUES(20,'2025-06-23 13:23:07',89,2,4,8,'speak');
+
 INSERT INTO "EvaluationExpression" VALUES(21,'2025-06-23 13:23:07',1,3,2,10,'speak');
 INSERT INTO "EvaluationExpression" VALUES(22,'2025-06-23 13:23:07',2,3,3,10,'speak');
 INSERT INTO "EvaluationExpression" VALUES(23,'2025-06-23 13:23:07',3,3,2,10,'speak');
@@ -67,12 +69,16 @@ INSERT INTO "EvaluationExpression" VALUES(24,'2025-06-23 13:23:07',4,3,4,15,'spe
 INSERT INTO "EvaluationExpression" VALUES(25,'2025-06-23 13:23:07',5,3,3,7,'speak');
 INSERT INTO "EvaluationExpression" VALUES(26,'2025-06-23 13:23:07',6,3,2,10,'speak');
 INSERT INTO "EvaluationExpression" VALUES(27,'2025-06-23 13:23:07',7,3,3,9,'speak');
-INSERT INTO "EvaluationExpression" VALUES(28,'2025-06-23 18:32:55',85,4,3,16,'read');
-INSERT INTO "EvaluationExpression" VALUES(29,'2025-06-23 18:32:55',85,5,3,14,'read');
-INSERT INTO "EvaluationExpression" VALUES(30,'2025-06-23 18:32:55',85,6,3,12,'read');
-INSERT INTO "EvaluationExpression" VALUES(31,'2025-06-23 18:32:55',80,4,4,7,'speak');
-INSERT INTO "EvaluationExpression" VALUES(32,'2025-06-23 18:32:55',80,5,3,8,'speak');
-INSERT INTO "EvaluationExpression" VALUES(33,'2025-06-23 18:32:55',80,6,4,9,'listen');
+
+INSERT INTO "EvaluationExpression" VALUES(28,'2025-06-23 18:32:55',80,4,4,7,'speak');
+INSERT INTO "EvaluationExpression" VALUES(29,'2025-06-23 18:32:55',85,4,3,16,'read');
+
+INSERT INTO "EvaluationExpression" VALUES(30,'2025-06-23 18:32:55',80,5,3,8,'speak');
+INSERT INTO "EvaluationExpression" VALUES(31,'2025-06-23 18:32:55',85,5,3,14,'read');
+
+INSERT INTO "EvaluationExpression" VALUES(32,'2025-06-23 18:32:55',80,6,4,9,'listen');
+INSERT INTO "EvaluationExpression" VALUES(33,'2025-06-23 18:32:55',85,6,3,12,'read');
+
 CREATE TABLE Evaluations (
 
 
