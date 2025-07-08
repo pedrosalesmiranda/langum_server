@@ -288,6 +288,61 @@ def update_phonetic_text():
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/createExpressionEvaluation', methods=['POST'])
+def create_expression_evaluation():
+    data = request.get_json()
+
+    # Extract data from the JSON request
+    expression_id = data.get('expression_id')
+    evaluation_id = data.get('evaluation_id')
+    grade = data.get('grade')
+    duration = data.get('duration')
+    language_skill = data.get('language_skill')
+
+    # Validate required fields
+    if not all([expression_id, evaluation_id, grade is not None, duration is not None, language_skill]):
+        return jsonify({'error': 'Missing required fields: expression_id, evaluation_id, grade, duration, language_skill'}), 400
+
+    # Validate data types
+    try:
+        expression_id = int(expression_id)
+        evaluation_id = int(evaluation_id)
+        grade = int(grade)
+        duration = int(duration)
+    except ValueError:
+        return jsonify({'error': 'Invalid data format for numeric fields'}), 400
+
+    # Validate language_skill
+    valid_skills = ['speak', 'listen', 'write', 'read']
+    if language_skill not in valid_skills:
+        return jsonify({'error': f'Invalid language_skill. Must be one of: {", ".join(valid_skills)}'}), 400
+
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+
+    try:
+        # Insert the expression evaluation
+        cursor.execute('''
+            INSERT INTO EvaluationExpression (expression_id, evaluation_id, grade, duration, language_skill)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (expression_id, evaluation_id, grade, duration, language_skill))
+
+        expression_evaluation_id = cursor.lastrowid
+        conn.commit()
+
+        return jsonify({
+            'id': expression_evaluation_id,
+            'message': 'Expression evaluation created successfully'
+        }), 201
+
+    except sqlite3.Error as e:
+        conn.rollback()
+        return jsonify({'error': str(e)}), 500
+
+    finally:
+        conn.close()
+
+
 @app.route('/evaluation/<int:evaluation_id>', methods=['GET'])
 def get_evaluation(evaluation_id):
     conn = sqlite3.connect(database_file_path)
