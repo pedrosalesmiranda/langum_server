@@ -2,7 +2,7 @@ WITH filtered_evaluations AS (
     SELECT EE.*,
            ROW_NUMBER() OVER (
                PARTITION BY EE.expression_id, EE.language_skill
-               ORDER BY EE.created_at DESC
+               ORDER BY EE.id DESC
            ) AS rn
     FROM main.EvaluationExpression EE
 ),
@@ -34,7 +34,7 @@ ranked_evaluations AS (
 )
 SELECT *
 FROM ranked_evaluations
-ORDER BY pack_id, expression_id, language_skill, created_at DESC;
+ORDER BY pack_id, expression_id, language_skill, expressionEvaluation_id ;
 
 
 

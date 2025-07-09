@@ -48,7 +48,7 @@ def get_language_packs(target_language_id, base_language_id):
     query_language = '''WITH filtered_evaluations AS (SELECT EE.*,
                                       ROW_NUMBER() OVER (
                                           PARTITION BY EE.expression_id, EE.language_skill
-                                          ORDER BY EE.created_at DESC
+                                          ORDER BY EE.id DESC
                                           ) AS rn
                                FROM main.EvaluationExpression EE),
       ranked_evaluations AS (SELECT PM.pack_id        AS pack_id,
@@ -77,7 +77,7 @@ def get_language_packs(target_language_id, base_language_id):
                                AND LPWT.language_id = :base_language_id)
  SELECT *
  FROM ranked_evaluations
- ORDER BY pack_id, expression_id, language_skill, created_at DESC;'''
+ ORDER BY pack_id, expression_id, language_skill, expressionEvaluation_id;'''
 
     # query_language = '''
     #                  SELECT PM.pack_id        AS pack_id,
