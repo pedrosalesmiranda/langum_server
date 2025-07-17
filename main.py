@@ -431,7 +431,7 @@ def run_flask_server():
 
 
 if __name__ == '__main__':
-    create_all_from_topic("used usually in a music bingo", "expression or word", 30, "russian", "english")
+    create_all_from_topic("used on restaurante", "expression or word", 25, "russian", "english")
 
     # run_flask_server()
 
