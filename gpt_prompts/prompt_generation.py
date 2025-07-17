@@ -21,14 +21,24 @@ dict_base = {{ "language": BASE_LANGUAGE, "meanings_expressions": [{{"meaningEng
 show me only list of dicts [dict_target, dict_base], nothing more
 """
 
-
 def generate_phonetics_prompt(expressions: list, target_language: str, base_language: str) -> str:
     return f"""
 EXPRESSIONS = {expressions}
 TARGET_LANGUAGE = {target_language}
-BASE_LANGUAGE = {base_language}
 
-phonetic is TARGET_LANGUAGE reading of expression then split in syllabus separated by - then phonetic transcription in TARGET_BASE
+phonetic is TARGET_LANGUAGE in IPA phonetic without []
+
 {{"expression": expression from EXPRESSIONS, "phonetic_text":  phonetic }}
 show me only list of dicts nothing more
 """
+
+# def generate_phonetics_prompt(expressions: list, target_language: str, base_language: str) -> str:
+#     return f"""
+# EXPRESSIONS = {expressions}
+# TARGET_LANGUAGE = {target_language}
+# BASE_LANGUAGE = {base_language}
+#
+# phonetic is TARGET_LANGUAGE reading of expression then split in syllabus separated by - then phonetic transcription in TARGET_BASE
+# {{"expression": expression from EXPRESSIONS, "phonetic_text":  phonetic }}
+# show me only list of dicts nothing more
+# """

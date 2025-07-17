@@ -283,54 +283,54 @@ def create_expressions(meanings_expressions: dict, language_eng: str):
         print(f"Error: {e}")
 
 
-def create_phonetics(expressions_phonetics: dict, base_language: str):
-    pass
-
 # def create_phonetics(expressions_phonetics: dict, base_language: str):
-#     conn = sqlite3.connect(database_file_path)
-#     cursor = conn.cursor()
-#
-#     # Get base language ID
-#     cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (base_language,))
-#     base_language_id = cursor.fetchone()
-#     if base_language_id is None:
-#         print(f"Language '{base_language}' not found.")
-#         conn.close()
-#         return
-#     base_language_id = base_language_id[0]
-#
-#     for expression_phonetic in expressions_phonetics:
-#         expression_text = expression_phonetic['expression']
-#         phonetic_text = expression_phonetic['phonetic_text']
-#
-#         # Find expression_id
-#         cursor.execute("SELECT id FROM Expressions WHERE text = ?", (expression_text,))
-#         expression_id = cursor.fetchone()
-#         if expression_id is None:
-#             print(f"Expression '{expression_text}' not found.")
-#             continue
-#         expression_id = expression_id[0]
-#
-#         # Check if phonetic already exists
-#         cursor.execute("""
-#             SELECT id FROM Phonetics
-#             WHERE language_id = ? AND expression_id = ?
-#         """, (base_language_id, expression_id))
-#         phonetic_id = cursor.fetchone()
-#
-#         if phonetic_id:
-#             # Update existing phonetic
-#             cursor.execute("""
-#                 UPDATE Phonetics
-#                 SET text = ?
-#                 WHERE id = ?
-#             """, (phonetic_text, phonetic_id[0]))
-#         else:
-#             # Create new phonetic
-#             cursor.execute("""
-#                 INSERT INTO Phonetics (text, language_id, expression_id)
-#                 VALUES (?, ?, ?)
-#             """, (phonetic_text, base_language_id, expression_id))
-#
-#     conn.commit()
-#     conn.close()
+#     pass
+
+def create_phonetics(expressions_phonetics: dict, base_language: str):
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+
+    # Get base language ID
+    cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (base_language,))
+    base_language_id = cursor.fetchone()
+    if base_language_id is None:
+        print(f"Language '{base_language}' not found.")
+        conn.close()
+        return
+    base_language_id = base_language_id[0]
+
+    for expression_phonetic in expressions_phonetics:
+        expression_text = expression_phonetic['expression']
+        phonetic_text = expression_phonetic['phonetic_text']
+
+        # Find expression_id
+        cursor.execute("SELECT id FROM Expressions WHERE text = ?", (expression_text,))
+        expression_id = cursor.fetchone()
+        if expression_id is None:
+            print(f"Expression '{expression_text}' not found.")
+            continue
+        expression_id = expression_id[0]
+
+        # Check if phonetic already exists
+        cursor.execute("""
+            SELECT id FROM Phonetics
+            WHERE expression_id = ?
+        """, (expression_id,))
+        phonetic_id = cursor.fetchone()
+
+        if phonetic_id:
+            # Update existing phonetic
+            cursor.execute("""
+                UPDATE Phonetics
+                SET text = ?
+                WHERE id = ?
+            """, (phonetic_text, phonetic_id[0]))
+        else:
+            # Create new phonetic
+            cursor.execute("""
+                INSERT INTO Phonetics (text, expression_id)
+                VALUES (?, ?)
+            """, (phonetic_text, expression_id))
+
+    conn.commit()
+    conn.close()

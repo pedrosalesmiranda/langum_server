@@ -110,3 +110,6 @@ def create_phonetics_from_json(language_eng: str):
 def _save_processed(content: dict, filename_no_extension: str):
     timestamp = shared.file_utils.get_timestamp()
     shared.json_utils.save_json_file(content, f"{timestamp}_{filename_no_extension}", folder_path=f"inputs/processed")
+
+
+create_phonetics_from_json("english")
