@@ -3,6 +3,7 @@ import sqlite3
 from gtts import gTTS
 
 import shared.constants
+from shared.constants import PROJECT_ROOT
 from shared.file_utils import file_exists, create_folder_if_not_exists
 
 
@@ -15,7 +16,7 @@ def generateSoundExpression(expression: str, sound_filename: str, lang_2_letters
     tts.save(file_path)
 
 def generate_all_language_sounds(langEng: str):
-    conn = sqlite3.connect('database/langum.db')
+    conn = sqlite3.connect(f'{PROJECT_ROOT}/database/langum.db')
     cursor = conn.cursor()
 
     # Find the language by languageEng

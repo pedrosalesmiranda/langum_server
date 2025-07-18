@@ -32,6 +32,8 @@ phonetic is TARGET_LANGUAGE in IPA phonetic without []
 show me only list of dicts nothing more
 """
 
+# OLD VERSION DELETE git will keep it if needed, name in commit
+
 # def generate_phonetics_prompt(expressions: list, target_language: str, base_language: str) -> str:
 #     return f"""
 # EXPRESSIONS = {expressions}

@@ -1,12 +1,12 @@
 SOUND_FILES_DIRECTORY = "sound"
-DATABASE_FILE_PATH = "database/langum.db"
-TARGET_FOLDER_PATH_DB_INFO = "C:/Users/psm19/PSM_DRIVE/PROG/TOP_PROJS/LANGUM/langum_server/jsons/DB_INFO"
+TARGET_FOLDER_PATH_DB_INFO = "/expressions_generation_scripts/jsons/DB_INFO"
 FILENAME_NO_EXTENSION = "DB_INFO"
 DEFAULT_PORT_NUMBER = 8888
 
-
-# default root is: json
+PROJECT_ROOT = "C:/Users/psm19/PSM_DRIVE/PROG/TOP_PROJS/LANGUM/langum_server"
 PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION = "pack_meanings"
 EXPRESSIONS_JSON_FILENAME_NO_EXTENSION = "expressions"
 PHONETICS_JSON_FILENAME_NO_EXTENSION = "phonetics"
-JSON_INPUT_FOLDER_PATH = "inputs"
+JSON_INPUT_FOLDER_PATH = "expressions_generation_scripts/jsons/inputs"
+
+DATABASE_FILE_PATH = f"{PROJECT_ROOT}/database/langum.db"

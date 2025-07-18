@@ -8,10 +8,6 @@ from flask import request, abort, send_from_directory, jsonify, Flask
 from flask_cors import CORS
 
 import database_api
-from console_inputs import create_all_from_topic, create_all_from_topic_and_meaning_list
-from shared.json_utils import save_json_file
-
-# from sound.sound_generation import generate_all_language_sounds
 
 database_file_path = shared.constants.DATABASE_FILE_PATH
 
@@ -431,18 +427,4 @@ def run_flask_server():
 
 
 if __name__ == '__main__':
-    create_all_from_topic("used on restaurante", "expression or word", 25, "russian", "english")
-
-    # run_flask_server()
-
-    # create_all_from_topic("first date common answers", "expression", 18, "russian", "english")
-    # create_all_from_topic("possessive pronouns, with noun (2 words)", "expression", 20, "russian", "english")
-    #
-    # create_all_from_topic_and_meaning_list("numbers 1 to 20", [
-    #     "one", "two", "three", "four", "five", "six", "seven",
-    #     "eight", "nine", "ten", "eleven", "twelve", "thirteen",
-    #     "fourteen", "fifteen", "sixteen", "seventeen",
-    #     "eighteen", "nineteen", "twenty"
-    # ], "russian", "portuguese")
-
-
+    run_flask_server()
