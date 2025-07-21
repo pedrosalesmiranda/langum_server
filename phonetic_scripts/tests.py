@@ -1,4 +1,5 @@
 import split_words
+from phonetic_scripts.ipa_phonetics import ipa_to_portuguese_phonetic_gpt_o3, ipa_to_portuguese_phonetic
 
 # Example words demonstrating each rule:
 test_words = [
@@ -20,10 +21,31 @@ test_words = [
     "солнце",    # солн-це (лнц -> break between н (sonorant) and ц (noisy))
     "Песня?",    # Пе-сня? (preserves capital and punctuation, example of multiple consonants 'сн')
 ]
-print([split_words.split_russian_word(w) for w in test_words])
+# print([split_words.split_russian_word(w) for w in test_words])
 
 # Full sentence with punctuation:
 sentence = "Молоко? Пьеса или игра - в чём разница?"
 sentence2 = "У моей соседки бабушки сгорел телевизор, я вчера заказала новый на озон, потому что ремонт стоит как новый телевизор, сейчас установила ей его."
+sentence3 = "ты останавливаешься"
 
-print(split_words.split_russian_text(sentence2))
+sentence4 = "Солдат пошёл в магазин и купил молоко и воду."
+sentence5 = "После захода солнца солдат пошёл в спортзал и подготовил вертолёт."
+
+print(split_words.split_russian_text(sentence4))
+print(split_words.split_russian_text(sentence5))
+
+# print(ipa_to_portuguese_phonetic_gpt_o3("tɨ vəzrəˈɕːæjɪʂsʲə"))
+# print(ipa_to_portuguese_phonetic("tɨ vəzrəˈɕːæjɪʂsʲə"))
+
+
+print(split_words.split_russian_text("её фильм его"))
+print(ipa_to_portuguese_phonetic_gpt_o3("jɪˈjo fʲilʲm --- jɪˈvo ɪˈɡra"))
+print(ipa_to_portuguese_phonetic("jɪˈjo fʲilʲm --- jɪˈvo ɪˈɡra"))
+print("jɪˈjo fʲilʲm --- jɪˈvo ɪˈɡra")
+
+print("mə-ɫɐ-ˈko")
+print(ipa_to_portuguese_phonetic_gpt_o3("mə-ɫɐ-ˈko"))
+
+print("и ветер все это унес")
+print("i ˈvʲetʲɪr fsʲɵ ˈɛtə ʊˈnʲos")
+print(ipa_to_portuguese_phonetic_gpt_o3("i ˈvʲetʲɪr fsʲɵ ˈɛtə ʊˈnʲos"))
