@@ -182,7 +182,6 @@ def get_language_packs(target_language_id, base_language_id):
 
     return packs_list
 
-
 def create_pack_meanings(description_eng: str, meanings_eng: list):
     connection = sqlite3.connect(database_file_path)
     cursor = connection.cursor()
@@ -225,7 +224,6 @@ def create_pack_meanings(description_eng: str, meanings_eng: list):
     # Commit the transaction and close the connection
     connection.commit()
     connection.close()
-
 
 def create_expressions(meanings_expressions: dict, language_eng: str):
     try:
@@ -283,7 +281,6 @@ def create_expressions(meanings_expressions: dict, language_eng: str):
     except sqlite3.Error as e:
         print(f"Error: {e}")
 
-
 # def create_phonetics(expressions_phonetics: dict, base_language: str):
 #     pass
 
@@ -335,6 +332,36 @@ def create_phonetics(expressions_phonetics: dict, base_language: str):
                 INSERT INTO Phonetics (text, expression_id)
                 VALUES (?, ?)
             """, (phonetic_text, expression_id))
+
+    conn.commit()
+    conn.close()
+
+def create_language_pack_title(language_id: int, pack_id: int, title: str):
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+
+    # Check if language pack title already exists
+    cursor.execute("""
+        SELECT id FROM LanguagePackWithTitle
+        WHERE pack_id = ? AND language_id = ?
+    """, (pack_id, language_id))
+    existing_title_id = cursor.fetchone()
+
+    if existing_title_id:
+        # Update existing title
+        cursor.execute("""
+            UPDATE LanguagePackWithTitle
+            SET title = ?
+            WHERE id = ?
+        """, (title, existing_title_id[0]))
+        print(f"Updated language pack title for pack_id {pack_id} and language_id {language_id}.")
+    else:
+        # Create new title
+        cursor.execute("""
+            INSERT INTO LanguagePackWithTitle (pack_id, language_id, title)
+            VALUES (?, ?, ?)
+        """, (pack_id, language_id, title))
+        print(f"Created new language pack title '{title}' for pack_id {pack_id} and language_id {language_id}.")
 
     conn.commit()
     conn.close()

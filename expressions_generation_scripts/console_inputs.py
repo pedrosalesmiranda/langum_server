@@ -122,8 +122,7 @@ def create_pack_meanings_from_json():
     filename_no_extension = shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION
     pack_meanings = shared.json_utils.load_json_file(filename_no_extension, folder_path=shared.constants.JSON_INPUT_FOLDER_PATH)
     create_pack_meanings(pack_meanings["pack"], pack_meanings["meanings"])
-    _save_processed(pack_meanings, filename_no_extension)
-
+    _save_processed(pack_meanings, filename_no_extension, pack_meanings["pack"])
 
 def create_expressions_from_json():
     filename_no_extension = shared.constants.EXPRESSIONS_JSON_FILENAME_NO_EXTENSION
@@ -144,7 +143,14 @@ def create_phonetics_from_json(language_eng: str):
     _save_processed(phonetics, filename_no_extension)
 
 
-def _save_processed(content: dict, filename_no_extension: str):
+# def _save_processed(content: dict, filename_no_extension: str):
+#     timestamp = shared.file_utils.get_timestamp()
+#     shared.json_utils.save_json_file(content, f"{timestamp}_{filename_no_extension}",
+#                                      f"{shared.constants.JSON_INPUT_FOLDER_PATH}/processed")
+
+
+def _save_processed(content: dict, filename_no_extension: str, title: str = ""):
     timestamp = shared.file_utils.get_timestamp()
-    shared.json_utils.save_json_file(content, f"{timestamp}_{filename_no_extension}",
+    filename = f"{timestamp}_{filename_no_extension}_{title}"
+    shared.json_utils.save_json_file(content, filename,
                                      f"{shared.constants.JSON_INPUT_FOLDER_PATH}/processed")
