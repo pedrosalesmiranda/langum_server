@@ -154,3 +154,6 @@ def _save_processed(content: dict, filename_no_extension: str, title: str = ""):
     filename = f"{timestamp}_{filename_no_extension}_{title}"
     shared.json_utils.save_json_file(content, filename,
                                      f"{shared.constants.JSON_INPUT_FOLDER_PATH}/processed")
+
+
+generate_all_language_sounds("english")
