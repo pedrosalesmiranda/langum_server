@@ -17,33 +17,16 @@ def create_all_from_topic(topic: str, expression_type: str, num_expressions: int
     data = json.loads(paste_from_clipboard())
     shared.json_utils.save_json_file(data, shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION,
                                      folder_path=input_folder_path)
-    print(data)
+    print(f"saved file {shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION}.json at {input_folder_path}")
 
-    expressions = _generate_and_save_expressions(data["meanings"], target_lang, base_lang)
-    if not expressions:
-        return
-
-    _generate_and_save_phonetics(expressions, target_lang, base_lang)
-    _create_database_entries(base_lang)
-    _generate_language_sounds(target_lang, base_lang)
+    _process_meanings_to_completion(data["meanings"], target_lang, base_lang)
 
 
 def create_all_from_json_meanings(target_lang: str, base_lang):
     input_folder_path = shared.constants.JSON_INPUT_FOLDER_PATH
     meanings_data = shared.json_utils.load_json_file(shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION,
                                                      folder_path=input_folder_path)
-
-    shared.json_utils.save_json_file(meanings_data, shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION,
-                                     folder_path=input_folder_path)
-    print("saved processed meanings")
-
-    expressions = _generate_and_save_expressions(meanings_data["meanings"], target_lang, base_lang)
-    if not expressions:
-        return
-
-    _generate_and_save_phonetics(expressions, target_lang, base_lang)
-    _create_database_entries(base_lang)
-    _generate_language_sounds(target_lang, base_lang)
+    _process_meanings_to_completion(meanings_data["meanings"], target_lang, base_lang)
 
 
 # TODO create also LanguagePackWithTile row pack title in base language
@@ -111,6 +94,17 @@ def _create_database_entries(base_lang: str):
     create_pack_meanings_from_json()
     create_expressions_from_json()
     create_phonetics_from_json(base_lang)
+
+
+def _process_meanings_to_completion(meanings_data: list, target_lang: str, base_lang: str) -> bool:
+    expressions = _generate_and_save_expressions(meanings_data, target_lang, base_lang)
+    if not expressions:
+        return False
+
+    _generate_and_save_phonetics(expressions, target_lang, base_lang)
+    _create_database_entries(base_lang)
+    _generate_language_sounds(target_lang, base_lang)
+    return True
 
 
 def _generate_language_sounds(target_lang: str, base_lang: str):
