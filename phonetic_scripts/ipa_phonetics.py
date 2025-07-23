@@ -3,14 +3,6 @@ import re
 import unicodedata
 from typing import Dict
 
-def russian_to_ipa(russian_text):
-    """
-    Convert Russian text to IPA using Epitran.
-    """
-    # ipa_text = epi.transliterate(russian_text)
-    # return ipa_text
-    pass
-
 """
 ipa_to_portuguese_phonetic.py
 =============================
