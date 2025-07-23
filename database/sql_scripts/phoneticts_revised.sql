@@ -1,0 +1,1 @@
+SELECT Phonetics.text AS phonetic_text, Expressions.text AS expression_text  FROM Phonetics INNER JOIN Expressions WHERE expression_id = Expressions.id

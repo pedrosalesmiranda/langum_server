@@ -52,12 +52,15 @@ rs_word_ipa_phonetic_list = most_common_russian_nouns = most_common_russian_noun
     ("школа", "ˈʂkoɫə", "school"),
     ("армия", "ˈarmʲɪjə", "army"),
     ("язык", "jɪˈzɨk", "language / tongue"),
-    ("ребята", "rʲɪˈbʲatə", "guys / kids / folks")
+    ("ребята", "rʲɪˈbʲatə", "guys / kids / folks"),
+    ("тринадцать", "trʲɪˈnat͡sɨtʲ", "13")
 ]
 
 for trio in rs_word_ipa_phonetic_list:
     print(f"{trio[2]}: {trio[0]}")
     print(f"{trio[1]}: {ipa_to_portuguese_phonetic_gpt_o3(trio[1])}")
+    print(".....")
+    print(f"##### {ipa_to_portuguese_phonetic_gpt_o3(trio[1])} #####")
     print("")
 
 

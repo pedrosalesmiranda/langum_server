@@ -34,27 +34,27 @@ Example
 # greedy matching.  We therefore build LONGEST_FIRST programmatically.
 IPA_TO_PT: Dict[str, str] = {
     # PSM custom
+    "nat͡sɨtʲ": "nátsatь",
     "ʲɪjə": "ia",
     "t͡s": "ts",
     "t͡ɕ": "tch",
     "sʲɵ": "siou",
-
     "ʲi": "i",
-    "ʲɪ": "iei", #her book... е-ё , jɪ-ˈjo TODO check
+    "ʲɪ": "i",
     "ʲe": "ié",
     "ʲʊ": "iu",
     "ʲa": "iá",
     "ʲə": "ia",
-
     "jɪ": "ié", #her book... е-ё , jɪ-ˈjo TODO check
     "jo": "iou",
     # "vo": "vou",
 
-    "lʲ": "l⁻", # soft l lingua mais em baixo
-    "ть": "t⁻",
+    # "ть": "tь", # in what case lets comment out
 
-    "fʲ": "f", # discard soft
-    "nʲ": "ni", # discard soft
+    "lʲ": "lь", # soft l lingua mais em baixo
+    "fʲ": "fь", # maybe discard soft
+    "nʲ": "nь", # maybe discard soft
+    "tʲ": "tь", # maybe discard soft
 
     "ʨ":"tch",
     "ʂ": "ch",
