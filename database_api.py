@@ -2,7 +2,7 @@ import sqlite3
 
 import shared.constants
 from shared.string_utils import remove_special_characters
-from phonetic_scripts.ipa_phonetics import ipa_to_portuguese_phonetic, ipa_to_portuguese_phonetic_gpt_o3
+from phonetic_scripts.ipa_phonetics import ipa_to_portuguese_phonetic_gpt_o3
 
 database_file_path = shared.constants.DATABASE_FILE_PATH
 
