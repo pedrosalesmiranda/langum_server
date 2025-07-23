@@ -2,7 +2,7 @@ import sqlite3
 
 import shared.constants
 from shared.string_utils import remove_special_characters
-from phonetic_scripts.ipa_phonetics import ipa_to_portuguese_phonetic
+from phonetic_scripts.ipa_phonetics import ipa_to_portuguese_phonetic, ipa_to_portuguese_phonetic_gpt_o3
 
 database_file_path = shared.constants.DATABASE_FILE_PATH
 
@@ -301,8 +301,8 @@ def create_phonetics(expressions_phonetics: dict, base_language: str):
         expression_text = expression_phonetic['expression']
         phonetic_text = expression_phonetic['phonetic_text']
 
-        # TODO watch OUT this
-        phonetic_text = ipa_to_portuguese_phonetic(phonetic_text)
+        # TODO IPA TO PT PHONETIC this might be refactored and create another field in database
+        phonetic_text = ipa_to_portuguese_phonetic_gpt_o3(phonetic_text)
 
         # Find expression_id
         cursor.execute("SELECT id FROM Expressions WHERE text = ?", (expression_text,))
