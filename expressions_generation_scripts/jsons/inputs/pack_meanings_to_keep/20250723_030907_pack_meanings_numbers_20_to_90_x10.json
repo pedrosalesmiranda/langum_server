@@ -1,0 +1,14 @@
+{
+    "pack": "numbers: 20 to 90 (x10)",
+    "meanings": [
+        "suffix of tenths",
+        "twenty",
+        "thirty",
+        "forty",
+        "fifty",
+        "sixty",
+        "seventy",
+        "eighty",
+        "ninty"
+    ]
+}

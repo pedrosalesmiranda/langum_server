@@ -1,0 +1,44 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "thousand",
+                "expression": "тысяча"
+            },
+            {
+                "meaningEng": "million",
+                "expression": "миллион"
+            },
+            {
+                "meaningEng": "billion",
+                "expression": "миллиард"
+            },
+            {
+                "meaningEng": "trillion",
+                "expression": "триллион"
+            }
+        ]
+    },
+    {
+        "language": "english",
+        "meanings_expressions": [
+            {
+                "meaningEng": "thousand",
+                "expression": "thousand"
+            },
+            {
+                "meaningEng": "million",
+                "expression": "million"
+            },
+            {
+                "meaningEng": "billion",
+                "expression": "billion"
+            },
+            {
+                "meaningEng": "trillion",
+                "expression": "trillion"
+            }
+        ]
+    }
+]

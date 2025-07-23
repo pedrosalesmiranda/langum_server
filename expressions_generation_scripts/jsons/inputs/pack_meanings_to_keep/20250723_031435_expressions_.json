@@ -1,0 +1,92 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "zero",
+                "expression": "ноль"
+            },
+            {
+                "meaningEng": "one",
+                "expression": "один"
+            },
+            {
+                "meaningEng": "two",
+                "expression": "два"
+            },
+            {
+                "meaningEng": "three",
+                "expression": "три"
+            },
+            {
+                "meaningEng": "four",
+                "expression": "четыре"
+            },
+            {
+                "meaningEng": "five",
+                "expression": "пять"
+            },
+            {
+                "meaningEng": "six",
+                "expression": "шесть"
+            },
+            {
+                "meaningEng": "seven",
+                "expression": "семь"
+            },
+            {
+                "meaningEng": "eight",
+                "expression": "восемь"
+            },
+            {
+                "meaningEng": "nine",
+                "expression": "девять"
+            }
+        ]
+    },
+    {
+        "language": "english",
+        "meanings_expressions": [
+            {
+                "meaningEng": "zero",
+                "expression": "zero"
+            },
+            {
+                "meaningEng": "one",
+                "expression": "one"
+            },
+            {
+                "meaningEng": "two",
+                "expression": "two"
+            },
+            {
+                "meaningEng": "three",
+                "expression": "three"
+            },
+            {
+                "meaningEng": "four",
+                "expression": "four"
+            },
+            {
+                "meaningEng": "five",
+                "expression": "five"
+            },
+            {
+                "meaningEng": "six",
+                "expression": "six"
+            },
+            {
+                "meaningEng": "seven",
+                "expression": "seven"
+            },
+            {
+                "meaningEng": "eight",
+                "expression": "eight"
+            },
+            {
+                "meaningEng": "nine",
+                "expression": "nine"
+            }
+        ]
+    }
+]

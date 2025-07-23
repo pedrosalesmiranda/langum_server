@@ -1,5 +1,4 @@
-from expressions_generation_scripts.console_inputs import create_all_from_topic, create_all_from_topic_and_meaning_list, \
-    create_phonetics_from_json, create_all_from_json_meanings
+from expressions_generation_scripts.console_inputs import create_all_from_topic, create_all_from_json_meanings
 
 create_all_from_json_meanings("russian", "english")
 

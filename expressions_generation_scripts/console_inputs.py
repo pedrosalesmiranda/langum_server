@@ -5,7 +5,7 @@ import shared.constants
 from database_api import create_phonetics, create_expressions, create_pack_meanings
 from expressions_generation_scripts.gpt_prompts.prompt_generation import generate_pack_meanings_prompt, \
     generate_expressions_prompt, generate_phonetics_prompt
-from shared.string_utils import copy_to_clipboard, paste_from_clipboard
+from shared.string_utils import copy_to_clipboard, paste_from_clipboard, remove_special_characters
 from sound.sound_generation import generate_all_language_sounds
 
 
@@ -114,7 +114,8 @@ def _generate_language_sounds(target_lang: str, base_lang: str):
 
 def _save_processed(content: dict, filename_no_extension: str, title: str = ""):
     timestamp = shared.file_utils.get_timestamp()
-    filename = f"{timestamp}_{filename_no_extension}_{title}"
+    allowed_title = remove_special_characters(title).replace(' ', '_')
+    filename = f"{timestamp}_{filename_no_extension}_{allowed_title}"
     shared.json_utils.save_json_file(content, filename,
                                      f"{shared.constants.JSON_INPUT_FOLDER_PATH}/processed")
 

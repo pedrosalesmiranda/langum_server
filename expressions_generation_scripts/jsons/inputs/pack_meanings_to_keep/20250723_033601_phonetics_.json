@@ -1,0 +1,42 @@
+[
+    {
+        "expression": "сот",
+        "phonetic_text": "sot"
+    },
+    {
+        "expression": "сто",
+        "phonetic_text": "sto"
+    },
+    {
+        "expression": "двести",
+        "phonetic_text": "ˈdvʲesʲtʲɪ"
+    },
+    {
+        "expression": "триста",
+        "phonetic_text": "ˈtrʲis.tə"
+    },
+    {
+        "expression": "четыреста",
+        "phonetic_text": "ʨɪˈtɨ.rʲɪ.stə"
+    },
+    {
+        "expression": "пятьсот",
+        "phonetic_text": "pʲɪtʲˈsot"
+    },
+    {
+        "expression": "шестьсот",
+        "phonetic_text": "ʂɨsʲˈsot"
+    },
+    {
+        "expression": "семьсот",
+        "phonetic_text": "sʲɪmʲˈsot"
+    },
+    {
+        "expression": "восемьсот",
+        "phonetic_text": "ˈvo.sʲɪmʲ.sot"
+    },
+    {
+        "expression": "девятьсот",
+        "phonetic_text": "ˈdʲe.vʲɪtʲ.sot"
+    }
+]
