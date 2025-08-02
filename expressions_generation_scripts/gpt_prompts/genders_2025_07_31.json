@@ -1,0 +1,63 @@
+{
+  "gender_rules": {
+    "I": "Ends in a consonant → Masculine",
+    "II": "Ends in й → Masculine",
+    "III": "Ends in а → Feminine",
+    "IV": "Ends in я → Feminine",
+    "V": "Ends in ь → Masculine or Feminine",
+    "VI": "Ends in о → Neuter",
+    "VII": "Ends in е → Neuter",
+    "VIII": "Ends in мя → Neuter"
+  },
+  "masculine": [
+    {"russian": "стол", "english": "table", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "дом", "english": "house", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "город", "english": "city", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "ключ", "english": "key", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "мир", "english": "world", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "врач", "english": "doctor", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "отец", "english": "father", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "нос", "english": "nose", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "стул", "english": "chair", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "лес", "english": "forest", "gender_rule": "I", "gender": "masculine"},
+    {"russian": "герой", "english": "hero", "gender_rule": "II", "gender": "masculine"},
+    {"russian": "край", "english": "border", "gender_rule": "II", "gender": "masculine"},
+    {"russian": "чай", "english": "tea", "gender_rule": "II", "gender": "masculine"},
+    {"russian": "музей", "english": "museum (excluded)", "gender_rule": "II", "gender": "excluded"},
+    {"russian": "гость", "english": "guest", "gender_rule": "V", "gender": "masculine"}
+  ],
+  "feminine": [
+    {"russian": "машина", "english": "car", "gender_rule": "III", "gender": "feminine"},
+    {"russian": "мама", "english": "mom", "gender_rule": "III", "gender": "feminine"},
+    {"russian": "девочка", "english": "girl", "gender_rule": "III", "gender": "feminine"},
+    {"russian": "собака", "english": "dog", "gender_rule": "III", "gender": "feminine"},
+    {"russian": "страна", "english": "country", "gender_rule": "III", "gender": "feminine"},
+    {"russian": "лампа", "english": "lamp", "gender_rule": "III", "gender": "feminine"},
+    {"russian": "неделя", "english": "week", "gender_rule": "IV", "gender": "feminine"},
+    {"russian": "семья", "english": "family", "gender_rule": "IV", "gender": "feminine"},
+    {"russian": "тётя", "english": "aunt", "gender_rule": "IV", "gender": "feminine"},
+    {"russian": "история", "english": "history", "gender_rule": "IV", "gender": "feminine"},
+    {"russian": "идея", "english": "idea", "gender_rule": "IV", "gender": "feminine"},
+    {"russian": "тетрадь", "english": "notebook", "gender_rule": "V", "gender": "feminine"},
+    {"russian": "ночь", "english": "night", "gender_rule": "V", "gender": "feminine"},
+    {"russian": "дверь", "english": "door", "gender_rule": "V", "gender": "feminine"},
+    {"russian": "ручка", "english": "pen", "gender_rule": "III", "gender": "feminine"}
+  ],
+  "neuter": [
+    {"russian": "окно", "english": "window", "gender_rule": "VI", "gender": "neuter"},
+    {"russian": "молоко", "english": "milk", "gender_rule": "VI", "gender": "neuter"},
+    {"russian": "место", "english": "place", "gender_rule": "VI", "gender": "neuter"},
+    {"russian": "тело", "english": "body", "gender_rule": "VI", "gender": "neuter"},
+    {"russian": "яблоко", "english": "apple", "gender_rule": "VI", "gender": "neuter"},
+    {"russian": "имя", "english": "name", "gender_rule": "VIII", "gender": "neuter"},
+    {"russian": "время", "english": "time", "gender_rule": "VIII", "gender": "neuter"},
+    {"russian": "здание", "english": "building", "gender_rule": "VII", "gender": "neuter"},
+    {"russian": "море", "english": "sea", "gender_rule": "VII", "gender": "neuter"},
+    {"russian": "поле", "english": "field", "gender_rule": "VII", "gender": "neuter"},
+    {"russian": "сердце", "english": "heart", "gender_rule": "VII", "gender": "neuter"},
+    {"russian": "письмо", "english": "letter (excluded)", "gender_rule": "VI", "gender": "excluded"},
+    {"russian": "животное", "english": "animal", "gender_rule": "VII", "gender": "neuter"},
+    {"russian": "золото", "english": "gold", "gender_rule": "VI", "gender": "neuter"},
+    {"russian": "удовольствие", "english": "pleasure", "gender_rule": "VII", "gender": "neuter"}
+  ]
+}

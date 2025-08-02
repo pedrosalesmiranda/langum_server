@@ -1,9 +1,29 @@
 {
-    "pack": "numbers: thousand to trillion...",
-    "meanings": [
-        "thousand",
-        "million",
-        "billion",
-        "trillion"
-    ]
+  "pack": "possessive pronouns, with noun (2 words)",
+  "meanings": [
+    "my laptop",
+    "my jacket",
+    "my opinion",
+    "your home",
+    "your dream",
+    "your mirror",
+    "his phone",
+    "his game",
+    "his chair",
+    "her movie",
+    "her song",
+    "her window",
+    "its color",
+    "its function",
+    "its building",
+    "our plan",
+    "our team",
+    "our place",
+    "your bag (formal)",
+    "your turn (formal)",
+    "your seat (formal)",
+    "their project",
+    "their story",
+    "their decision"
+  ]
 }
