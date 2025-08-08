@@ -121,6 +121,7 @@ def download_file():
 
     filename_mp3 = f"{filename}"
 
+# TODO add languages chars to language english
     letters2 = ""
     language = filename.split("__")[0]
     if language == "polish":
@@ -131,6 +132,10 @@ def download_file():
         letters2 = "ru"
     elif language == "english":
         letters2 = "en"
+    elif language == "mandarin":
+        letters2 = "zh"
+    elif language == "romanian":
+        letters2 = "ro"
 
     if letters2 == "":
         abort(400, description=f"language in filename: {language} was not detected.")

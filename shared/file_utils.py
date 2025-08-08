@@ -13,3 +13,9 @@ def create_folder_if_not_exists(folder_path: str):
 
 def file_exists(file_path: str):
     return os.path.isfile(file_path)
+
+
+def get_filename_without_extension(file_path: str):
+    """Get filename without extension from a file path"""
+    filename = os.path.basename(file_path)
+    return os.path.splitext(filename)[0]

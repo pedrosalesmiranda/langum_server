@@ -1,6 +1,6 @@
 from expressions_generation_scripts.console_inputs import create_all_from_topic, create_all_from_json_meanings
 
-create_all_from_json_meanings("russian", "english")
+create_all_from_json_meanings("english", "portuguese")
 
 # create_all_from_topic("verbs (infinitive, present(first, second, third person) related to movement. Like: go, return, enter, exit, pass, ...", "expression or word", 40, "russian", "english")
 # create_all_from_topic("used train station", "expression or word", 10, "russian", "english")

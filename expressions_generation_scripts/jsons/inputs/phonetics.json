@@ -1,0 +1,98 @@
+[
+    {
+        "expression": "мужчина",
+        "phonetic_text": "muʂˈɕːinə"
+    },
+    {
+        "expression": "женщина",
+        "phonetic_text": "ˈʐɛnʂɨnə"
+    },
+    {
+        "expression": "мальчик",
+        "phonetic_text": "ˈmalʲt͡ɕɪk"
+    },
+    {
+        "expression": "девочка",
+        "phonetic_text": "ˈdʲɛvət͡ɕkə"
+    },
+    {
+        "expression": "подросток",
+        "phonetic_text": "pɐdrɐˈstok"
+    },
+    {
+        "expression": "ребёнок",
+        "phonetic_text": "rʲɪˈbʲonək"
+    },
+    {
+        "expression": "младенец",
+        "phonetic_text": "mlɐˈdʲɛnʲɪt͡s"
+    },
+    {
+        "expression": "человек",
+        "phonetic_text": "t͡ɕɪlɐˈvʲek"
+    },
+    {
+        "expression": "лица",
+        "phonetic_text": "lʲɪˈtsa fɐrˈmalʲnə"
+    },
+    {
+        "expression": "люди",
+        "phonetic_text": "ˈlʲudʲɪ"
+    },
+    {
+        "expression": "муж",
+        "phonetic_text": "muʂ"
+    },
+    {
+        "expression": "жена",
+        "phonetic_text": "ʐɨˈna"
+    },
+    {
+        "expression": "сын",
+        "phonetic_text": "sɨn"
+    },
+    {
+        "expression": "дочь",
+        "phonetic_text": "dot͡ɕ"
+    },
+    {
+        "expression": "брат",
+        "phonetic_text": "brat"
+    },
+    {
+        "expression": "сестра",
+        "phonetic_text": "sʲɪsˈtra"
+    },
+    {
+        "expression": "отец",
+        "phonetic_text": "ɐˈtʲets"
+    },
+    {
+        "expression": "мать",
+        "phonetic_text": "matʲ"
+    },
+    {
+        "expression": "дедушка",
+        "phonetic_text": "ˈdʲedʊʂkə"
+    },
+    {
+        "expression": "бабушка",
+        "phonetic_text": "ˈbabʊʂkə"
+    },
+    {
+        "expression": "дядя",
+        "phonetic_text": "ˈdʲadʲə"
+    },
+    {
+        "expression": "тётя",
+        "phonetic_text": "ˈtʲotʲə"
+    },
+    {
+        "expression": "племянник",
+        "phonetic_text": "plʲɪˈmʲannʲɪk"
+    },
+    {
+        "expression": "племянница",
+        "phonetic_text": "plʲɪˈmʲannʲɪt͡sə"
+    }
+]

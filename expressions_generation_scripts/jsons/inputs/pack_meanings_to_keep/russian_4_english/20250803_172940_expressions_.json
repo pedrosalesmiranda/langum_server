@@ -1,0 +1,268 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "my plan",
+                "expression": "мой план"
+            },
+            {
+                "meaningEng": "my dream",
+                "expression": "моя мечта"
+            },
+            {
+                "meaningEng": "my decision",
+                "expression": "моё решение"
+            },
+            {
+                "meaningEng": "my actions",
+                "expression": "мои действия"
+            },
+            {
+                "meaningEng": "your plan",
+                "expression": "твой план"
+            },
+            {
+                "meaningEng": "your dream",
+                "expression": "твоя мечта"
+            },
+            {
+                "meaningEng": "your decision",
+                "expression": "твоё решение"
+            },
+            {
+                "meaningEng": "your dreams",
+                "expression": "твои мечты"
+            },
+            {
+                "meaningEng": "his plan",
+                "expression": "его план"
+            },
+            {
+                "meaningEng": "his dream",
+                "expression": "его мечта"
+            },
+            {
+                "meaningEng": "his decision",
+                "expression": "его решение"
+            },
+            {
+                "meaningEng": "his plans",
+                "expression": "его планы"
+            },
+            {
+                "meaningEng": "her plan",
+                "expression": "её план"
+            },
+            {
+                "meaningEng": "her dream",
+                "expression": "её мечта"
+            },
+            {
+                "meaningEng": "her decision",
+                "expression": "её решение"
+            },
+            {
+                "meaningEng": "her plans",
+                "expression": "её планы"
+            },
+            {
+                "meaningEng": "its color",
+                "expression": "его цвет"
+            },
+            {
+                "meaningEng": "its price",
+                "expression": "его цена"
+            },
+            {
+                "meaningEng": "its window",
+                "expression": "его окно"
+            },
+            {
+                "meaningEng": "its colors",
+                "expression": "его цвета"
+            },
+            {
+                "meaningEng": "our plan",
+                "expression": "наш план"
+            },
+            {
+                "meaningEng": "our dream",
+                "expression": "наша мечта"
+            },
+            {
+                "meaningEng": "our decision",
+                "expression": "наше решение"
+            },
+            {
+                "meaningEng": "our actions",
+                "expression": "наши действия"
+            },
+            {
+                "meaningEng": "your plan (formal)",
+                "expression": "ваш план"
+            },
+            {
+                "meaningEng": "your dream (formal)",
+                "expression": "ваша мечта"
+            },
+            {
+                "meaningEng": "your decision (formal)",
+                "expression": "ваше решение"
+            },
+            {
+                "meaningEng": "your decisions (formal)",
+                "expression": "ваши решения"
+            },
+            {
+                "meaningEng": "their plan",
+                "expression": "их план"
+            },
+            {
+                "meaningEng": "their dream",
+                "expression": "их мечта"
+            },
+            {
+                "meaningEng": "their decision",
+                "expression": "их решение"
+            },
+            {
+                "meaningEng": "their dreams",
+                "expression": "их мечты"
+            }
+        ]
+    },
+    {
+        "language": "english",
+        "meanings_expressions": [
+            {
+                "meaningEng": "my plan",
+                "expression": "my plan"
+            },
+            {
+                "meaningEng": "my dream",
+                "expression": "my dream"
+            },
+            {
+                "meaningEng": "my decision",
+                "expression": "my decision"
+            },
+            {
+                "meaningEng": "my actions",
+                "expression": "my actions"
+            },
+            {
+                "meaningEng": "your plan",
+                "expression": "your plan"
+            },
+            {
+                "meaningEng": "your dream",
+                "expression": "your dream"
+            },
+            {
+                "meaningEng": "your decision",
+                "expression": "your decision"
+            },
+            {
+                "meaningEng": "your dreams",
+                "expression": "your dreams"
+            },
+            {
+                "meaningEng": "his plan",
+                "expression": "his plan"
+            },
+            {
+                "meaningEng": "his dream",
+                "expression": "his dream"
+            },
+            {
+                "meaningEng": "his decision",
+                "expression": "his decision"
+            },
+            {
+                "meaningEng": "his plans",
+                "expression": "his plans"
+            },
+            {
+                "meaningEng": "her plan",
+                "expression": "her plan"
+            },
+            {
+                "meaningEng": "her dream",
+                "expression": "her dream"
+            },
+            {
+                "meaningEng": "her decision",
+                "expression": "her decision"
+            },
+            {
+                "meaningEng": "her plans",
+                "expression": "her plans"
+            },
+            {
+                "meaningEng": "its color",
+                "expression": "its color"
+            },
+            {
+                "meaningEng": "its price",
+                "expression": "its price"
+            },
+            {
+                "meaningEng": "its window",
+                "expression": "its window"
+            },
+            {
+                "meaningEng": "its colors",
+                "expression": "its colors"
+            },
+            {
+                "meaningEng": "our plan",
+                "expression": "our plan"
+            },
+            {
+                "meaningEng": "our dream",
+                "expression": "our dream"
+            },
+            {
+                "meaningEng": "our decision",
+                "expression": "our decision"
+            },
+            {
+                "meaningEng": "our actions",
+                "expression": "our actions"
+            },
+            {
+                "meaningEng": "your plan (formal)",
+                "expression": "your plan (formal)"
+            },
+            {
+                "meaningEng": "your dream (formal)",
+                "expression": "your dream (formal)"
+            },
+            {
+                "meaningEng": "your decision (formal)",
+                "expression": "your decision (formal)"
+            },
+            {
+                "meaningEng": "your decisions (formal)",
+                "expression": "your decisions (formal)"
+            },
+            {
+                "meaningEng": "their plan",
+                "expression": "their plan"
+            },
+            {
+                "meaningEng": "their dream",
+                "expression": "their dream"
+            },
+            {
+                "meaningEng": "their decision",
+                "expression": "their decision"
+            },
+            {
+                "meaningEng": "their dreams",
+                "expression": "their dreams"
+            }
+        ]
+    }
+]

@@ -25,3 +25,10 @@ def load_json_file(filename_no_extension: str, folder_path="", root_folder_path=
     with open(file_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
     return data
+
+
+def load_json_file_from_path(file_path: str):
+    """Load JSON file from absolute or relative path"""
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    return data

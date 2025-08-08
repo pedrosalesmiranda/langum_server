@@ -1,10 +1,13 @@
 import json
+import os
+import shutil
 import shared.json_utils
 import shared.file_utils
 import shared.constants
 from database_api import create_phonetics, create_expressions, create_pack_meanings
 from expressions_generation_scripts.gpt_prompts.prompt_generation import generate_pack_meanings_prompt, \
     generate_expressions_prompt, generate_phonetics_prompt
+from shared.constants import JSON_INPUT_FOLDER_PATH
 from shared.string_utils import copy_to_clipboard, paste_from_clipboard, remove_special_characters
 from sound.sound_generation import generate_all_language_sounds
 
@@ -27,6 +30,25 @@ def create_all_from_json_meanings(target_lang: str, base_lang):
     meanings_data = shared.json_utils.load_json_file(shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION,
                                                      folder_path=input_folder_path)
     _process_meanings_to_completion(meanings_data["meanings"], target_lang, base_lang)
+
+
+def create_all_from_jsons(file_path: str, target_language: str, base_language: str):
+    packs_path = file_path
+    path_cut_on_timestamp = packs_path.split("_pack_meanings")[0]
+    expressions_path = f"{path_cut_on_timestamp}_expressions_.json"
+    phonetics_path = f"{path_cut_on_timestamp}_phonetics_.json"
+
+    destination_packs_path = f"{shared.constants.PROJECT_ROOT}/{shared.constants.JSON_INPUT_FOLDER_PATH}/{shared.constants.PACK_MEANINGS_JSON_FILENAME_NO_EXTENSION}.json"
+    destination_expressions_path = f"{shared.constants.PROJECT_ROOT}/{shared.constants.JSON_INPUT_FOLDER_PATH}/{shared.constants.EXPRESSIONS_JSON_FILENAME_NO_EXTENSION}.json"
+    destination_phonetics_path = f"{shared.constants.PROJECT_ROOT}/{shared.constants.JSON_INPUT_FOLDER_PATH}/{shared.constants.PHONETICS_JSON_FILENAME_NO_EXTENSION}.json"
+
+    shutil.copyfile(packs_path, destination_packs_path)
+    shutil.copyfile(expressions_path, destination_expressions_path)
+    shutil.copyfile(phonetics_path, destination_phonetics_path)
+
+    # TODO copy files to default location
+    _create_database_entries(base_language)
+    _generate_language_sounds(target_language, base_language)
 
 
 # TODO create also LanguagePackWithTile row pack title in base language

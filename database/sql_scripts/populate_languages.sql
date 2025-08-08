@@ -2,4 +2,6 @@ INSERT INTO Languages (languageEng, languageNative, languageEngTwoLetters) VALUE
 ('portuguese', 'Português', 'pt'),
 ('russian', 'Русский', 'ru'),
 ('polish', 'Polski', 'pl'),
-('english', 'English', 'en');
+('english', 'English', 'en'),
+('mandarin', '普通话', 'zh'),
+('romanian', 'Română', 'ro');

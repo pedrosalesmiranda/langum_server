@@ -1,0 +1,340 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "zero",
+                "expression": "ноль"
+            },
+            {
+                "meaningEng": "one",
+                "expression": "один"
+            },
+            {
+                "meaningEng": "two",
+                "expression": "два"
+            },
+            {
+                "meaningEng": "three",
+                "expression": "три"
+            },
+            {
+                "meaningEng": "four",
+                "expression": "четыре"
+            },
+            {
+                "meaningEng": "five",
+                "expression": "пять"
+            },
+            {
+                "meaningEng": "six",
+                "expression": "шесть"
+            },
+            {
+                "meaningEng": "seven",
+                "expression": "семь"
+            },
+            {
+                "meaningEng": "eight",
+                "expression": "восемь"
+            },
+            {
+                "meaningEng": "nine",
+                "expression": "девять"
+            },
+            {
+                "meaningEng": "ten",
+                "expression": "десять"
+            },
+            {
+                "meaningEng": "eleven",
+                "expression": "одиннадцать"
+            },
+            {
+                "meaningEng": "twelve",
+                "expression": "двенадцать"
+            },
+            {
+                "meaningEng": "thirteen",
+                "expression": "тринадцать"
+            },
+            {
+                "meaningEng": "fourteen",
+                "expression": "четырнадцать"
+            },
+            {
+                "meaningEng": "fifteen",
+                "expression": "пятнадцать"
+            },
+            {
+                "meaningEng": "sixteen",
+                "expression": "шестнадцать"
+            },
+            {
+                "meaningEng": "seventeen",
+                "expression": "семнадцать"
+            },
+            {
+                "meaningEng": "eighteen",
+                "expression": "восемнадцать"
+            },
+            {
+                "meaningEng": "nineteen",
+                "expression": "девятнадцать"
+            },
+            {
+                "meaningEng": "twenty",
+                "expression": "двадцать"
+            },
+            {
+                "meaningEng": "thirty",
+                "expression": "тридцать"
+            },
+            {
+                "meaningEng": "forty",
+                "expression": "сорок"
+            },
+            {
+                "meaningEng": "fifty",
+                "expression": "пятьдесят"
+            },
+            {
+                "meaningEng": "sixty",
+                "expression": "шестьдесят"
+            },
+            {
+                "meaningEng": "seventy",
+                "expression": "семьдесят"
+            },
+            {
+                "meaningEng": "eighty",
+                "expression": "восемьдесят"
+            },
+            {
+                "meaningEng": "ninty",
+                "expression": "девяносто"
+            },
+            {
+                "meaningEng": "hundred",
+                "expression": "сто"
+            },
+            {
+                "meaningEng": "two hundred",
+                "expression": "двести"
+            },
+            {
+                "meaningEng": "three hundred",
+                "expression": "триста"
+            },
+            {
+                "meaningEng": "four hundred",
+                "expression": "четыреста"
+            },
+            {
+                "meaningEng": "five hundred",
+                "expression": "пятьсот"
+            },
+            {
+                "meaningEng": "six hundred",
+                "expression": "шестьсот"
+            },
+            {
+                "meaningEng": "seven hundred",
+                "expression": "семьсот"
+            },
+            {
+                "meaningEng": "eight hundred",
+                "expression": "восемьсот"
+            },
+            {
+                "meaningEng": "nine hundred",
+                "expression": "девятьсот"
+            },
+            {
+                "meaningEng": "thousand",
+                "expression": "тысяча"
+            },
+            {
+                "meaningEng": "million",
+                "expression": "миллион"
+            },
+            {
+                "meaningEng": "billion",
+                "expression": "миллиард"
+            },
+            {
+                "meaningEng": "trillion",
+                "expression": "триллион"
+            }
+        ]
+    },
+    {
+        "language": "english",
+        "meanings_expressions": [
+            {
+                "meaningEng": "zero",
+                "expression": "zero"
+            },
+            {
+                "meaningEng": "one",
+                "expression": "one"
+            },
+            {
+                "meaningEng": "two",
+                "expression": "two"
+            },
+            {
+                "meaningEng": "three",
+                "expression": "three"
+            },
+            {
+                "meaningEng": "four",
+                "expression": "four"
+            },
+            {
+                "meaningEng": "five",
+                "expression": "five"
+            },
+            {
+                "meaningEng": "six",
+                "expression": "six"
+            },
+            {
+                "meaningEng": "seven",
+                "expression": "seven"
+            },
+            {
+                "meaningEng": "eight",
+                "expression": "eight"
+            },
+            {
+                "meaningEng": "nine",
+                "expression": "nine"
+            },
+            {
+                "meaningEng": "ten",
+                "expression": "ten"
+            },
+            {
+                "meaningEng": "eleven",
+                "expression": "eleven"
+            },
+            {
+                "meaningEng": "twelve",
+                "expression": "twelve"
+            },
+            {
+                "meaningEng": "thirteen",
+                "expression": "thirteen"
+            },
+            {
+                "meaningEng": "fourteen",
+                "expression": "fourteen"
+            },
+            {
+                "meaningEng": "fifteen",
+                "expression": "fifteen"
+            },
+            {
+                "meaningEng": "sixteen",
+                "expression": "sixteen"
+            },
+            {
+                "meaningEng": "seventeen",
+                "expression": "seventeen"
+            },
+            {
+                "meaningEng": "eighteen",
+                "expression": "eighteen"
+            },
+            {
+                "meaningEng": "nineteen",
+                "expression": "nineteen"
+            },
+            {
+                "meaningEng": "twenty",
+                "expression": "twenty"
+            },
+            {
+                "meaningEng": "thirty",
+                "expression": "thirty"
+            },
+            {
+                "meaningEng": "forty",
+                "expression": "forty"
+            },
+            {
+                "meaningEng": "fifty",
+                "expression": "fifty"
+            },
+            {
+                "meaningEng": "sixty",
+                "expression": "sixty"
+            },
+            {
+                "meaningEng": "seventy",
+                "expression": "seventy"
+            },
+            {
+                "meaningEng": "eighty",
+                "expression": "eighty"
+            },
+            {
+                "meaningEng": "ninty",
+                "expression": "ninety"
+            },
+            {
+                "meaningEng": "hundred",
+                "expression": "hundred"
+            },
+            {
+                "meaningEng": "two hundred",
+                "expression": "two hundred"
+            },
+            {
+                "meaningEng": "three hundred",
+                "expression": "three hundred"
+            },
+            {
+                "meaningEng": "four hundred",
+                "expression": "four hundred"
+            },
+            {
+                "meaningEng": "five hundred",
+                "expression": "five hundred"
+            },
+            {
+                "meaningEng": "six hundred",
+                "expression": "six hundred"
+            },
+            {
+                "meaningEng": "seven hundred",
+                "expression": "seven hundred"
+            },
+            {
+                "meaningEng": "eight hundred",
+                "expression": "eight hundred"
+            },
+            {
+                "meaningEng": "nine hundred",
+                "expression": "nine hundred"
+            },
+            {
+                "meaningEng": "thousand",
+                "expression": "thousand"
+            },
+            {
+                "meaningEng": "million",
+                "expression": "million"
+            },
+            {
+                "meaningEng": "billion",
+                "expression": "billion"
+            },
+            {
+                "meaningEng": "trillion",
+                "expression": "trillion"
+            }
+        ]
+    }
+]

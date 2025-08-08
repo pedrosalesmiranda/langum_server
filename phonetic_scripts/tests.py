@@ -1,5 +1,5 @@
 import split_words
-from phonetic_scripts.ipa_phonetics import ipa_to_portuguese_phonetic_gpt_o3, ipa_to_portuguese_phonetic
+from phonetic_scripts.ipa_phonetics import ipa_to_portuguese_phonetic_gpt_o3
 
 # Example words demonstrating each rule:
 test_words = [
@@ -40,7 +40,6 @@ print(split_words.split_russian_text(sentence5))
 
 print(split_words.split_russian_text("её фильм его"))
 print(ipa_to_portuguese_phonetic_gpt_o3("jɪˈjo fʲilʲm --- jɪˈvo ɪˈɡra"))
-print(ipa_to_portuguese_phonetic("jɪˈjo fʲilʲm --- jɪˈvo ɪˈɡra"))
 print("jɪˈjo fʲilʲm --- jɪˈvo ɪˈɡra")
 
 print("mə-ɫɐ-ˈko")
@@ -49,3 +48,5 @@ print(ipa_to_portuguese_phonetic_gpt_o3("mə-ɫɐ-ˈko"))
 print("и ветер все это унес")
 print("i ˈvʲetʲɪr fsʲɵ ˈɛtə ʊˈnʲos")
 print(ipa_to_portuguese_phonetic_gpt_o3("i ˈvʲetʲɪr fsʲɵ ˈɛtə ʊˈnʲos"))
+
+print(split_words.split_russian_word("одиннадцать"))

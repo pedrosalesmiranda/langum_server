@@ -1,0 +1,204 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "man",
+                "expression": "мужчина"
+            },
+            {
+                "meaningEng": "woman",
+                "expression": "женщина"
+            },
+            {
+                "meaningEng": "boy",
+                "expression": "мальчик"
+            },
+            {
+                "meaningEng": "girl",
+                "expression": "девочка"
+            },
+            {
+                "meaningEng": "teenager",
+                "expression": "подросток"
+            },
+            {
+                "meaningEng": "child",
+                "expression": "ребёнок"
+            },
+            {
+                "meaningEng": "baby",
+                "expression": "младенец"
+            },
+            {
+                "meaningEng": "person",
+                "expression": "человек"
+            },
+            {
+                "meaningEng": "persons (formal)",
+                "expression": "лица"
+            },
+            {
+                "meaningEng": "people",
+                "expression": "люди"
+            },
+            {
+                "meaningEng": "husband",
+                "expression": "муж"
+            },
+            {
+                "meaningEng": "wife",
+                "expression": "жена"
+            },
+            {
+                "meaningEng": "son",
+                "expression": "сын"
+            },
+            {
+                "meaningEng": "daughter",
+                "expression": "дочь"
+            },
+            {
+                "meaningEng": "brother",
+                "expression": "брат"
+            },
+            {
+                "meaningEng": "sister",
+                "expression": "сестра"
+            },
+            {
+                "meaningEng": "father",
+                "expression": "отец"
+            },
+            {
+                "meaningEng": "mother",
+                "expression": "мать"
+            },
+            {
+                "meaningEng": "grandfather",
+                "expression": "дедушка"
+            },
+            {
+                "meaningEng": "grandmother",
+                "expression": "бабушка"
+            },
+            {
+                "meaningEng": "uncle",
+                "expression": "дядя"
+            },
+            {
+                "meaningEng": "auntie",
+                "expression": "тётя"
+            },
+            {
+                "meaningEng": "nephew",
+                "expression": "племянник"
+            },
+            {
+                "meaningEng": "niece",
+                "expression": "племянница"
+            }
+        ]
+    },
+    {
+        "language": "english",
+        "meanings_expressions": [
+            {
+                "meaningEng": "man",
+                "expression": "man"
+            },
+            {
+                "meaningEng": "woman",
+                "expression": "woman"
+            },
+            {
+                "meaningEng": "boy",
+                "expression": "boy"
+            },
+            {
+                "meaningEng": "girl",
+                "expression": "girl"
+            },
+            {
+                "meaningEng": "teenager",
+                "expression": "teenager"
+            },
+            {
+                "meaningEng": "child",
+                "expression": "child"
+            },
+            {
+                "meaningEng": "baby",
+                "expression": "baby"
+            },
+            {
+                "meaningEng": "person",
+                "expression": "person"
+            },
+            {
+                "meaningEng": "persons (formal)",
+                "expression": "persons"
+            },
+            {
+                "meaningEng": "people",
+                "expression": "people"
+            },
+            {
+                "meaningEng": "husband",
+                "expression": "husband"
+            },
+            {
+                "meaningEng": "wife",
+                "expression": "wife"
+            },
+            {
+                "meaningEng": "son",
+                "expression": "son"
+            },
+            {
+                "meaningEng": "daughter",
+                "expression": "daughter"
+            },
+            {
+                "meaningEng": "brother",
+                "expression": "brother"
+            },
+            {
+                "meaningEng": "sister",
+                "expression": "sister"
+            },
+            {
+                "meaningEng": "father",
+                "expression": "father"
+            },
+            {
+                "meaningEng": "mother",
+                "expression": "mother"
+            },
+            {
+                "meaningEng": "grandfather",
+                "expression": "grandfather"
+            },
+            {
+                "meaningEng": "grandmother",
+                "expression": "grandmother"
+            },
+            {
+                "meaningEng": "uncle",
+                "expression": "uncle"
+            },
+            {
+                "meaningEng": "auntie",
+                "expression": "auntie"
+            },
+            {
+                "meaningEng": "nephew",
+                "expression": "nephew"
+            },
+            {
+                "meaningEng": "niece",
+                "expression": "niece"
+            }
+        ]
+    }
+]

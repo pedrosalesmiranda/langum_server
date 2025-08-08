@@ -1,0 +1,166 @@
+[
+    {
+        "expression": "ноль",
+        "phonetic_text": "nolʲ"
+    },
+    {
+        "expression": "один",
+        "phonetic_text": "ɐˈdʲin"
+    },
+    {
+        "expression": "два",
+        "phonetic_text": "dva"
+    },
+    {
+        "expression": "три",
+        "phonetic_text": "trʲi"
+    },
+    {
+        "expression": "четыре",
+        "phonetic_text": "tɕɪˈtɨrʲɪ"
+    },
+    {
+        "expression": "пять",
+        "phonetic_text": "pʲætʲ"
+    },
+    {
+        "expression": "шесть",
+        "phonetic_text": "ʂesʲtʲ"
+    },
+    {
+        "expression": "семь",
+        "phonetic_text": "sʲemʲ"
+    },
+    {
+        "expression": "восемь",
+        "phonetic_text": "ˈvosʲɪmʲ"
+    },
+    {
+        "expression": "девять",
+        "phonetic_text": "ˈdʲevʲɪtʲ"
+    },
+    {
+        "expression": "десять",
+        "phonetic_text": "ˈdʲesʲɪtʲ"
+    },
+    {
+        "expression": "одиннадцать",
+        "phonetic_text": "ɐˈdʲinːət͡sːɨtʲ"
+    },
+    {
+        "expression": "двенадцать",
+        "phonetic_text": "dvʲɪˈnat͡sətʲ"
+    },
+    {
+        "expression": "тринадцать",
+        "phonetic_text": "trʲɪˈnat͡sətʲ"
+    },
+    {
+        "expression": "четырнадцать",
+        "phonetic_text": "tɕɪˈtɨrnət͡sətʲ"
+    },
+    {
+        "expression": "пятнадцать",
+        "phonetic_text": "pʲɪtˈnat͡sətʲ"
+    },
+    {
+        "expression": "шестнадцать",
+        "phonetic_text": "ʂɨsˈnat͡sətʲ"
+    },
+    {
+        "expression": "семнадцать",
+        "phonetic_text": "sʲɪmˈnat͡sətʲ"
+    },
+    {
+        "expression": "восемнадцать",
+        "phonetic_text": "vəsʲɪmˈnat͡sətʲ"
+    },
+    {
+        "expression": "девятнадцать",
+        "phonetic_text": "dʲɪvʲɪtˈnat͡sətʲ"
+    },
+    {
+        "expression": "двадцать",
+        "phonetic_text": "ˈdvat͡sətʲ"
+    },
+    {
+        "expression": "тридцать",
+        "phonetic_text": "ˈtrʲit͡sətʲ"
+    },
+    {
+        "expression": "сорок",
+        "phonetic_text": "ˈsorək"
+    },
+    {
+        "expression": "пятьдесят",
+        "phonetic_text": "pʲɪdʲˈsʲæt"
+    },
+    {
+        "expression": "шестьдесят",
+        "phonetic_text": "ʂɨdʲˈsʲæt"
+    },
+    {
+        "expression": "семьдесят",
+        "phonetic_text": "sʲɪmʲdʲɪˈsʲæt"
+    },
+    {
+        "expression": "восемьдесят",
+        "phonetic_text": "ˈvosʲɪmʲdʲɪsʲɪt"
+    },
+    {
+        "expression": "девяносто",
+        "phonetic_text": "dʲɪvʲɪˈnostə"
+    },
+    {
+        "expression": "сто",
+        "phonetic_text": "sto"
+    },
+    {
+        "expression": "двести",
+        "phonetic_text": "ˈdvʲesʲtʲɪ"
+    },
+    {
+        "expression": "триста",
+        "phonetic_text": "ˈtrʲisʲtə"
+    },
+    {
+        "expression": "четыреста",
+        "phonetic_text": "tɕɪˈtrʲesʲtə"
+    },
+    {
+        "expression": "пятьсот",
+        "phonetic_text": "pʲɪtʲˈsot"
+    },
+    {
+        "expression": "шестьсот",
+        "phonetic_text": "ʂɨsʲˈsot"
+    },
+    {
+        "expression": "семьсот",
+        "phonetic_text": "sʲɪmʲˈsot"
+    },
+    {
+        "expression": "восемьсот",
+        "phonetic_text": "ˈvosʲɪmʲsot"
+    },
+    {
+        "expression": "девятьсот",
+        "phonetic_text": "dʲɪvʲɪtʲˈsot"
+    },
+    {
+        "expression": "тысяча",
+        "phonetic_text": "ˈtɨsʲɪt͡ɕə"
+    },
+    {
+        "expression": "миллион",
+        "phonetic_text": "mʲɪlʲɪˈon"
+    },
+    {
+        "expression": "миллиард",
+        "phonetic_text": "mʲɪlʲɪˈart"
+    },
+    {
+        "expression": "триллион",
+        "phonetic_text": "trʲɪlʲɪˈon"
+    }
+]

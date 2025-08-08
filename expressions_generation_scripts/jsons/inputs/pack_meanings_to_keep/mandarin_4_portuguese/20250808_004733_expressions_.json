@@ -1,0 +1,204 @@
+[
+    {
+        "language": "mandarin",
+        "meanings_expressions": [
+            {
+                "meaningEng": "man",
+                "expression": "男人"
+            },
+            {
+                "meaningEng": "woman",
+                "expression": "女人"
+            },
+            {
+                "meaningEng": "boy",
+                "expression": "男孩"
+            },
+            {
+                "meaningEng": "girl",
+                "expression": "女孩"
+            },
+            {
+                "meaningEng": "teenager",
+                "expression": "青少年"
+            },
+            {
+                "meaningEng": "child",
+                "expression": "孩子"
+            },
+            {
+                "meaningEng": "baby",
+                "expression": "婴儿"
+            },
+            {
+                "meaningEng": "person",
+                "expression": "人"
+            },
+            {
+                "meaningEng": "persons (formal)",
+                "expression": "人士"
+            },
+            {
+                "meaningEng": "people",
+                "expression": "人们"
+            },
+            {
+                "meaningEng": "husband",
+                "expression": "丈夫"
+            },
+            {
+                "meaningEng": "wife",
+                "expression": "妻子"
+            },
+            {
+                "meaningEng": "son",
+                "expression": "儿子"
+            },
+            {
+                "meaningEng": "daughter",
+                "expression": "女儿"
+            },
+            {
+                "meaningEng": "brother",
+                "expression": "兄弟"
+            },
+            {
+                "meaningEng": "sister",
+                "expression": "姐妹"
+            },
+            {
+                "meaningEng": "father",
+                "expression": "父亲"
+            },
+            {
+                "meaningEng": "mother",
+                "expression": "母亲"
+            },
+            {
+                "meaningEng": "grandfather",
+                "expression": "祖父"
+            },
+            {
+                "meaningEng": "grandmother",
+                "expression": "祖母"
+            },
+            {
+                "meaningEng": "uncle",
+                "expression": "叔叔"
+            },
+            {
+                "meaningEng": "auntie",
+                "expression": "阿姨"
+            },
+            {
+                "meaningEng": "nephew",
+                "expression": "侄子"
+            },
+            {
+                "meaningEng": "niece",
+                "expression": "侄女"
+            }
+        ]
+    },
+    {
+        "language": "portuguese",
+        "meanings_expressions": [
+            {
+                "meaningEng": "man",
+                "expression": "homem"
+            },
+            {
+                "meaningEng": "woman",
+                "expression": "mulher"
+            },
+            {
+                "meaningEng": "boy",
+                "expression": "menino"
+            },
+            {
+                "meaningEng": "girl",
+                "expression": "menina"
+            },
+            {
+                "meaningEng": "teenager",
+                "expression": "adolescente"
+            },
+            {
+                "meaningEng": "child",
+                "expression": "criança"
+            },
+            {
+                "meaningEng": "baby",
+                "expression": "bebê"
+            },
+            {
+                "meaningEng": "person",
+                "expression": "pessoa"
+            },
+            {
+                "meaningEng": "persons (formal)",
+                "expression": "pessoas (formal)"
+            },
+            {
+                "meaningEng": "people",
+                "expression": "pessoas"
+            },
+            {
+                "meaningEng": "husband",
+                "expression": "marido"
+            },
+            {
+                "meaningEng": "wife",
+                "expression": "esposa"
+            },
+            {
+                "meaningEng": "son",
+                "expression": "filho"
+            },
+            {
+                "meaningEng": "daughter",
+                "expression": "filha"
+            },
+            {
+                "meaningEng": "brother",
+                "expression": "irmão"
+            },
+            {
+                "meaningEng": "sister",
+                "expression": "irmã"
+            },
+            {
+                "meaningEng": "father",
+                "expression": "pai"
+            },
+            {
+                "meaningEng": "mother",
+                "expression": "mãe"
+            },
+            {
+                "meaningEng": "grandfather",
+                "expression": "avô"
+            },
+            {
+                "meaningEng": "grandmother",
+                "expression": "avó"
+            },
+            {
+                "meaningEng": "uncle",
+                "expression": "tio"
+            },
+            {
+                "meaningEng": "auntie",
+                "expression": "tia"
+            },
+            {
+                "meaningEng": "nephew",
+                "expression": "sobrinho"
+            },
+            {
+                "meaningEng": "niece",
+                "expression": "sobrinha"
+            }
+        ]
+    }
+]
