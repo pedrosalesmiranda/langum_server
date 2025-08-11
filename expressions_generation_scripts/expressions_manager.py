@@ -106,6 +106,10 @@ def set_languages():
     except KeyboardInterrupt:
         print("\nOperation cancelled")
 
+def createLanguagePackTitle():
+    """Create language pack title"""
+    pass
+
 def main():
     print("Expressions Manager CLI")
     print("=" * 30)
@@ -119,10 +123,11 @@ def main():
         print("1. Select pack_meanings file")
         print("2. Set target and base languages")
         print("3. Process selected file")
-        print("4. Exit")
+        print("4. Create language pack title")
+        print("5. Exit")
         
         try:
-            choice = input("\nEnter your choice (1-4): ").strip()
+            choice = input("\nEnter your choice (1-5): ").strip()
             
             if choice == "1":
                 select_meanings_file()
@@ -131,10 +136,12 @@ def main():
             elif choice == "3":
                 process_selected_file()
             elif choice == "4":
+                createLanguagePackTitle()
+            elif choice == "5":
                 print("Goodbye!")
                 break
             else:
-                print("Invalid choice. Please enter 1-4.")
+                print("Invalid choice. Please enter 1-5.")
         except KeyboardInterrupt:
             print("\nGoodbye!")
             break

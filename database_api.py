@@ -170,6 +170,7 @@ def get_language_packs(target_language_id, base_language_id):
     for pack_key, pack_value in map_pack_id_to_pack.items():
         expressions_list = list(pack_value[expressions_key].values())
         for expression in expressions_list:
+            print(expression["expression_id"])
             current_expression_id = expression["expression_id"]
             if current_expression_id in map_expression_id_to_expression_evaluations:
                 expression[expression_evaluations_key] = list(map_expression_id_to_expression_evaluations[current_expression_id].values())

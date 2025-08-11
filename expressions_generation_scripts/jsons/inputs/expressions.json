@@ -3,100 +3,148 @@
         "language": "russian",
         "meanings_expressions": [
             {
-                "meaningEng": "man",
-                "expression": "мужчина"
+                "meaningEng": "i work",
+                "expression": "я работаю"
             },
             {
-                "meaningEng": "woman",
-                "expression": "женщина"
+                "meaningEng": "you work",
+                "expression": "ты работаешь"
             },
             {
-                "meaningEng": "boy",
-                "expression": "мальчик"
+                "meaningEng": "he works",
+                "expression": "он работает"
             },
             {
-                "meaningEng": "girl",
-                "expression": "девочка"
+                "meaningEng": "we work",
+                "expression": "мы работаем"
             },
             {
-                "meaningEng": "teenager",
-                "expression": "подросток"
+                "meaningEng": "you work (plural)",
+                "expression": "вы работаете"
             },
             {
-                "meaningEng": "child",
-                "expression": "ребёнок"
+                "meaningEng": "they work",
+                "expression": "они работают"
             },
             {
-                "meaningEng": "baby",
-                "expression": "младенец"
+                "meaningEng": "he worked",
+                "expression": "он работал"
             },
             {
-                "meaningEng": "person",
-                "expression": "человек"
+                "meaningEng": "she worked",
+                "expression": "она работала"
             },
             {
-                "meaningEng": "persons (formal)",
-                "expression": "лица"
+                "meaningEng": "it worked",
+                "expression": "оно работало"
             },
             {
-                "meaningEng": "people",
-                "expression": "люди"
+                "meaningEng": "he was working",
+                "expression": "он Поработал"
             },
             {
-                "meaningEng": "husband",
-                "expression": "муж"
+                "meaningEng": "she was working",
+                "expression": "она Поработала"
             },
             {
-                "meaningEng": "wife",
-                "expression": "жена"
+                "meaningEng": "it was working",
+                "expression": "оно Поработало"
             },
             {
-                "meaningEng": "son",
-                "expression": "сын"
+                "meaningEng": "i will work",
+                "expression": "я поработаю"
             },
             {
-                "meaningEng": "daughter",
-                "expression": "дочь"
+                "meaningEng": "you will work",
+                "expression": "ты поработаешь"
             },
             {
-                "meaningEng": "brother",
-                "expression": "брат"
+                "meaningEng": "he will work",
+                "expression": "он поработает"
             },
             {
-                "meaningEng": "sister",
-                "expression": "сестра"
+                "meaningEng": "we will work",
+                "expression": "мы поработаем"
             },
             {
-                "meaningEng": "father",
-                "expression": "отец"
+                "meaningEng": "you will work (plural)",
+                "expression": "вы поработаете"
             },
             {
-                "meaningEng": "mother",
-                "expression": "мать"
+                "meaningEng": "they will work",
+                "expression": "они поработают"
             },
             {
-                "meaningEng": "grandfather",
-                "expression": "дедушка"
+                "meaningEng": "i speak",
+                "expression": "я говорю"
             },
             {
-                "meaningEng": "grandmother",
-                "expression": "бабушка"
+                "meaningEng": "you speak",
+                "expression": "ты говоришь"
             },
             {
-                "meaningEng": "uncle",
-                "expression": "дядя"
+                "meaningEng": "he speaks",
+                "expression": "он говорит"
             },
             {
-                "meaningEng": "auntie",
-                "expression": "тётя"
+                "meaningEng": "we speak",
+                "expression": "мы говорим"
             },
             {
-                "meaningEng": "nephew",
-                "expression": "племянник"
+                "meaningEng": "you speak (plural)",
+                "expression": "вы говорите"
             },
             {
-                "meaningEng": "niece",
-                "expression": "племянница"
+                "meaningEng": "they speak",
+                "expression": "они говорят"
+            },
+            {
+                "meaningEng": "he spoke",
+                "expression": "он говорил"
+            },
+            {
+                "meaningEng": "she spoke",
+                "expression": "она говорила"
+            },
+            {
+                "meaningEng": "it spoke",
+                "expression": "оно говорило"
+            },
+            {
+                "meaningEng": "he was speaking",
+                "expression": "он Сказал"
+            },
+            {
+                "meaningEng": "she was speaking",
+                "expression": "она Сказала"
+            },
+            {
+                "meaningEng": "it was speaking",
+                "expression": "оно Сказало"
+            },
+            {
+                "meaningEng": "i will speak",
+                "expression": "я поговорю"
+            },
+            {
+                "meaningEng": "you will speak",
+                "expression": "ты поговоришь"
+            },
+            {
+                "meaningEng": "he will speak",
+                "expression": "он поговорит"
+            },
+            {
+                "meaningEng": "we will speak",
+                "expression": "мы поговорим"
+            },
+            {
+                "meaningEng": "you will speak (plural)",
+                "expression": "вы поговорите"
+            },
+            {
+                "meaningEng": "they will speak",
+                "expression": "они поговорят"
             }
         ]
     },
@@ -104,100 +152,148 @@
         "language": "english",
         "meanings_expressions": [
             {
-                "meaningEng": "man",
-                "expression": "man"
+                "meaningEng": "i work",
+                "expression": "i work"
             },
             {
-                "meaningEng": "woman",
-                "expression": "woman"
+                "meaningEng": "you work",
+                "expression": "you work"
             },
             {
-                "meaningEng": "boy",
-                "expression": "boy"
+                "meaningEng": "he works",
+                "expression": "he works"
             },
             {
-                "meaningEng": "girl",
-                "expression": "girl"
+                "meaningEng": "we work",
+                "expression": "we work"
             },
             {
-                "meaningEng": "teenager",
-                "expression": "teenager"
+                "meaningEng": "you work (plural)",
+                "expression": "you work (plural)"
             },
             {
-                "meaningEng": "child",
-                "expression": "child"
+                "meaningEng": "they work",
+                "expression": "they work"
             },
             {
-                "meaningEng": "baby",
-                "expression": "baby"
+                "meaningEng": "he worked",
+                "expression": "he worked"
             },
             {
-                "meaningEng": "person",
-                "expression": "person"
+                "meaningEng": "she worked",
+                "expression": "she worked"
             },
             {
-                "meaningEng": "persons (formal)",
-                "expression": "persons"
+                "meaningEng": "it worked",
+                "expression": "it worked"
             },
             {
-                "meaningEng": "people",
-                "expression": "people"
+                "meaningEng": "he was working",
+                "expression": "he was working"
             },
             {
-                "meaningEng": "husband",
-                "expression": "husband"
+                "meaningEng": "she was working",
+                "expression": "she was working"
             },
             {
-                "meaningEng": "wife",
-                "expression": "wife"
+                "meaningEng": "it was working",
+                "expression": "it was working"
             },
             {
-                "meaningEng": "son",
-                "expression": "son"
+                "meaningEng": "i will work",
+                "expression": "i will work"
             },
             {
-                "meaningEng": "daughter",
-                "expression": "daughter"
+                "meaningEng": "you will work",
+                "expression": "you will work"
             },
             {
-                "meaningEng": "brother",
-                "expression": "brother"
+                "meaningEng": "he will work",
+                "expression": "he will work"
             },
             {
-                "meaningEng": "sister",
-                "expression": "sister"
+                "meaningEng": "we will work",
+                "expression": "we will work"
             },
             {
-                "meaningEng": "father",
-                "expression": "father"
+                "meaningEng": "you will work (plural)",
+                "expression": "you will work (plural)"
             },
             {
-                "meaningEng": "mother",
-                "expression": "mother"
+                "meaningEng": "they will work",
+                "expression": "they will work"
             },
             {
-                "meaningEng": "grandfather",
-                "expression": "grandfather"
+                "meaningEng": "i speak",
+                "expression": "i speak"
             },
             {
-                "meaningEng": "grandmother",
-                "expression": "grandmother"
+                "meaningEng": "you speak",
+                "expression": "you speak"
             },
             {
-                "meaningEng": "uncle",
-                "expression": "uncle"
+                "meaningEng": "he speaks",
+                "expression": "he speaks"
             },
             {
-                "meaningEng": "auntie",
-                "expression": "auntie"
+                "meaningEng": "we speak",
+                "expression": "we speak"
             },
             {
-                "meaningEng": "nephew",
-                "expression": "nephew"
+                "meaningEng": "you speak (plural)",
+                "expression": "you speak (plural)"
             },
             {
-                "meaningEng": "niece",
-                "expression": "niece"
+                "meaningEng": "they speak",
+                "expression": "they speak"
+            },
+            {
+                "meaningEng": "he spoke",
+                "expression": "he spoke"
+            },
+            {
+                "meaningEng": "she spoke",
+                "expression": "she spoke"
+            },
+            {
+                "meaningEng": "it spoke",
+                "expression": "it spoke"
+            },
+            {
+                "meaningEng": "he was speaking",
+                "expression": "he was speaking"
+            },
+            {
+                "meaningEng": "she was speaking",
+                "expression": "she was speaking"
+            },
+            {
+                "meaningEng": "it was speaking",
+                "expression": "it was speaking"
+            },
+            {
+                "meaningEng": "i will speak",
+                "expression": "i will speak"
+            },
+            {
+                "meaningEng": "you will speak",
+                "expression": "you will speak"
+            },
+            {
+                "meaningEng": "he will speak",
+                "expression": "he will speak"
+            },
+            {
+                "meaningEng": "we will speak",
+                "expression": "we will speak"
+            },
+            {
+                "meaningEng": "you will speak (plural)",
+                "expression": "you will speak (plural)"
+            },
+            {
+                "meaningEng": "they will speak",
+                "expression": "they will speak"
             }
         ]
     }

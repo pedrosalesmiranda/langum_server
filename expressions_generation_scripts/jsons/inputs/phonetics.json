@@ -1,98 +1,146 @@
 [
     {
-        "expression": "мужчина",
-        "phonetic_text": "muʂˈɕːinə"
+        "expression": "я работаю",
+        "phonetic_text": "ja rɐˈbotajʊ"
     },
     {
-        "expression": "женщина",
-        "phonetic_text": "ˈʐɛnʂɨnə"
+        "expression": "ты работаешь",
+        "phonetic_text": "tɨ rɐˈbotajɪʂ"
     },
     {
-        "expression": "мальчик",
-        "phonetic_text": "ˈmalʲt͡ɕɪk"
+        "expression": "он работает",
+        "phonetic_text": "on rɐˈbotajɪt"
     },
     {
-        "expression": "девочка",
-        "phonetic_text": "ˈdʲɛvət͡ɕkə"
+        "expression": "мы работаем",
+        "phonetic_text": "mɨ rɐˈbotajɪm"
     },
     {
-        "expression": "подросток",
-        "phonetic_text": "pɐdrɐˈstok"
+        "expression": "вы работаете",
+        "phonetic_text": "vɨ rɐˈbotajɪtʲɪ"
     },
     {
-        "expression": "ребёнок",
-        "phonetic_text": "rʲɪˈbʲonək"
+        "expression": "они работают",
+        "phonetic_text": "ɐˈnʲi rɐˈbotajʊt"
     },
     {
-        "expression": "младенец",
-        "phonetic_text": "mlɐˈdʲɛnʲɪt͡s"
+        "expression": "он работал",
+        "phonetic_text": "on rɐˈbotəl"
     },
     {
-        "expression": "человек",
-        "phonetic_text": "t͡ɕɪlɐˈvʲek"
+        "expression": "она работала",
+        "phonetic_text": "ɐˈna rɐˈbotələ"
     },
     {
-        "expression": "лица",
-        "phonetic_text": "lʲɪˈtsa fɐrˈmalʲnə"
+        "expression": "оно работало",
+        "phonetic_text": "ɐˈno rɐˈbotələ"
     },
     {
-        "expression": "люди",
-        "phonetic_text": "ˈlʲudʲɪ"
+        "expression": "он работал",
+        "phonetic_text": "on rɐˈbotəl"
     },
     {
-        "expression": "муж",
-        "phonetic_text": "muʂ"
+        "expression": "она работала",
+        "phonetic_text": "ɐˈna rɐˈbotələ"
     },
     {
-        "expression": "жена",
-        "phonetic_text": "ʐɨˈna"
+        "expression": "оно работало",
+        "phonetic_text": "ɐˈno rɐˈbotələ"
     },
     {
-        "expression": "сын",
-        "phonetic_text": "sɨn"
+        "expression": "я поработаю",
+        "phonetic_text": "ja pərɐˈbotajʊ"
     },
     {
-        "expression": "дочь",
-        "phonetic_text": "dot͡ɕ"
+        "expression": "ты поработаешь",
+        "phonetic_text": "tɨ pərɐˈbotajɪʂ"
     },
     {
-        "expression": "брат",
-        "phonetic_text": "brat"
+        "expression": "он поработает",
+        "phonetic_text": "on pərɐˈbotajɪt"
     },
     {
-        "expression": "сестра",
-        "phonetic_text": "sʲɪsˈtra"
+        "expression": "мы поработаем",
+        "phonetic_text": "mɨ pərɐˈbotajɪm"
     },
     {
-        "expression": "отец",
-        "phonetic_text": "ɐˈtʲets"
+        "expression": "вы поработаете",
+        "phonetic_text": "vɨ pərɐˈbotajɪtʲɪ"
     },
     {
-        "expression": "мать",
-        "phonetic_text": "matʲ"
+        "expression": "они поработают",
+        "phonetic_text": "ɐˈnʲi pərɐˈbotajʊt"
     },
     {
-        "expression": "дедушка",
-        "phonetic_text": "ˈdʲedʊʂkə"
+        "expression": "я говорю",
+        "phonetic_text": "ja ɡəvɐˈrʲu"
     },
     {
-        "expression": "бабушка",
-        "phonetic_text": "ˈbabʊʂkə"
+        "expression": "ты говоришь",
+        "phonetic_text": "tɨ ɡəˈvorʲɪʂ"
     },
     {
-        "expression": "дядя",
-        "phonetic_text": "ˈdʲadʲə"
+        "expression": "он говорит",
+        "phonetic_text": "on ɡəvɐˈrʲit"
     },
     {
-        "expression": "тётя",
-        "phonetic_text": "ˈtʲotʲə"
+        "expression": "мы говорим",
+        "phonetic_text": "mɨ ɡəvɐˈrʲim"
     },
     {
-        "expression": "племянник",
-        "phonetic_text": "plʲɪˈmʲannʲɪk"
+        "expression": "вы говорите",
+        "phonetic_text": "vɨ ɡəvɐˈrʲitʲɪ"
     },
     {
-        "expression": "племянница",
-        "phonetic_text": "plʲɪˈmʲannʲɪt͡sə"
+        "expression": "они говорят",
+        "phonetic_text": "ɐˈnʲi ɡəvɐˈrʲat"
+    },
+    {
+        "expression": "он говорил",
+        "phonetic_text": "on ɡəvɐˈrʲil"
+    },
+    {
+        "expression": "она говорила",
+        "phonetic_text": "ɐˈna ɡəvɐˈrʲilə"
+    },
+    {
+        "expression": "оно говорило",
+        "phonetic_text": "ɐˈno ɡəvɐˈrʲilə"
+    },
+    {
+        "expression": "он говорил",
+        "phonetic_text": "on ɡəvɐˈrʲil"
+    },
+    {
+        "expression": "она говорила",
+        "phonetic_text": "ɐˈna ɡəvɐˈrʲilə"
+    },
+    {
+        "expression": "оно говорило",
+        "phonetic_text": "ɐˈno ɡəvɐˈrʲilə"
+    },
+    {
+        "expression": "я поговорю",
+        "phonetic_text": "ja pɐɡəˈvorʲu"
+    },
+    {
+        "expression": "ты поговоришь",
+        "phonetic_text": "tɨ pɐɡɐˈvorʲɪʂ"
+    },
+    {
+        "expression": "он поговорит",
+        "phonetic_text": "on pɐɡɐˈvorʲit"
+    },
+    {
+        "expression": "мы поговорим",
+        "phonetic_text": "mɨ pɐɡɐˈvorʲim"
+    },
+    {
+        "expression": "вы поговорите",
+        "phonetic_text": "vɨ pɐɡɐˈvorʲitʲɪ"
+    },
+    {
+        "expression": "они поговорят",
+        "phonetic_text": "ɐˈnʲi pɐɡɐˈvorʲat"
     }
 ]
