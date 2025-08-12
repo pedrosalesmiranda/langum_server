@@ -5,6 +5,7 @@ import sys
 sys.path.append('..')
 import database_api
 from console_inputs import create_all_from_jsons
+import json
 
 target_language = "russian"
 base_language = "english"
@@ -119,11 +120,131 @@ def createLanguagePackTitle():
     except Exception as e:
         print(f"Error creating language pack titles: {e}")
 
+def get_reviewed_phonetics_files():
+    """Get list of reviewed phonetics files"""
+    try:
+        files = os.listdir(reviewed_phonetics_jsons_folder_path)
+        phonetics_files = [f for f in files if f.endswith('.json')]
+        return phonetics_files
+    except FileNotFoundError:
+        print(f"Error: Directory '{reviewed_phonetics_jsons_folder_path}' not found")
+        return []
+    except Exception as e:
+        print(f"Error reading directory: {e}")
+        return []
+
+def select_reviewed_phonetics_file():
+    """Show submenu to select a reviewed phonetics file"""
+    global reviewed_phonetics_file
+    
+    phonetics_files = get_reviewed_phonetics_files()
+    
+    if not phonetics_files:
+        print("No reviewed phonetics files found in the directory")
+        return
+    
+    print("\nAvailable reviewed phonetics files:")
+    print("=" * 40)
+    
+    for i, filename in enumerate(phonetics_files, 1):
+        print(f"{i}. {filename}")
+    
+    try:
+        choice = input(f"\nSelect file (1-{len(phonetics_files)}): ").strip()
+        choice_num = int(choice)
+        
+        if 1 <= choice_num <= len(phonetics_files):
+            reviewed_phonetics_file = f"{reviewed_phonetics_jsons_folder_path}/{phonetics_files[choice_num - 1]}"
+            print(f"Selected file: {phonetics_files[choice_num - 1]}")
+        else:
+            print(f"Invalid choice. Please enter 1-{len(phonetics_files)}")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+    except KeyboardInterrupt:
+        print("\nOperation cancelled")
+
+def import_expressions_from_json():
+    """Import phonetics from JSON file and update existing expressions in database"""
+    global reviewed_phonetics_file
+    
+    if not reviewed_phonetics_file:
+        print("No reviewed phonetics file selected. Please select a file first.")
+        return
+    
+    if not os.path.exists(reviewed_phonetics_file):
+        print(f"Error: File '{reviewed_phonetics_file}' not found.")
+        return
+    
+    try:
+        # Read JSON file
+        with open(reviewed_phonetics_file, 'r', encoding='utf-8') as f:
+            phonetics_data = json.load(f)
+        
+        print(f"Loaded {len(phonetics_data)} phonetic entries from {reviewed_phonetics_file}")
+        
+        # Get all expressions from database for performance optimization
+        print("Fetching all expressions from database...")
+        expression_map = database_api.get_all_expressions_text_and_id()
+        print(f"Found {len(expression_map)} expressions in database")
+        
+        # Import phonetics using database_api logic
+        import sqlite3
+        from phonetic_scripts.ipa_phonetics import ipa_to_portuguese_phonetic_gpt_o3
+        
+        conn = sqlite3.connect(database_api.database_file_path)
+        cursor = conn.cursor()
+        
+        updated_count = 0
+        not_found_count = 0
+        
+        for entry in phonetics_data:
+            expression_text = entry['expression_text']
+            phonetic_text = entry['phonetic_text']
+            
+            # Check if expression exists in database
+            if expression_text not in expression_map:
+                print(f"Expression '{expression_text}' not found in database.")
+                not_found_count += 1
+                continue
+            
+            expression_id = expression_map[expression_text]
+
+            # Check if phonetic already exists
+            cursor.execute("""
+                SELECT id FROM Phonetics
+                WHERE expression_id = ?
+            """, (expression_id,))
+            phonetic_id = cursor.fetchone()
+            
+            if phonetic_id:
+                # Update existing phonetic
+                cursor.execute("""
+                    UPDATE Phonetics
+                    SET text = ?
+                    WHERE id = ?
+                """, (phonetic_text, phonetic_id[0]))
+                print(f"Updated phonetic for '{expression_text}': {phonetic_text}")
+                updated_count += 1
+                conn.commit()
+
+        conn.close()
+        
+        print(f"\nImport completed successfully!")
+        print(f"- Updated: {updated_count} phonetics")
+        
+    except FileNotFoundError:
+        print(f"Error: File '{reviewed_phonetics_file}' not found.")
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON file: {e}")
+    except Exception as e:
+        print(f"Error importing phonetics: {e}")
+
 def main():
     print("Expressions Manager CLI")
     print("=" * 30)
     print(f"Current folder path: {meanings_jsons_folder_path}")
     print(f"Selected meanings file: {selected_meanings_file if selected_meanings_file else 'None'}")
+    print(f"Selected phonetics file: {reviewed_phonetics_file if reviewed_phonetics_file else 'None'}")
     print(f"Target language: {target_language}")
     print(f"Base language: {base_language}")
     
@@ -133,10 +254,12 @@ def main():
         print("2. Set target and base languages")
         print("3. Process selected file")
         print("4. Create language pack title")
-        print("5. Exit")
+        print("5. Select reviewed phonetics file")
+        print("6. Import phonetics from JSON")
+        print("7. Exit")
         
         try:
-            choice = input("\nEnter your choice (1-5): ").strip()
+            choice = input("\nEnter your choice (1-7): ").strip()
             
             if choice == "1":
                 select_meanings_file()
@@ -147,10 +270,14 @@ def main():
             elif choice == "4":
                 createLanguagePackTitle()
             elif choice == "5":
+                select_reviewed_phonetics_file()
+            elif choice == "6":
+                import_expressions_from_json()
+            elif choice == "7":
                 print("Goodbye!")
                 break
             else:
-                print("Invalid choice. Please enter 1-5.")
+                print("Invalid choice. Please enter 1-7.")
         except KeyboardInterrupt:
             print("\nGoodbye!")
             break

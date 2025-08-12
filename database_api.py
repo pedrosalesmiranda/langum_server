@@ -367,6 +367,22 @@ def create_language_pack_title(language_id: int, pack_id: int, title: str):
     conn.commit()
     conn.close()
 
+def get_all_expressions_text_and_id():
+    """
+    Fetch all expressions from database and return a map of text -> id for performance optimization
+    :return: dict mapping expression text to expression id
+    """
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT id, text FROM Expressions")
+    expressions = cursor.fetchall()
+    conn.close()
+    
+    # Create map: expression_text -> expression_id
+    expression_map = {text: id for id, text in expressions}
+    return expression_map
+
 def copyDescriptionEngToLanguagePackTitle(language: str):
     conn = sqlite3.connect(database_file_path)
     cursor = conn.cursor()
