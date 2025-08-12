@@ -1,0 +1,300 @@
+[
+    {
+        "language": "russian",
+        "meanings_expressions": [
+            {
+                "meaningEng": "i work",
+                "expression": "я работаю"
+            },
+            {
+                "meaningEng": "you work",
+                "expression": "ты работаешь"
+            },
+            {
+                "meaningEng": "he works",
+                "expression": "он работает"
+            },
+            {
+                "meaningEng": "we work",
+                "expression": "мы работаем"
+            },
+            {
+                "meaningEng": "you work (plural)",
+                "expression": "вы работаете"
+            },
+            {
+                "meaningEng": "they work",
+                "expression": "они работают"
+            },
+            {
+                "meaningEng": "he worked",
+                "expression": "он работал"
+            },
+            {
+                "meaningEng": "she worked",
+                "expression": "она работала"
+            },
+            {
+                "meaningEng": "it worked",
+                "expression": "оно работало"
+            },
+            {
+                "meaningEng": "he was working",
+                "expression": "он Поработал"
+            },
+            {
+                "meaningEng": "she was working",
+                "expression": "она Поработала"
+            },
+            {
+                "meaningEng": "it was working",
+                "expression": "оно Поработало"
+            },
+            {
+                "meaningEng": "i will work",
+                "expression": "я поработаю"
+            },
+            {
+                "meaningEng": "you will work",
+                "expression": "ты поработаешь"
+            },
+            {
+                "meaningEng": "he will work",
+                "expression": "он поработает"
+            },
+            {
+                "meaningEng": "we will work",
+                "expression": "мы поработаем"
+            },
+            {
+                "meaningEng": "you will work (plural)",
+                "expression": "вы поработаете"
+            },
+            {
+                "meaningEng": "they will work",
+                "expression": "они поработают"
+            },
+            {
+                "meaningEng": "i speak",
+                "expression": "я говорю"
+            },
+            {
+                "meaningEng": "you speak",
+                "expression": "ты говоришь"
+            },
+            {
+                "meaningEng": "he speaks",
+                "expression": "он говорит"
+            },
+            {
+                "meaningEng": "we speak",
+                "expression": "мы говорим"
+            },
+            {
+                "meaningEng": "you speak (plural)",
+                "expression": "вы говорите"
+            },
+            {
+                "meaningEng": "they speak",
+                "expression": "они говорят"
+            },
+            {
+                "meaningEng": "he spoke",
+                "expression": "он говорил"
+            },
+            {
+                "meaningEng": "she spoke",
+                "expression": "она говорила"
+            },
+            {
+                "meaningEng": "it spoke",
+                "expression": "оно говорило"
+            },
+            {
+                "meaningEng": "he was speaking",
+                "expression": "он Сказал"
+            },
+            {
+                "meaningEng": "she was speaking",
+                "expression": "она Сказала"
+            },
+            {
+                "meaningEng": "it was speaking",
+                "expression": "оно Сказало"
+            },
+            {
+                "meaningEng": "i will speak",
+                "expression": "я поговорю"
+            },
+            {
+                "meaningEng": "you will speak",
+                "expression": "ты поговоришь"
+            },
+            {
+                "meaningEng": "he will speak",
+                "expression": "он поговорит"
+            },
+            {
+                "meaningEng": "we will speak",
+                "expression": "мы поговорим"
+            },
+            {
+                "meaningEng": "you will speak (plural)",
+                "expression": "вы поговорите"
+            },
+            {
+                "meaningEng": "they will speak",
+                "expression": "они поговорят"
+            }
+        ]
+    },
+    {
+        "language": "english",
+        "meanings_expressions": [
+            {
+                "meaningEng": "i work",
+                "expression": "i work"
+            },
+            {
+                "meaningEng": "you work",
+                "expression": "you work"
+            },
+            {
+                "meaningEng": "he works",
+                "expression": "he works"
+            },
+            {
+                "meaningEng": "we work",
+                "expression": "we work"
+            },
+            {
+                "meaningEng": "you work (plural)",
+                "expression": "you work (plural)"
+            },
+            {
+                "meaningEng": "they work",
+                "expression": "they work"
+            },
+            {
+                "meaningEng": "he worked",
+                "expression": "he worked"
+            },
+            {
+                "meaningEng": "she worked",
+                "expression": "she worked"
+            },
+            {
+                "meaningEng": "it worked",
+                "expression": "it worked"
+            },
+            {
+                "meaningEng": "he was working",
+                "expression": "he was working"
+            },
+            {
+                "meaningEng": "she was working",
+                "expression": "she was working"
+            },
+            {
+                "meaningEng": "it was working",
+                "expression": "it was working"
+            },
+            {
+                "meaningEng": "i will work",
+                "expression": "i will work"
+            },
+            {
+                "meaningEng": "you will work",
+                "expression": "you will work"
+            },
+            {
+                "meaningEng": "he will work",
+                "expression": "he will work"
+            },
+            {
+                "meaningEng": "we will work",
+                "expression": "we will work"
+            },
+            {
+                "meaningEng": "you will work (plural)",
+                "expression": "you will work (plural)"
+            },
+            {
+                "meaningEng": "they will work",
+                "expression": "they will work"
+            },
+            {
+                "meaningEng": "i speak",
+                "expression": "i speak"
+            },
+            {
+                "meaningEng": "you speak",
+                "expression": "you speak"
+            },
+            {
+                "meaningEng": "he speaks",
+                "expression": "he speaks"
+            },
+            {
+                "meaningEng": "we speak",
+                "expression": "we speak"
+            },
+            {
+                "meaningEng": "you speak (plural)",
+                "expression": "you speak (plural)"
+            },
+            {
+                "meaningEng": "they speak",
+                "expression": "they speak"
+            },
+            {
+                "meaningEng": "he spoke",
+                "expression": "he spoke"
+            },
+            {
+                "meaningEng": "she spoke",
+                "expression": "she spoke"
+            },
+            {
+                "meaningEng": "it spoke",
+                "expression": "it spoke"
+            },
+            {
+                "meaningEng": "he was speaking",
+                "expression": "he was speaking"
+            },
+            {
+                "meaningEng": "she was speaking",
+                "expression": "she was speaking"
+            },
+            {
+                "meaningEng": "it was speaking",
+                "expression": "it was speaking"
+            },
+            {
+                "meaningEng": "i will speak",
+                "expression": "i will speak"
+            },
+            {
+                "meaningEng": "you will speak",
+                "expression": "you will speak"
+            },
+            {
+                "meaningEng": "he will speak",
+                "expression": "he will speak"
+            },
+            {
+                "meaningEng": "we will speak",
+                "expression": "we will speak"
+            },
+            {
+                "meaningEng": "you will speak (plural)",
+                "expression": "you will speak (plural)"
+            },
+            {
+                "meaningEng": "they will speak",
+                "expression": "they will speak"
+            }
+        ]
+    }
+]

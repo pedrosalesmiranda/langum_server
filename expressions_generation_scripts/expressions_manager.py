@@ -6,6 +6,7 @@ sys.path.append('..')
 import database_api
 from console_inputs import create_all_from_jsons
 import json
+from datetime import datetime
 
 target_language = "russian"
 base_language = "english"
@@ -239,6 +240,55 @@ def import_expressions_from_json():
     except Exception as e:
         print(f"Error importing phonetics: {e}")
 
+def exportExpressionsFromJson():
+    """Export expressions with their phonetics to JSON file with timestamp"""
+    try:
+        # Connect to database
+        import sqlite3
+        conn = sqlite3.connect(database_api.database_file_path)
+        cursor = conn.cursor()
+        
+        # Query to join expressions with their phonetics
+        cursor.execute("""
+            SELECT e.text as expression_text, p.text as phonetic_text
+            FROM Expressions e
+            LEFT JOIN Phonetics p ON e.id = p.expression_id
+            WHERE p.text IS NOT NULL
+        """)
+        
+        results = cursor.fetchall()
+        conn.close()
+        
+        if not results:
+            print("No expressions with phonetics found in database.")
+            return
+        
+        # Create list of dictionaries with the required format
+        export_data = []
+        for expression_text, phonetic_text in results:
+            export_data.append({
+                "phonetic_text": phonetic_text,
+                "expression_text": expression_text
+            })
+        
+        # Generate timestamp
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f"{timestamp}_expressions_phonetics.json"
+        file_path = f"{reviewed_phonetics_jsons_folder_path}/{filename}"
+        
+        # Ensure directory exists
+        os.makedirs(reviewed_phonetics_jsons_folder_path, exist_ok=True)
+        
+        # Save to JSON file
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(export_data, f, ensure_ascii=False, indent=2)
+        
+        print(f"Successfully exported {len(export_data)} expressions with phonetics to: {filename}")
+        print(f"Full path: {file_path}")
+        
+    except Exception as e:
+        print(f"Error exporting expressions: {e}")
+
 def main():
     print("Expressions Manager CLI")
     print("=" * 30)
@@ -256,10 +306,11 @@ def main():
         print("4. Create language pack title")
         print("5. Select reviewed phonetics file")
         print("6. Import phonetics from JSON")
-        print("7. Exit")
+        print("7. Export expressions with phonetics to JSON")
+        print("8. Exit")
         
         try:
-            choice = input("\nEnter your choice (1-7): ").strip()
+            choice = input("\nEnter your choice (1-8): ").strip()
             
             if choice == "1":
                 select_meanings_file()
@@ -274,10 +325,12 @@ def main():
             elif choice == "6":
                 import_expressions_from_json()
             elif choice == "7":
+                exportExpressionsFromJson()
+            elif choice == "8":
                 print("Goodbye!")
                 break
             else:
-                print("Invalid choice. Please enter 1-7.")
+                print("Invalid choice. Please enter 1-8.")
         except KeyboardInterrupt:
             print("\nGoodbye!")
             break
