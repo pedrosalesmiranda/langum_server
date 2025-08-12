@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 
 import os
+import sys
+sys.path.append('..')
+import database_api
 from console_inputs import create_all_from_jsons
 
 target_language = "russian"
 base_language = "english"
 pack_meanings_to_keep = "C:/Users/psm19/PSM_DRIVE/PROG/TOP_PROJS/LANGUM/langum_server/expressions_generation_scripts/jsons/inputs/pack_meanings_to_keep"
 meanings_jsons_folder_path = f"{pack_meanings_to_keep}/{target_language}_4_{base_language}"
+reviewed_phonetics_jsons_folder_path ="C:/Users/psm19/PSM_DRIVE/PROG/TOP_PROJS/LANGUM/langum_server/database/reviewed_phonetics"
 selected_meanings_file = ""
+reviewed_phonetics_file = ""
 
 
 def get_pack_meanings_files():
@@ -108,7 +113,11 @@ def set_languages():
 
 def createLanguagePackTitle():
     """Create language pack title"""
-    pass
+    global base_language
+    try:
+        database_api.copyDescriptionEngToLanguagePackTitle(base_language)
+    except Exception as e:
+        print(f"Error creating language pack titles: {e}")
 
 def main():
     print("Expressions Manager CLI")

@@ -366,3 +366,50 @@ def create_language_pack_title(language_id: int, pack_id: int, title: str):
 
     conn.commit()
     conn.close()
+
+def copyDescriptionEngToLanguagePackTitle(language: str):
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+
+    # Get language_id from language string
+    cursor.execute("SELECT id FROM Languages WHERE languageEng = ?", (language,))
+    language_row = cursor.fetchone()
+    
+    if language_row is None:
+        print(f"Language '{language}' not found in database.")
+        conn.close()
+        return
+    
+    language_id = language_row[0]
+
+    # Find packs that don't have titles for the specified language_id
+    cursor.execute("""
+        SELECT p.id, p.descriptionEng
+        FROM Packs p
+        WHERE p.id NOT IN (
+            SELECT lpwt.pack_id 
+            FROM LanguagePackWithTitle lpwt 
+            WHERE lpwt.language_id = ?
+        )
+    """, (language_id,))
+    
+    missing_packs = cursor.fetchall()
+    
+    if not missing_packs:
+        print(f"All packs already have titles for language '{language}' (id: {language_id}).")
+        conn.close()
+        return
+    
+    print(f"Found {len(missing_packs)} packs missing titles for language '{language}' (id: {language_id}).")
+    
+    # Insert missing pack titles
+    for pack_id, description_eng in missing_packs:
+        cursor.execute("""
+            INSERT INTO LanguagePackWithTitle (pack_id, language_id, title)
+            VALUES (?, ?, ?)
+        """, (pack_id, language_id, description_eng))
+        print(f"Created language pack title '{description_eng}' for pack_id {pack_id} and language_id {language_id}.")
+    
+    conn.commit()
+    conn.close()
+    print(f"Successfully copied {len(missing_packs)} pack descriptions to LanguagePackWithTitle.")
