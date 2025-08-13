@@ -47,10 +47,11 @@
 
 import sqlite3
 import sys
+from datetime import datetime
 
 # File paths
 database_file_path = '../langum.db'
-dump_file_path = '../backups/dump_2025_08_07.sql'
+dump_file_path = f'../backups/dump_{datetime.now().strftime("%Y_%m_%d")}.sql'
 
 # SQL statement to populate Languages
 sql_populate_languages = '''INSERT INTO Languages (languageEng, languageNative, languageEngTwoLetters) VALUES
