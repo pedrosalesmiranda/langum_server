@@ -1,5 +1,5 @@
 {
-    "pack": "how am I feeling",
+    "pack": "common sentences I",
     "meanings": [
         "How are you?",
         "Nice to meet you.",
@@ -31,6 +31,10 @@
         "I don't understand.",
         "How much does this cost?",
         "Where is the bathroom?",
-        "I love you."
+        "I love you.",
+        "I like this",
+        "I hope this works",
+        "What happened?",
+        "Good luck"
     ]
 }

@@ -5,13 +5,17 @@
         "cat",
         "horse",
         "cow",
-        "sheep",
         "pig",
-        "goat",
         "chicken",
         "duck",
         "rabbit",
         "fish",
-        "bird"
+        "bird",
+        "fox",
+        "bear",
+        "shark",
+        "eagle",
+        "lion",
+        "elephant"
     ]
 }

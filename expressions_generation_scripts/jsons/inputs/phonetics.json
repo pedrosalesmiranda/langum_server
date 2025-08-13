@@ -1,146 +1,218 @@
 [
-    {
-        "expression": "я работаю",
-        "phonetic_text": "ja rɐˈbotajʊ"
-    },
-    {
-        "expression": "ты работаешь",
-        "phonetic_text": "tɨ rɐˈbotajɪʂ"
-    },
-    {
-        "expression": "он работает",
-        "phonetic_text": "on rɐˈbotajɪt"
-    },
-    {
-        "expression": "мы работаем",
-        "phonetic_text": "mɨ rɐˈbotajɪm"
-    },
-    {
-        "expression": "вы работаете",
-        "phonetic_text": "vɨ rɐˈbotajɪtʲɪ"
-    },
-    {
-        "expression": "они работают",
-        "phonetic_text": "ɐˈnʲi rɐˈbotajʊt"
-    },
-    {
-        "expression": "он работал",
-        "phonetic_text": "on rɐˈbotəl"
-    },
-    {
-        "expression": "она работала",
-        "phonetic_text": "ɐˈna rɐˈbotələ"
-    },
-    {
-        "expression": "оно работало",
-        "phonetic_text": "ɐˈno rɐˈbotələ"
-    },
-    {
-        "expression": "он работал",
-        "phonetic_text": "on rɐˈbotəl"
-    },
-    {
-        "expression": "она работала",
-        "phonetic_text": "ɐˈna rɐˈbotələ"
-    },
-    {
-        "expression": "оно работало",
-        "phonetic_text": "ɐˈno rɐˈbotələ"
-    },
-    {
-        "expression": "я поработаю",
-        "phonetic_text": "ja pərɐˈbotajʊ"
-    },
-    {
-        "expression": "ты поработаешь",
-        "phonetic_text": "tɨ pərɐˈbotajɪʂ"
-    },
-    {
-        "expression": "он поработает",
-        "phonetic_text": "on pərɐˈbotajɪt"
-    },
-    {
-        "expression": "мы поработаем",
-        "phonetic_text": "mɨ pərɐˈbotajɪm"
-    },
-    {
-        "expression": "вы поработаете",
-        "phonetic_text": "vɨ pərɐˈbotajɪtʲɪ"
-    },
-    {
-        "expression": "они поработают",
-        "phonetic_text": "ɐˈnʲi pərɐˈbotajʊt"
-    },
-    {
-        "expression": "я говорю",
-        "phonetic_text": "ja ɡəvɐˈrʲu"
-    },
-    {
-        "expression": "ты говоришь",
-        "phonetic_text": "tɨ ɡəˈvorʲɪʂ"
-    },
-    {
-        "expression": "он говорит",
-        "phonetic_text": "on ɡəvɐˈrʲit"
-    },
-    {
-        "expression": "мы говорим",
-        "phonetic_text": "mɨ ɡəvɐˈrʲim"
-    },
-    {
-        "expression": "вы говорите",
-        "phonetic_text": "vɨ ɡəvɐˈrʲitʲɪ"
-    },
-    {
-        "expression": "они говорят",
-        "phonetic_text": "ɐˈnʲi ɡəvɐˈrʲat"
-    },
-    {
-        "expression": "он говорил",
-        "phonetic_text": "on ɡəvɐˈrʲil"
-    },
-    {
-        "expression": "она говорила",
-        "phonetic_text": "ɐˈna ɡəvɐˈrʲilə"
-    },
-    {
-        "expression": "оно говорило",
-        "phonetic_text": "ɐˈno ɡəvɐˈrʲilə"
-    },
-    {
-        "expression": "он говорил",
-        "phonetic_text": "on ɡəvɐˈrʲil"
-    },
-    {
-        "expression": "она говорила",
-        "phonetic_text": "ɐˈna ɡəvɐˈrʲilə"
-    },
-    {
-        "expression": "оно говорило",
-        "phonetic_text": "ɐˈno ɡəvɐˈrʲilə"
-    },
-    {
-        "expression": "я поговорю",
-        "phonetic_text": "ja pɐɡəˈvorʲu"
-    },
-    {
-        "expression": "ты поговоришь",
-        "phonetic_text": "tɨ pɐɡɐˈvorʲɪʂ"
-    },
-    {
-        "expression": "он поговорит",
-        "phonetic_text": "on pɐɡɐˈvorʲit"
-    },
-    {
-        "expression": "мы поговорим",
-        "phonetic_text": "mɨ pɐɡɐˈvorʲim"
-    },
-    {
-        "expression": "вы поговорите",
-        "phonetic_text": "vɨ pɐɡɐˈvorʲitʲɪ"
-    },
-    {
-        "expression": "они поговорят",
-        "phonetic_text": "ɐˈnʲi pɐɡɐˈvorʲat"
-    }
+  {
+    "expression": "Я счастлив.",
+    "phonetic_text": "ja ˈɕːaslʲɪf"
+  },
+  {
+    "expression": "Мне грустно.",
+    "phonetic_text": "mnʲe ˈgrustnə"
+  },
+  {
+    "expression": "Я занят.",
+    "phonetic_text": "ja ˈzanʲɪt"
+  },
+  {
+    "expression": "Я устал.",
+    "phonetic_text": "ja usˈtal"
+  },
+  {
+    "expression": "Я напишу тебе.",
+    "phonetic_text": "ja nɐpʲɪˈʂu tʲɪˈbʲe"
+  },
+  {
+    "expression": "Я отправлю тебе сообщение.",
+    "phonetic_text": "ja ɐtˈpravʲlʲu tʲɪˈbʲe səˈbɕːenʲɪje"
+  },
+  {
+    "expression": "Я еду на поезде.",
+    "phonetic_text": "ja jɪˈdu nə pɐˈjɛzdʲɪ"
+  },
+  {
+    "expression": "Я полечу.",
+    "phonetic_text": "ja pɐˈlʲet͡ʂu"
+  },
+  {
+    "expression": "Я поеду на поезде.",
+    "phonetic_text": "ja pɐˈjɛdu nə pɐˈjɛzdʲɪ"
+  },
+  {
+    "expression": "Я поеду на автобусе.",
+    "phonetic_text": "ja pɐˈjɛdu nə ɐfˈtobusʲɪ"
+  },
+  {
+    "expression": "Я приехал на поезде.",
+    "phonetic_text": "ja prʲɪˈjexəl nə pɐˈjɛzdʲɪ"
+  },
+  {
+    "expression": "Я приехал на автобусе.",
+    "phonetic_text": "ja prʲɪˈjexəl nə ɐfˈtobusʲɪ"
+  },
+  {
+    "expression": "Я прилетел на самолёте.",
+    "phonetic_text": "ja prʲɪlʲɪˈtʲel nə səmɐˈlʲotʲɪ"
+  },
+  {
+    "expression": "Я хочу пиццу.",
+    "phonetic_text": "ja xɐˈt͡ɕu ˈpʲit͡sːu"
+  },
+  {
+    "expression": "Я принес тебе подарок.",
+    "phonetic_text": "ja prʲɪˈnʲes tʲɪˈbʲe pɐˈdarək"
+  },
+  {
+    "expression": "Я принесу тебе подарок.",
+    "phonetic_text": "ja prʲɪnʲɪˈsu tʲɪˈbʲe pɐˈdarək"
+  },
+  {
+    "expression": "Я потерял свои ключи.",
+    "phonetic_text": "ja pɐtʲɪˈrʲal svʲɪˈi klʲuˈt͡ɕi"
+  },
+  {
+    "expression": "Я нашёл свои ключи.",
+    "phonetic_text": "ja nɐˈʂol svʲɪˈi klʲuˈt͡ɕi"
+  },
+  {
+    "expression": "Я ищу свой телефон.",
+    "phonetic_text": "ja ɪˈɕːu svoj tʲɪlʲɪˈfon"
+  },
+  {
+    "expression": "Ты видел мой телефон?",
+    "phonetic_text": "tɨ ˈvidʲɪl moj tʲɪlʲɪˈfon"
+  },
+  {
+    "expression": "Я попробую ещё раз.",
+    "phonetic_text": "ja pɐprɐˈbʊju jɪˈɕːo ras"
+  },
+  {
+    "expression": "Тебе нужна помощь?",
+    "phonetic_text": "tʲɪˈbʲe nʊˈʐna ˈpomɕː"
+  },
+  {
+    "expression": "Я повернул налево.",
+    "phonetic_text": "ja pɐvʲɪrˈnul nɐˈlʲevə"
+  },
+  {
+    "expression": "Я пойду за тобой.",
+    "phonetic_text": "ja pɐjˈdu zə tɐˈboj"
+  },
+  {
+    "expression": "Принеси мне воды.",
+    "phonetic_text": "prʲɪˈnʲesʲi mnʲe vɐˈdɨ"
+  },
+  {
+    "expression": "Мне нравится эта музыка.",
+    "phonetic_text": "mnʲe ˈnravɪt͡sə ˈetə ˈmuzɨkə"
+  },
+  {
+    "expression": "Я хочу написать книгу.",
+    "phonetic_text": "ja xɐˈt͡ɕu nəpʲɪˈsatʲ ˈknʲigu"
+  },
+  {
+    "expression": "Можно здесь сесть?",
+    "phonetic_text": "ˈmoʐnə zʲdesʲ sɛstʲ"
+  },
+  {
+    "expression": "Я встретил своих друзей.",
+    "phonetic_text": "ja ˈfstʲrʲetʲɪl svɐˈix drʲɪˈzʲej"
+  },
+  {
+    "expression": "Я говорил с родителями.",
+    "phonetic_text": "ja gəvɐˈrʲil s rɐˈdʲitʲɪlʲɪmʲɪ"
+  },
+  {
+    "expression": "Я разговаривал с братом.",
+    "phonetic_text": "ja rəzgəvɐˈrʲival s ˈbratom"
+  },
+  {
+    "expression": "Ты быстро учишься.",
+    "phonetic_text": "tɨ ˈbɨstrə ˈut͡ɕɪʂsʲə"
+  },
+  {
+    "expression": "Ты умный.",
+    "phonetic_text": "tɨ ˈumnɨj"
+  },
+  {
+    "expression": "Ты готов?",
+    "phonetic_text": "tɨ ɡɐˈtof"
+  },
+  {
+    "expression": "Я только что принял душ.",
+    "phonetic_text": "ja ˈtolʲkə ʂto prʲɪˈnʲal duʂ"
+  },
+  {
+    "expression": "Мне нужно принять душ.",
+    "phonetic_text": "mnʲe ˈnuʐnə prʲɪˈnʲatʲ duʂ"
+  },
+  {
+    "expression": "Мне нужно переодеться.",
+    "phonetic_text": "mnʲe ˈnuʐnə pʲɪrʲɪɐˈdʲet͡sːə"
+  },
+  {
+    "expression": "Хочешь посмотреть фильм?",
+    "phonetic_text": "ˈxot͡ɕɪʂ pəzmrʲɪˈtʲetʲ fʲilm"
+  },
+  {
+    "expression": "Во сколько ты заканчиваешь работу?",
+    "phonetic_text": "vo ˈskolkə tɨ zəkɐnʨɪˈvajɪʂ rɐˈbotu"
+  },
+  {
+    "expression": "Во сколько ты начинаешь работать?",
+    "phonetic_text": "vo ˈskolkə tɨ nɐˈt͡ɕɪnɐjɪʂ rɐˈbotətʲ"
+  },
+  {
+    "expression": "Что ты делаешь сегодня?",
+    "phonetic_text": "ʂto tɨ dʲɪˈlaɪɪʂ sʲɪˈvodnʲə"
+  },
+  {
+    "expression": "Что ты делаешь сегодня вечером?",
+    "phonetic_text": "ʂto tɨ dʲɪˈlaɪɪʂ sʲɪˈvodnʲə ˈvʲet͡ɕɪrəm"
+  },
+  {
+    "expression": "Что ты делаешь?",
+    "phonetic_text": "ʂto tɨ dʲɪˈlaɪɪʂ"
+  },
+  {
+    "expression": "Какие у тебя планы на выходные?",
+    "phonetic_text": "kɐˈkʲiɪ u tʲɪˈbʲa ˈplanɨ nə vɨxɐdˈnɨɪ"
+  },
+  {
+    "expression": "Хочешь потанцевать?",
+    "phonetic_text": "ˈxot͡ɕɪʂ pətɐnˈt͡sɨvətʲ"
+  },
+  {
+    "expression": "Пойдём гулять.",
+    "phonetic_text": "pɐjˈdʲom ɡʊˈlʲatʲ"
+  },
+  {
+    "expression": "Я был в супермаркете.",
+    "phonetic_text": "ja bɨl f sʊpʲɪrˈmarkʲɪtʲɪ"
+  },
+  {
+    "expression": "Я только что пришёл из супермаркета.",
+    "phonetic_text": "ja ˈtolʲkə ʂto prʲɪˈʂol iz sʊpʲɪrˈmarkʲɪtɐ"
+  },
+  {
+    "expression": "Я иду в супермаркет.",
+    "phonetic_text": "ja ɪˈdu f sʊpʲɪrˈmarkʲɪt"
+  },
+  {
+    "expression": "Я пойду в супермаркет.",
+    "phonetic_text": "ja pɐjˈdu f sʊpʲɪrˈmarkʲɪt"
+  },
+  {
+    "expression": "Я немного опаздываю.",
+    "phonetic_text": "ja nʲɪmˈnoɡə ɐpəzˈdɨvajʊ"
+  },
+  {
+    "expression": "Я опаздываю.",
+    "phonetic_text": "ja ɐpəzˈdɨvajʊ"
+  },
+  {
+    "expression": "Я очень опаздываю.",
+    "phonetic_text": "ja ˈot͡ɕɪnʲ ɐpəzˈdɨvajʊ"
+  },
+  {
+    "expression": "Мы можем пойти вместе.",
+    "phonetic_text": "mɨ ˈmoʐɪm pɐjˈtʲi ˈvmʲestʲɪ"
+  }
 ]
