@@ -302,7 +302,7 @@ def main():
         print("\nOptions:")
         print("1. Select pack_meanings file")
         print("2. Set target and base languages")
-        print("3. Process selected file")
+        print("3. Process pack_meanings file (creates expressions and phonetics)")
         print("4. Create language pack title")
         print("5. Select reviewed phonetics file")
         print("6. Import phonetics from JSON")

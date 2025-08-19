@@ -1,0 +1,1038 @@
+[
+  {
+    "phonetic_text": "noulь",
+    "expression_text": "ноль"
+  },
+  {
+    "phonetic_text": "а́din",
+    "expression_text": "один"
+  },
+  {
+    "phonetic_text": "dvá",
+    "expression_text": "два"
+  },
+  {
+    "phonetic_text": "tri",
+    "expression_text": "три"
+  },
+  {
+    "phonetic_text": "tchi-ti-rie",
+    "expression_text": "четыре"
+  },
+  {
+    "phonetic_text": "piátь",
+    "expression_text": "пять"
+  },
+  {
+    "phonetic_text": "chectь",
+    "expression_text": "шесть"
+  },
+  {
+    "phonetic_text": "ciémь",
+    "expression_text": "семь"
+  },
+  {
+    "phonetic_text": "vou-cieimь",
+    "expression_text": "восемь"
+  },
+  {
+    "phonetic_text": "dié-vitь",
+    "expression_text": "девять"
+  },
+  {
+    "phonetic_text": "dié-citь",
+    "expression_text": "десять"
+  },
+  {
+    "phonetic_text": "а́di-nа́-tsatь",
+    "expression_text": "одиннадцать"
+  },
+  {
+    "phonetic_text": "dvié-ná-tsаtь",
+    "expression_text": "двенадцать"
+  },
+  {
+    "phonetic_text": "tri-ná-tsatь",
+    "expression_text": "тринадцать"
+  },
+  {
+    "phonetic_text": "tchi-tir-nа́-tsаtь",
+    "expression_text": "четырнадцать"
+  },
+  {
+    "phonetic_text": "piet-ná-tsаtь",
+    "expression_text": "пятнадцать"
+  },
+  {
+    "phonetic_text": "chеc-ná-tsаtь",
+    "expression_text": "шестнадцать"
+  },
+  {
+    "phonetic_text": "ciem-ná-tsatь",
+    "expression_text": "семнадцать"
+  },
+  {
+    "phonetic_text": "va-ciem-ná-tsаtь",
+    "expression_text": "восемнадцать"
+  },
+  {
+    "phonetic_text": "die-viet-ná-tsаtь",
+    "expression_text": "девятнадцать"
+  },
+  {
+    "phonetic_text": "dvá-tsatь",
+    "expression_text": "двадцать"
+  },
+  {
+    "phonetic_text": "tri-tsatь",
+    "expression_text": "тридцать"
+  },
+  {
+    "phonetic_text": "cou-rak",
+    "expression_text": "сорок"
+  },
+  {
+    "phonetic_text": "pietь-di-ciát",
+    "expression_text": "пятьдесят"
+  },
+  {
+    "phonetic_text": "chеicь-di-ciát",
+    "expression_text": "шестьдесят"
+  },
+  {
+    "phonetic_text": "ciémь-di-ciát",
+    "expression_text": "семьдесят"
+  },
+  {
+    "phonetic_text": "voucieimʲdieicieit",
+    "expression_text": "восемьдесят"
+  },
+  {
+    "phonetic_text": "dieivieinoucta",
+    "expression_text": "девяносто"
+  },
+  {
+    "phonetic_text": "ctou",
+    "expression_text": "сто"
+  },
+  {
+    "phonetic_text": "dviéc-ti",
+    "expression_text": "двести"
+  },
+  {
+    "phonetic_text": "tric-ta",
+    "expression_text": "триста"
+  },
+  {
+    "phonetic_text": "tchitiы.ri.cta",
+    "expression_text": "четыреста"
+  },
+  {
+    "phonetic_text": "piet-cо́t",
+    "expression_text": "пятьсот"
+  },
+  {
+    "phonetic_text": "chеcь-cо́t",
+    "expression_text": "шестьсот"
+  },
+  {
+    "phonetic_text": "ciemь-cót",
+    "expression_text": "семьсот"
+  },
+  {
+    "phonetic_text": "vou-ciemь-cót",
+    "expression_text": "восемьсот"
+  },
+  {
+    "phonetic_text": "dié-vitь-cót",
+    "expression_text": "девятьсот"
+  },
+  {
+    "phonetic_text": "tiы-ci-tchа́",
+    "expression_text": "тысяча"
+  },
+  {
+    "phonetic_text": "mi-li-оun",
+    "expression_text": "миллион"
+  },
+  {
+    "phonetic_text": "mi-li-árt",
+    "expression_text": "миллиард"
+  },
+  {
+    "phonetic_text": "tri-li-oun",
+    "expression_text": "триллион"
+  },
+  {
+    "phonetic_text": "mouj plán",
+    "expression_text": "мой план"
+  },
+  {
+    "phonetic_text": "májá mi-tchtá",
+    "expression_text": "моя мечта"
+  },
+  {
+    "phonetic_text": "maiou richenьije",
+    "expression_text": "моё решение"
+  },
+  {
+    "phonetic_text": "mai diéjctvia",
+    "expression_text": "мои действия"
+  },
+  {
+    "phonetic_text": "tvój plán",
+    "expression_text": "твой план"
+  },
+  {
+    "phonetic_text": "tvajá mitchtá",
+    "expression_text": "твоя мечта"
+  },
+  {
+    "phonetic_text": "tvaiou richenьije",
+    "expression_text": "твоё решение"
+  },
+  {
+    "phonetic_text": "tvai mit͡chti",
+    "expression_text": "твои мечты"
+  },
+  {
+    "phonetic_text": "iévou plán",
+    "expression_text": "его план"
+  },
+  {
+    "phonetic_text": "iévou mitchtá",
+    "expression_text": "его мечта"
+  },
+  {
+    "phonetic_text": "iévou richenьije",
+    "expression_text": "его решение"
+  },
+  {
+    "phonetic_text": "iévou pláni",
+    "expression_text": "его планы"
+  },
+  {
+    "phonetic_text": "iéiou plán",
+    "expression_text": "её план"
+  },
+  {
+    "phonetic_text": "iéiou mitchtá",
+    "expression_text": "её мечта"
+  },
+  {
+    "phonetic_text": "iéiou richenьije",
+    "expression_text": "её решение"
+  },
+  {
+    "phonetic_text": "iéiou pláni",
+    "expression_text": "её планы"
+  },
+  {
+    "phonetic_text": "iévou tcviét",
+    "expression_text": "его цвет"
+  },
+  {
+    "phonetic_text": "iévou tsiná",
+    "expression_text": "его цена"
+  },
+  {
+    "phonetic_text": "iévou aknou",
+    "expression_text": "его окно"
+  },
+  {
+    "phonetic_text": "iévou tcvitá",
+    "expression_text": "его цвета"
+  },
+  {
+    "phonetic_text": "nách plán",
+    "expression_text": "наш план"
+  },
+  {
+    "phonetic_text": "nácha mitchtá",
+    "expression_text": "наша мечта"
+  },
+  {
+    "phonetic_text": "náchi richenьije",
+    "expression_text": "наше решение"
+  },
+  {
+    "phonetic_text": "náchi diéjctvia",
+    "expression_text": "наши действия"
+  },
+  {
+    "phonetic_text": "vách plán",
+    "expression_text": "ваш план"
+  },
+  {
+    "phonetic_text": "vácha mitchtá",
+    "expression_text": "ваша мечта"
+  },
+  {
+    "phonetic_text": "váchi richenьije",
+    "expression_text": "ваше решение"
+  },
+  {
+    "phonetic_text": "váchi richenьija",
+    "expression_text": "ваши решения"
+  },
+  {
+    "phonetic_text": "irr plán",
+    "expression_text": "их план"
+  },
+  {
+    "phonetic_text": "irr mitchtá",
+    "expression_text": "их мечта"
+  },
+  {
+    "phonetic_text": "irr richenьije",
+    "expression_text": "их решение"
+  },
+  {
+    "phonetic_text": "irr mitchti",
+    "expression_text": "их мечты"
+  },
+  {
+    "phonetic_text": "mu-chi-na",
+    "expression_text": "мужчина"
+  },
+  {
+    "phonetic_text": "jen-chi-na",
+    "expression_text": "женщина"
+  },
+  {
+    "phonetic_text": "málь-tchik",
+    "expression_text": "мальчик"
+  },
+  {
+    "phonetic_text": "dié-va-tchka",
+    "expression_text": "девочка"
+  },
+  {
+    "phonetic_text": "padractouk",
+    "expression_text": "подросток"
+  },
+  {
+    "phonetic_text": "ribʲounak",
+    "expression_text": "ребёнок"
+  },
+  {
+    "phonetic_text": "mladʲénьits",
+    "expression_text": "младенец"
+  },
+  {
+    "phonetic_text": "tchilaviék",
+    "expression_text": "человек"
+  },
+  {
+    "phonetic_text": "lьitcá farmálьna",
+    "expression_text": "лица"
+  },
+  {
+    "phonetic_text": "lьudi",
+    "expression_text": "люди"
+  },
+  {
+    "phonetic_text": "much",
+    "expression_text": "муж"
+  },
+  {
+    "phonetic_text": "je-ná",
+    "expression_text": "жена"
+  },
+  {
+    "phonetic_text": "cьin",
+    "expression_text": "сын"
+  },
+  {
+    "phonetic_text": "dou-tch",
+    "expression_text": "дочь"
+  },
+  {
+    "phonetic_text": "brát",
+    "expression_text": "брат"
+  },
+  {
+    "phonetic_text": "ci-ctrá",
+    "expression_text": "сестра"
+  },
+  {
+    "phonetic_text": "á-tьié-tc",
+    "expression_text": "отец"
+  },
+  {
+    "phonetic_text": "mátь",
+    "expression_text": "мать"
+  },
+  {
+    "phonetic_text": "dié-du-chka",
+    "expression_text": "дедушка"
+  },
+  {
+    "phonetic_text": "bá-bu-chka",
+    "expression_text": "бабушка"
+  },
+  {
+    "phonetic_text": "diá-dia",
+    "expression_text": "дядя"
+  },
+  {
+    "phonetic_text": "tьiou-tia",
+    "expression_text": "тётя"
+  },
+  {
+    "phonetic_text": "plьi-miá-nьik",
+    "expression_text": "племянник"
+  },
+  {
+    "phonetic_text": "plьi-miá-nьitsa",
+    "expression_text": "племянница"
+  },
+  {
+    "phonetic_text": "iá rá-bou-tá-iu",
+    "expression_text": "я работаю"
+  },
+  {
+    "phonetic_text": "teь rá-bou-tái-éch",
+    "expression_text": "ты работаешь"
+  },
+  {
+    "phonetic_text": "oun rа́-bou-tái-ét",
+    "expression_text": "он работает"
+  },
+  {
+    "phonetic_text": "mi raboutáiém",
+    "expression_text": "мы работаем"
+  },
+  {
+    "phonetic_text": "vi raboutáiétьi",
+    "expression_text": "вы работаете"
+  },
+  {
+    "phonetic_text": "anьi raboutájut",
+    "expression_text": "они работают"
+  },
+  {
+    "phonetic_text": "oun raboutal",
+    "expression_text": "он работал"
+  },
+  {
+    "phonetic_text": "aná raboutala",
+    "expression_text": "она работала"
+  },
+  {
+    "phonetic_text": "anou raboutala",
+    "expression_text": "оно работало"
+  },
+  {
+    "phonetic_text": "iá pa-ra-bou-tá-iu",
+    "expression_text": "я поработаю"
+  },
+  {
+    "phonetic_text": "ti paraboutáiéch",
+    "expression_text": "ты поработаешь"
+  },
+  {
+    "phonetic_text": "oun paraboutáiét",
+    "expression_text": "он поработает"
+  },
+  {
+    "phonetic_text": "mi paraboutáiém",
+    "expression_text": "мы поработаем"
+  },
+  {
+    "phonetic_text": "vi paraboutáiétьi",
+    "expression_text": "вы поработаете"
+  },
+  {
+    "phonetic_text": "anьi paraboutájut",
+    "expression_text": "они поработают"
+  },
+  {
+    "phonetic_text": "já gavarʲu",
+    "expression_text": "я говорю"
+  },
+  {
+    "phonetic_text": "ti gavourich",
+    "expression_text": "ты говоришь"
+  },
+  {
+    "phonetic_text": "oun gavarit",
+    "expression_text": "он говорит"
+  },
+  {
+    "phonetic_text": "mi gavarim",
+    "expression_text": "мы говорим"
+  },
+  {
+    "phonetic_text": "vi gavaritьi",
+    "expression_text": "вы говорите"
+  },
+  {
+    "phonetic_text": "anьi gavariát",
+    "expression_text": "они говорят"
+  },
+  {
+    "phonetic_text": "oun gavaril",
+    "expression_text": "он говорил"
+  },
+  {
+    "phonetic_text": "aná gavarila",
+    "expression_text": "она говорила"
+  },
+  {
+    "phonetic_text": "anou gavarila",
+    "expression_text": "оно говорило"
+  },
+  {
+    "phonetic_text": "já pagavourʲu",
+    "expression_text": "я поговорю"
+  },
+  {
+    "phonetic_text": "ti pagavourich",
+    "expression_text": "ты поговоришь"
+  },
+  {
+    "phonetic_text": "oun pagavourit",
+    "expression_text": "он поговорит"
+  },
+  {
+    "phonetic_text": "mi pagavourim",
+    "expression_text": "мы поговорим"
+  },
+  {
+    "phonetic_text": "vi pagavouritьi",
+    "expression_text": "вы поговорите"
+  },
+  {
+    "phonetic_text": "anьi pagavouriát",
+    "expression_text": "они поговорят"
+  },
+  {
+    "phonetic_text": "já ɕáclьif",
+    "expression_text": "Я счастлив."
+  },
+  {
+    "phonetic_text": "mnьe gructna",
+    "expression_text": "Мне грустно."
+  },
+  {
+    "phonetic_text": "já zánьit",
+    "expression_text": "Я занят."
+  },
+  {
+    "phonetic_text": "já uctál",
+    "expression_text": "Я устал."
+  },
+  {
+    "phonetic_text": "já napichu tьibié",
+    "expression_text": "Я напишу тебе."
+  },
+  {
+    "phonetic_text": "já atprávʲlьu tьibié cabɕenьije",
+    "expression_text": "Я отправлю тебе сообщение."
+  },
+  {
+    "phonetic_text": "já iédu na pajézdi",
+    "expression_text": "Я еду на поезде."
+  },
+  {
+    "phonetic_text": "já palьet͡chu",
+    "expression_text": "Я полечу."
+  },
+  {
+    "phonetic_text": "já pajédu na pajézdi",
+    "expression_text": "Я поеду на поезде."
+  },
+  {
+    "phonetic_text": "já pajédu na aftoubuci",
+    "expression_text": "Я поеду на автобусе."
+  },
+  {
+    "phonetic_text": "já prijexal na pajézdi",
+    "expression_text": "Я приехал на поезде."
+  },
+  {
+    "phonetic_text": "já prijexal na aftoubuci",
+    "expression_text": "Я приехал на автобусе."
+  },
+  {
+    "phonetic_text": "já prilьitьel na camalьoutьi",
+    "expression_text": "Я прилетел на самолёте."
+  },
+  {
+    "phonetic_text": "já xatchu pitsu",
+    "expression_text": "Я хочу пиццу."
+  },
+  {
+    "phonetic_text": "já prinьec tьibié padárak",
+    "expression_text": "Я принес тебе подарок."
+  },
+  {
+    "phonetic_text": "já prinьicu tьibié padárak",
+    "expression_text": "Я принесу тебе подарок."
+  },
+  {
+    "phonetic_text": "já patьiriál cvii klьutchi",
+    "expression_text": "Я потерял свои ключи."
+  },
+  {
+    "phonetic_text": "já nachoul cvii klьutchi",
+    "expression_text": "Я нашёл свои ключи."
+  },
+  {
+    "phonetic_text": "já iɕu cvouj tьilьifoun",
+    "expression_text": "Я ищу свой телефон."
+  },
+  {
+    "phonetic_text": "ti vidil mouj tьilьifoun",
+    "expression_text": "Ты видел мой телефон?"
+  },
+  {
+    "phonetic_text": "já paprabuju iéɕou rác",
+    "expression_text": "Я попробую ещё раз."
+  },
+  {
+    "phonetic_text": "tьibié nujná poumɕ",
+    "expression_text": "Тебе нужна помощь?"
+  },
+  {
+    "phonetic_text": "já pavirnul nalьeva",
+    "expression_text": "Я повернул налево."
+  },
+  {
+    "phonetic_text": "já pajdu za tabouj",
+    "expression_text": "Я пойду за тобой."
+  },
+  {
+    "phonetic_text": "prinьeci mnьe vadi",
+    "expression_text": "Принеси мне воды."
+  },
+  {
+    "phonetic_text": "mnьe nrávitsa eta muzika",
+    "expression_text": "Мне нравится эта музыка."
+  },
+  {
+    "phonetic_text": "já xatchu napicátь knьigu",
+    "expression_text": "Я хочу написать книгу."
+  },
+  {
+    "phonetic_text": "moujna zʲdecʲ céctь",
+    "expression_text": "Можно здесь сесть?"
+  },
+  {
+    "phonetic_text": "já fctьriétьil cvaix driziéj",
+    "expression_text": "Я встретил своих друзей."
+  },
+  {
+    "phonetic_text": "já gavaril c raditьilьimi",
+    "expression_text": "Я говорил с родителями."
+  },
+  {
+    "phonetic_text": "já razgavarivál c brátoum",
+    "expression_text": "Я разговаривал с братом."
+  },
+  {
+    "phonetic_text": "ti bictra utchichcia",
+    "expression_text": "Ты быстро учишься."
+  },
+  {
+    "phonetic_text": "ti umnij",
+    "expression_text": "Ты умный."
+  },
+  {
+    "phonetic_text": "ti gatouf",
+    "expression_text": "Ты готов?"
+  },
+  {
+    "phonetic_text": "já toulьka chtou prinьál duch",
+    "expression_text": "Я только что принял душ."
+  },
+  {
+    "phonetic_text": "mnьe nujna prinьátь duch",
+    "expression_text": "Мне нужно принять душ."
+  },
+  {
+    "phonetic_text": "mnьe nujna piriadiétsa",
+    "expression_text": "Мне нужно переодеться."
+  },
+  {
+    "phonetic_text": "xoutchich pazmritьetь fьilm",
+    "expression_text": "Хочешь посмотреть фильм?"
+  },
+  {
+    "phonetic_text": "vou ckoulka ti zakantchiváiéch raboutu",
+    "expression_text": "Во сколько ты заканчиваешь работу?"
+  },
+  {
+    "phonetic_text": "vou ckoulka ti natchinaiéch raboutatь",
+    "expression_text": "Во сколько ты начинаешь работать?"
+  },
+  {
+    "phonetic_text": "chtou ti diláiich civoudnьa",
+    "expression_text": "Что ты делаешь сегодня?"
+  },
+  {
+    "phonetic_text": "chtou ti diláiich civoudnьa viétchiram",
+    "expression_text": "Что ты делаешь сегодня вечером?"
+  },
+  {
+    "phonetic_text": "chtou ti diláiich",
+    "expression_text": "Что ты делаешь?"
+  },
+  {
+    "phonetic_text": "kakii u tьibiá pláni na vixadnii",
+    "expression_text": "Какие у тебя планы на выходные?"
+  },
+  {
+    "phonetic_text": "xoutchich patantsivatь",
+    "expression_text": "Хочешь потанцевать?"
+  },
+  {
+    "phonetic_text": "pajdʲoum gulьátь",
+    "expression_text": "Пойдём гулять."
+  },
+  {
+    "phonetic_text": "já bil f cupirmárkitьi",
+    "expression_text": "Я был в супермаркете."
+  },
+  {
+    "phonetic_text": "já toulьka chtou prichoul iz cupirmárkita",
+    "expression_text": "Я только что пришёл из супермаркета."
+  },
+  {
+    "phonetic_text": "já idu f cupirmárkit",
+    "expression_text": "Я иду в супермаркет."
+  },
+  {
+    "phonetic_text": "já pajdu f cupirmárkit",
+    "expression_text": "Я пойду в супермаркет."
+  },
+  {
+    "phonetic_text": "já nьimnouga apazdiváju",
+    "expression_text": "Я немного опаздываю."
+  },
+  {
+    "phonetic_text": "já apazdiváju",
+    "expression_text": "Я опаздываю."
+  },
+  {
+    "phonetic_text": "já outchinь apazdiváju",
+    "expression_text": "Я очень опаздываю."
+  },
+  {
+    "phonetic_text": "mi moujim pajtьi vmiéctьi",
+    "expression_text": "Мы можем пойти вместе."
+  },
+  {
+    "phonetic_text": "ictouw feliz",
+    "expression_text": "Estou feliz."
+  },
+  {
+    "phonetic_text": "ictouw trictchi",
+    "expression_text": "Estou triste."
+  },
+  {
+    "phonetic_text": "ictouw oukupádá",
+    "expression_text": "Estou ocupada."
+  },
+  {
+    "phonetic_text": "ictouw kãzádá",
+    "expression_text": "Estou cansada."
+  },
+  {
+    "phonetic_text": "ew vouw tchi ic.krever",
+    "expression_text": "Eu vou te escrever."
+  },
+  {
+    "phonetic_text": "ew vouw tchi mãdár u.ma mẽ.cájẽj",
+    "expression_text": "Eu vou te mandar uma mensagem."
+  },
+  {
+    "phonetic_text": "ictouw ĩdu dji trẽj",
+    "expression_text": "Estou indo de trem."
+  },
+  {
+    "phonetic_text": "ew vouw vouár",
+    "expression_text": "Eu vou voar."
+  },
+  {
+    "phonetic_text": "ew vouw dji trẽj",
+    "expression_text": "Eu vou de trem."
+  },
+  {
+    "phonetic_text": "ew vouw dji õnibuc",
+    "expression_text": "Eu vou de ônibus."
+  },
+  {
+    "phonetic_text": "ew vĩ dji trẽj",
+    "expression_text": "Eu vim de trem."
+  },
+  {
+    "phonetic_text": "ew vĩ dji õnibuc",
+    "expression_text": "Eu vim de ônibus."
+  },
+  {
+    "phonetic_text": "ew vĩ dji ávjãw̃",
+    "expression_text": "Eu vim de avião."
+  },
+  {
+    "phonetic_text": "ew keru u.ma pitcá",
+    "expression_text": "Eu quero uma pizza."
+  },
+  {
+    "phonetic_text": "ew trouzi ũ prezẽtchi pára vouce",
+    "expression_text": "Eu trouxe um presente para você."
+  },
+  {
+    "phonetic_text": "ew vouw tchi trázer ũ prezẽtchi",
+    "expression_text": "Eu vou te trazer um presente."
+  },
+  {
+    "phonetic_text": "ew perdi minhach cháviz",
+    "expression_text": "Eu perdi minhas chaves."
+  },
+  {
+    "phonetic_text": "ew ẽkõtrej minhach cháviz",
+    "expression_text": "Eu encontrei minhas chaves."
+  },
+  {
+    "phonetic_text": "ictouw proukurãdu mew té.lefouni",
+    "expression_text": "Estou procurando meu telefone."
+  },
+  {
+    "phonetic_text": "vouce viw mew té.lefouni",
+    "expression_text": "Você viu meu telefone?"
+  },
+  {
+    "phonetic_text": "ew vouw tẽtár dji nouvu",
+    "expression_text": "Eu vou tentar de novo."
+  },
+  {
+    "phonetic_text": "vouce prezizá dji ájudá",
+    "expression_text": "Você precisa de ajuda?"
+  },
+  {
+    "phonetic_text": "ew virej á eckerdá",
+    "expression_text": "Eu virei à esquerda."
+  },
+  {
+    "phonetic_text": "ew vouw tchi cegir",
+    "expression_text": "Eu vou te seguir."
+  },
+  {
+    "phonetic_text": "trága mi ágwa",
+    "expression_text": "Traga-me água."
+  },
+  {
+    "phonetic_text": "ew góctu déchta muzika",
+    "expression_text": "Eu gosto desta música."
+  },
+  {
+    "phonetic_text": "ew keru ic.krever ũ livru",
+    "expression_text": "Eu quero escrever um livro."
+  },
+  {
+    "phonetic_text": "poucu cẽtár áki",
+    "expression_text": "Posso sentar aqui?"
+  },
+  {
+    "phonetic_text": "ew ẽkõtrej mewc ámiguc",
+    "expression_text": "Eu encontrei meus amigos."
+  },
+  {
+    "phonetic_text": "ew fálej kõ mewc pájc",
+    "expression_text": "Eu falei com meus pais."
+  },
+  {
+    "phonetic_text": "ew ictáva fálãdu kõ mew irmãw̃",
+    "expression_text": "Eu estava falando com meu irmão."
+  },
+  {
+    "phonetic_text": "vouce áprẽdji rápidu",
+    "expression_text": "Você aprende rápido."
+  },
+  {
+    "phonetic_text": "vouce é ĩtélijẽtchi",
+    "expression_text": "Você é inteligente."
+  },
+  {
+    "phonetic_text": "vouce ictá prõta",
+    "expression_text": "Você está pronta?"
+  },
+  {
+    "phonetic_text": "ákábej dji toumár bánhu",
+    "expression_text": "Acabei de tomar banho."
+  },
+  {
+    "phonetic_text": "ew prezizu toumár bánhu",
+    "expression_text": "Eu preciso tomar banho."
+  },
+  {
+    "phonetic_text": "ew prezizu troukár dji rouwpa",
+    "expression_text": "Eu preciso trocar de roupa."
+  },
+  {
+    "phonetic_text": "vouce ker ácictir á ũ filmi",
+    "expression_text": "Você quer assistir a um filme?"
+  },
+  {
+    "phonetic_text": "á ki ourac vouce terminá u trábálhu",
+    "expression_text": "A que horas você termina o trabalho?"
+  },
+  {
+    "phonetic_text": "á ki ourac vouce koume.cá á trá.bálhár",
+    "expression_text": "A que horas você começa a trabalhar?"
+  },
+  {
+    "phonetic_text": "u ki vouce vái fázer ouji",
+    "expression_text": "O que você vai fazer hoje?"
+  },
+  {
+    "phonetic_text": "u ki vouce vái fázer échta noujtchi",
+    "expression_text": "O que você vai fazer esta noite?"
+  },
+  {
+    "phonetic_text": "u ki vouce ictá fázẽdu",
+    "expression_text": "O que você está fazendo?"
+  },
+  {
+    "phonetic_text": "kwájc cãw cewc planuc pára u fĩ dji cemana",
+    "expression_text": "Quais são seus planos para o fim de semana?"
+  },
+  {
+    "phonetic_text": "vouce ker dãcár",
+    "expression_text": "Você quer dançar?"
+  },
+  {
+    "phonetic_text": "vamuc dár u.ma káminháda",
+    "expression_text": "Vamos dar uma caminhada."
+  },
+  {
+    "phonetic_text": "ew ictáva nu cupermárkádu",
+    "expression_text": "Eu estava no supermercado."
+  },
+  {
+    "phonetic_text": "ákábej dji vir du cupermárkádu",
+    "expression_text": "Acabei de vir do supermercado."
+  },
+  {
+    "phonetic_text": "ictouw ĩdu pára u cupermárkádu",
+    "expression_text": "Estou indo para o supermercado."
+  },
+  {
+    "phonetic_text": "ew vouw áw cupermárkádu",
+    "expression_text": "Eu vou ao supermercado."
+  },
+  {
+    "phonetic_text": "ictouw ũ pouku átrázádá",
+    "expression_text": "Estou um pouco atrasada."
+  },
+  {
+    "phonetic_text": "ictouw átrázádá",
+    "expression_text": "Estou atrasada."
+  },
+  {
+    "phonetic_text": "ictouw mũjtu átrázádá",
+    "expression_text": "Estou muito atrasada."
+  },
+  {
+    "phonetic_text": "pudemuc ir jũtac",
+    "expression_text": "Podemos ir juntas."
+  },
+  {
+    "phonetic_text": "man",
+    "expression_text": "man"
+  },
+  {
+    "phonetic_text": "wu-man",
+    "expression_text": "woman"
+  },
+  {
+    "phonetic_text": "bói",
+    "expression_text": "boy"
+  },
+  {
+    "phonetic_text": "garl",
+    "expression_text": "girl"
+  },
+  {
+    "phonetic_text": "ti-nei-djar",
+    "expression_text": "teenager"
+  },
+  {
+    "phonetic_text": "tchá-ild",
+    "expression_text": "child"
+  },
+  {
+    "phonetic_text": "beibi",
+    "expression_text": "baby"
+  },
+  {
+    "phonetic_text": "par-can",
+    "expression_text": "person"
+  },
+  {
+    "phonetic_text": "par-canz",
+    "expression_text": "persons"
+  },
+  {
+    "phonetic_text": "pi-pal",
+    "expression_text": "people"
+  },
+  {
+    "phonetic_text": "haz-band",
+    "expression_text": "husband"
+  },
+  {
+    "phonetic_text": "wáif",
+    "expression_text": "wife"
+  },
+  {
+    "phonetic_text": "can",
+    "expression_text": "son"
+  },
+  {
+    "phonetic_text": "dó-tar",
+    "expression_text": "daughter"
+  },
+  {
+    "phonetic_text": "bra-thar",
+    "expression_text": "brother"
+  },
+  {
+    "phonetic_text": "ci-ctar",
+    "expression_text": "sister"
+  },
+  {
+    "phonetic_text": "fá-thar",
+    "expression_text": "father"
+  },
+  {
+    "phonetic_text": "ma-thar",
+    "expression_text": "mother"
+  },
+  {
+    "phonetic_text": "gran-fá-thar",
+    "expression_text": "grandfather"
+  },
+  {
+    "phonetic_text": "gran-ma-thar",
+    "expression_text": "grandmother"
+  },
+  {
+    "phonetic_text": "an-kal",
+    "expression_text": "uncle"
+  },
+  {
+    "phonetic_text": "áun-ti",
+    "expression_text": "auntie"
+  },
+  {
+    "phonetic_text": "né-fiu",
+    "expression_text": "nephew"
+  },
+  {
+    "phonetic_text": "nic",
+    "expression_text": "niece"
+  }
+]

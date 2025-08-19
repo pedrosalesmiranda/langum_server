@@ -41,3 +41,15 @@ def generate_all_language_sounds(langEng: str):
         print(f"{sound_filename} was created in {lang_2_letters}")
 
     conn.close()
+
+
+# generate_all_language_sounds("portuguese")
+# text = "ola tudo bem?"
+
+# Brazil accent
+# tts = gTTS(text.lower(), lang="pt", tld='com.br')
+# Portugal accent
+# tts = gTTS(text.lower(), lang="pt", tld='pt')
+
+# tts.save("./sound.mp3")
+
