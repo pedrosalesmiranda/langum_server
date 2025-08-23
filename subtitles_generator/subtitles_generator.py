@@ -141,11 +141,27 @@ def option_wav_to_srt():
 
 
 def option_movie_to_srt():
-    """Extract WAV + Transcribe to SRT from a single movie."""
-    video_path = input("Enter video path: ").strip()
-    if not video_path or not os.path.isfile(video_path):
-        print("⚠️ Invalid video path.")
+    """Extract WAV + Transcribe to SRT from a chosen movie in VIDEO_FOLDER."""
+    videos = list_videos()
+    if not videos:
+        print(f"⚠️ No video files found in {VIDEO_FOLDER}")
         return
+
+    print("\nAvailable video files:")
+    for i, video in enumerate(videos, 1):
+        print(f"{i}. {video}")
+
+    choice = input("Select file number (or press Enter for latest): ").strip()
+    if not choice:
+        video_path = sorted(videos)[-1]  # pick most recent lexicographically
+    else:
+        try:
+            idx = int(choice) - 1
+            video_path = videos[idx]
+        except (ValueError, IndexError):
+            print("⚠️ Invalid choice.")
+            return
+
     try:
         wav_path = extract_audio(video_path, AUDIO_FOLDER)
         print(f"✅ Extracted audio: {wav_path}")
@@ -153,6 +169,7 @@ def option_movie_to_srt():
         print(f"✅ Transcript saved: {output_srt}")
     except Exception as e:
         print(f"❌ Failed: {e}")
+
 
 
 # ------------------ MAIN ------------------
