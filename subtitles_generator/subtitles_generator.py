@@ -3,7 +3,7 @@ import datetime
 import os
 
 # 👇 set your video file here
-VIDEO_FILENAME = "seinfeld_1_1.mkv"
+VIDEO_FILENAME = "videos/seinfeld_1_1.mkv"
 
 def extract_audio(video_path: str) -> str:
     """

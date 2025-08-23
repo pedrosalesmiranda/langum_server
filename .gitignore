@@ -2,3 +2,5 @@
 /.idea/
 /sound/
 /expressions_generation_scripts/jsons/inputs/processed/
+/subtitles_generator/audios/
+/subtitles_generator/videos/
