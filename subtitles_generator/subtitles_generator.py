@@ -4,9 +4,9 @@ import os
 from pywhispercpp.model import Model
 
 # ------------------ CONFIG ------------------
-VIDEO_FOLDER = "./videos"
+VIDEO_FOLDER = "./videos/duck_tales/season1"
 AUDIO_FOLDER = "./audios"
-MODEL_PATH = "./models/ggml-large-v3-turbo.bin"
+MODEL_PATH = "./models/ggml-medium.bin"
 VIDEO_EXTENSIONS = (".mp4", ".mov", ".mkv", ".avi", ".flv", ".wmv")
 
 
