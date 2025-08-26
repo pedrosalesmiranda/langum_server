@@ -1,0 +1,29 @@
+{
+  "verbs on foot": {
+    "Go": {
+      "perfective": "пойти",
+      "imperfective_one_direction": "идти",
+      "imperfective_multidirectional": "ходить"
+    },
+    "Arrive": {
+      "perfective": "прийти",
+      "imperfective_one_direction": "приходить",
+      "imperfective_multidirectional": "приходить (same)"
+    },
+    "Leave": {
+      "perfective": "уйти",
+      "imperfective_one_direction": "уходить",
+      "imperfective_multidirectional": "уходить (same)"
+    },
+    "Enter": {
+      "perfective": "войти",
+      "imperfective_one_direction": "входить",
+      "imperfective_multidirectional": "входить (same)"
+    },
+    "Exit": {
+      "perfective": "выйти",
+      "imperfective_one_direction": "выходить",
+      "imperfective_multidirectional": "выходить (same)"
+    }
+  }
+}

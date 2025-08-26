@@ -1,0 +1,29 @@
+{
+  "verbs on transport": {
+    "Go": {
+      "perfective": "поехать",
+      "imperfective_one_direction": "ехать",
+      "imperfective_multidirectional": "ездить"
+    },
+    "Arrive": {
+      "perfective": "приехать",
+      "imperfective_one_direction": "приезжать",
+      "imperfective_multidirectional": "приезжать (same)"
+    },
+    "Leave": {
+      "perfective": "уехать",
+      "imperfective_one_direction": "уезжать",
+      "imperfective_multidirectional": "уезжать (same)"
+    },
+    "Enter": {
+      "perfective": "въехать",
+      "imperfective_one_direction": "въезжать",
+      "imperfective_multidirectional": "въезжать (same)"
+    },
+    "Exit": {
+      "perfective": "выехать",
+      "imperfective_one_direction": "выезжать",
+      "imperfective_multidirectional": "выезжать (same)"
+    }
+  }
+}

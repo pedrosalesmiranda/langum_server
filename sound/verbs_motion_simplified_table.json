@@ -1,0 +1,48 @@
+{
+  "on_foot": {
+    "go": {
+      "imperfective_multi": { "infinitive": "ходить", "present_1s": "хожу", "present_2s": "ходишь", "present_3s": "ходит" },
+      "imperfective_uni": { "infinitive": "идти", "present_1s": "иду", "present_2s": "идёшь", "present_3s": "идёт" },
+      "perfective": { "infinitive": "пойти", "future_1s": "пойду", "future_2s": "пойдёшь", "future_3s": "пойдёт" }
+    },
+    "arrive": {
+      "imperfective": { "infinitive": "приходить", "present_1s": "прихожу", "present_2s": "приходишь", "present_3s": "приходит" },
+      "perfective": { "infinitive": "прийти", "future_1s": "приду", "future_2s": "придёшь", "future_3s": "придёт" }
+    },
+    "leave": {
+      "imperfective": { "infinitive": "уходить", "present_1s": "ухожу", "present_2s": "уходишь", "present_3s": "уходит" },
+      "perfective": { "infinitive": "уйти", "future_1s": "уйду", "future_2s": "уйдёшь", "future_3s": "уйдёт" }
+    },
+    "enter": {
+      "imperfective": { "infinitive": "входить", "present_1s": "вхожу", "present_2s": "входишь", "present_3s": "входит" },
+      "perfective": { "infinitive": "войти", "future_1s": "войду", "future_2s": "войдёшь", "future_3s": "войдёт" }
+    },
+    "exit": {
+      "imperfective": { "infinitive": "выходить", "present_1s": "выхожу", "present_2s": "выходишь", "present_3s": "выходит" },
+      "perfective": { "infinitive": "выйти", "future_1s": "выйду", "future_2s": "выйдешь", "future_3s": "выйдет" }
+    }
+  },
+  "by_vehicle": {
+    "go": {
+      "imperfective_multi": { "infinitive": "ездить", "present_1s": "езжу", "present_2s": "ездишь", "present_3s": "ездит" },
+      "imperfective_uni": { "infinitive": "ехать", "present_1s": "еду", "present_2s": "едешь", "present_3s": "едет" },
+      "perfective": { "infinitive": "поехать", "future_1s": "поеду", "future_2s": "поедешь", "future_3s": "поедет" }
+    },
+    "arrive": {
+      "imperfective": { "infinitive": "приезжать", "present_1s": "приезжаю", "present_2s": "приезжаешь", "present_3s": "приезжает" },
+      "perfective": { "infinitive": "приехать", "future_1s": "приеду", "future_2s": "приедешь", "future_3s": "приедет" }
+    },
+    "leave": {
+      "imperfective": { "infinitive": "уезжать", "present_1s": "уезжаю", "present_2s": "уезжаешь", "present_3s": "уезжает" },
+      "perfective": { "infinitive": "уехать", "future_1s": "уеду", "future_2s": "уедешь", "future_3s": "уедет" }
+    },
+    "enter": {
+      "imperfective": { "infinitive": "въезжать", "present_1s": "въезжаю", "present_2s": "въезжаешь", "present_3s": "въезжает" },
+      "perfective": { "infinitive": "въехать", "future_1s": "въеду", "future_2s": "въедешь", "future_3s": "въедет" }
+    },
+    "exit": {
+      "imperfective": { "infinitive": "выезжать", "present_1s": "выезжаю", "present_2s": "выезжаешь", "present_3s": "выезжает" },
+      "perfective": { "infinitive": "выехать", "future_1s": "выеду", "future_2s": "выедешь", "future_3s": "выедет" }
+    }
+  }
+}
