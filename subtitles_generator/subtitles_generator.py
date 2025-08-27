@@ -5,8 +5,9 @@ from pywhispercpp.model import Model
 
 # ------------------ CONFIG ------------------
 VIDEO_FOLDER = "./videos/duck_tales/season1"
+SUBTITLES_FOLDER = "./subtitles"
 AUDIO_FOLDER = "./audios"
-MODEL_PATH = "./models/ggml-medium.bin"
+MODEL_PATH = "./models/ggml-large-v3-turbo.bin"
 VIDEO_EXTENSIONS = (".mp4", ".mov", ".mkv", ".avi", ".flv", ".wmv")
 
 
@@ -18,7 +19,7 @@ def extract_audio(video_path: str, audio_folder: str) -> str:
 
     filename = os.path.splitext(os.path.basename(video_path))[0]
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_file = os.path.join(audio_folder, f"{filename}_audio_{timestamp}.wav")
+    output_file = os.path.join(audio_folder, f"{filename}_{timestamp}.wav")
 
     command = [
         "ffmpeg", "-y",
@@ -53,7 +54,9 @@ def transcribe_to_srt(
 ) -> str:
     """Transcribe the given audio file to SRT format."""
     if output_srt is None:
-        output_srt = os.path.splitext(audio_path)[0] + ".srt"
+        os.makedirs(SUBTITLES_FOLDER, exist_ok=True)
+        filename = os.path.splitext(os.path.basename(audio_path))[0]
+        output_srt = os.path.join(SUBTITLES_FOLDER, filename + ".srt")
 
     model = Model(model_path, n_threads=n_threads, print_progress=True, print_realtime=False)
     segments = model.transcribe(audio_path, language=language, translate=translate)
