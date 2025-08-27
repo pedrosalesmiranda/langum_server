@@ -3,9 +3,11 @@ import subprocess
 import soundfile as sf
 import torch
 import torchaudio
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module="torchaudio")
 
 # --- CONFIG ---
-song_file = "./musics/bi2.mp3"
+song_file = "./musics/socrat.mp3"
 output_dir = "output"
 model_name = "htdemucs"  # Demucs model
 target_sr = 16000         # Whisper sample rate
@@ -41,11 +43,11 @@ if sr != target_sr:
     vocals_audio = resampler(vocals_audio)
     sr = target_sr
 
-# Save vocals
+# Save vocals with soundfile (no torchaudio warnings)
 sf.write(vocals_file, vocals_audio.squeeze(0).numpy(), sr)
 print(f"Vocals ready for Whisper: {vocals_file}")
 
-# --- STEP 3: Convert no_vocals (instrumental) to mono 16kHz 16-bit WAV ---
+# --- STEP 3: Convert no_vocals (instrumental) to mono 16kHz 16-bit WAV with ffmpeg ---
 no_vocals_src = os.path.join(demucs_out_dir, "no_vocals.wav")
 subprocess.run([
     "ffmpeg",
