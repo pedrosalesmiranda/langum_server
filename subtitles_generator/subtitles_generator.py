@@ -1,7 +1,7 @@
 import subprocess
 import datetime
 import os
-from pywhispercpp.model import Model
+from faster_whisper import WhisperModel
 
 # ------------------ CONFIG ------------------
 VIDEO_FOLDER = "./videos/duck_tales/season1"
@@ -45,18 +45,18 @@ def format_timestamp(seconds: float) -> str:
 
 
 def _create_model_with_vad_settings(model_path: str, n_threads: int):
-    return Model(
+    return WhisperModel(
         model_path, 
-        n_threads=n_threads, 
-        print_progress=True, 
-        print_realtime=False
+        device="cuda", 
+        compute_type="float16",
+        num_workers=n_threads
     )
 
 
 def _filter_phantom_segments(segments, max_segment_duration: float = 10.0):
     filtered_segments = []
     for segment in segments:
-        duration = (segment.t1 - segment.t0) / 100.0
+        duration = segment.end - segment.start
         text = segment.text.strip()
         
         if duration > max_segment_duration and len(text) < 20:
@@ -70,13 +70,13 @@ def _filter_phantom_segments(segments, max_segment_duration: float = 10.0):
 
 
 def _validate_segment_durations(segments, max_duration: float = 10.0):
-    return [seg for seg in segments if (seg.t1 - seg.t0) / 100.0 <= max_duration]
+    return [seg for seg in segments if (seg.end - seg.start) <= max_duration]
 
 
 def _split_oversized_segments(segments, max_duration: float = 10.0):
     result_segments = []
     for segment in segments:
-        duration = (segment.t1 - segment.t0) / 100.0
+        duration = segment.end - segment.start
         if duration <= max_duration:
             result_segments.append(segment)
             continue
@@ -88,16 +88,16 @@ def _split_oversized_segments(segments, max_duration: float = 10.0):
             
         mid_point = len(words) // 2
         duration_per_word = duration / len(words)
-        split_time = segment.t0 + (mid_point * duration_per_word * 100.0)
+        split_time = segment.start + (mid_point * duration_per_word)
         
         class MockSegment:
-            def __init__(self, t0, t1, text):
-                self.t0 = t0
-                self.t1 = t1
+            def __init__(self, start, end, text):
+                self.start = start
+                self.end = end
                 self.text = text
         
-        first_half = MockSegment(segment.t0, split_time, " ".join(words[:mid_point]))
-        second_half = MockSegment(split_time, segment.t1, " ".join(words[mid_point:]))
+        first_half = MockSegment(segment.start, split_time, " ".join(words[:mid_point]))
+        second_half = MockSegment(split_time, segment.end, " ".join(words[mid_point:]))
         
         result_segments.extend([first_half, second_half])
     
@@ -107,8 +107,8 @@ def _split_oversized_segments(segments, max_duration: float = 10.0):
 def _convert_segments_to_srt(segments):
     srt_lines = []
     for i, segment in enumerate(segments, start=1):
-        start_ts = format_timestamp(segment.t0 / 100.0)
-        end_ts = format_timestamp(segment.t1 / 100.0)
+        start_ts = format_timestamp(segment.start)
+        end_ts = format_timestamp(segment.end)
         srt_lines.append(f"{i}\n{start_ts} --> {end_ts}\n{segment.text.strip()}\n")
     return "\n".join(srt_lines)
 
@@ -128,7 +128,8 @@ def transcribe_to_srt(
         output_srt = os.path.join(SUBTITLES_FOLDER, filename + ".srt")
 
     model = _create_model_with_vad_settings(model_path, n_threads)
-    raw_segments = model.transcribe(audio_path, language=language, translate=translate, no_context=True)
+    segments_generator, info = model.transcribe(audio_path, language=language, task="translate" if translate else "transcribe")
+    raw_segments = list(segments_generator)
     
     filtered_segments = _filter_phantom_segments(raw_segments, max_segment_duration)
     validated_segments = _validate_segment_durations(filtered_segments, max_segment_duration)
