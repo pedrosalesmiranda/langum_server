@@ -44,30 +44,97 @@ def format_timestamp(seconds: float) -> str:
     return f"{hours:02}:{minutes:02}:{secs:02},{millis:03}"
 
 
+def _create_model_with_vad_settings(model_path: str, n_threads: int):
+    return Model(
+        model_path, 
+        n_threads=n_threads, 
+        print_progress=True, 
+        print_realtime=False
+    )
+
+
+def _filter_phantom_segments(segments, max_segment_duration: float = 10.0):
+    filtered_segments = []
+    for segment in segments:
+        duration = (segment.t1 - segment.t0) / 100.0
+        text = segment.text.strip()
+        
+        if duration > max_segment_duration and len(text) < 20:
+            continue
+            
+        if not text or len(text) < 3:
+            continue
+            
+        filtered_segments.append(segment)
+    return filtered_segments
+
+
+def _validate_segment_durations(segments, max_duration: float = 10.0):
+    return [seg for seg in segments if (seg.t1 - seg.t0) / 100.0 <= max_duration]
+
+
+def _split_oversized_segments(segments, max_duration: float = 10.0):
+    result_segments = []
+    for segment in segments:
+        duration = (segment.t1 - segment.t0) / 100.0
+        if duration <= max_duration:
+            result_segments.append(segment)
+            continue
+            
+        words = segment.text.strip().split()
+        if len(words) <= 1:
+            result_segments.append(segment)
+            continue
+            
+        mid_point = len(words) // 2
+        duration_per_word = duration / len(words)
+        split_time = segment.t0 + (mid_point * duration_per_word * 100.0)
+        
+        class MockSegment:
+            def __init__(self, t0, t1, text):
+                self.t0 = t0
+                self.t1 = t1
+                self.text = text
+        
+        first_half = MockSegment(segment.t0, split_time, " ".join(words[:mid_point]))
+        second_half = MockSegment(split_time, segment.t1, " ".join(words[mid_point:]))
+        
+        result_segments.extend([first_half, second_half])
+    
+    return result_segments
+
+
+def _convert_segments_to_srt(segments):
+    srt_lines = []
+    for i, segment in enumerate(segments, start=1):
+        start_ts = format_timestamp(segment.t0 / 100.0)
+        end_ts = format_timestamp(segment.t1 / 100.0)
+        srt_lines.append(f"{i}\n{start_ts} --> {end_ts}\n{segment.text.strip()}\n")
+    return "\n".join(srt_lines)
+
+
 def transcribe_to_srt(
     audio_path: str,
     model_path: str = MODEL_PATH,
     output_srt: str = None,
     language: str = "ru",
     translate: bool = False,
-    n_threads: int = 12
+    n_threads: int = 12,
+    max_segment_duration: float = 10.0
 ) -> str:
-    """Transcribe the given audio file to SRT format."""
     if output_srt is None:
         os.makedirs(SUBTITLES_FOLDER, exist_ok=True)
         filename = os.path.splitext(os.path.basename(audio_path))[0]
         output_srt = os.path.join(SUBTITLES_FOLDER, filename + ".srt")
 
-    model = Model(model_path, n_threads=n_threads, print_progress=True, print_realtime=False)
-    segments = model.transcribe(audio_path, language=language, translate=translate)
-
-    srt_lines = []
-    for i, segment in enumerate(segments, start=1):
-        start_ts = format_timestamp(segment.t0 / 100.0)  # centiseconds → seconds
-        end_ts = format_timestamp(segment.t1 / 100.0)
-        srt_lines.append(f"{i}\n{start_ts} --> {end_ts}\n{segment.text.strip()}\n")
-
-    srt_content = "\n".join(srt_lines)
+    model = _create_model_with_vad_settings(model_path, n_threads)
+    raw_segments = model.transcribe(audio_path, language=language, translate=translate, no_context=True)
+    
+    filtered_segments = _filter_phantom_segments(raw_segments, max_segment_duration)
+    validated_segments = _validate_segment_durations(filtered_segments, max_segment_duration)
+    final_segments = _split_oversized_segments(validated_segments, max_segment_duration)
+    
+    srt_content = _convert_segments_to_srt(final_segments)
 
     with open(output_srt, "w", encoding="utf-8") as f:
         f.write(srt_content)
@@ -172,7 +239,6 @@ def option_movie_to_srt():
         print(f"✅ Transcript saved: {output_srt}")
     except Exception as e:
         print(f"❌ Failed: {e}")
-
 
 
 # ------------------ MAIN ------------------
