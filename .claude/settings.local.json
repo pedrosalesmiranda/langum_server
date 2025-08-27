@@ -4,9 +4,7 @@
       "Bash(git add:*)",
       "Bash(mkdir:*)",
       "WebSearch",
-      "Bash(python3:*)",
-      "Bash(git commit:*)",
-      "Bash(python:*)"
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
