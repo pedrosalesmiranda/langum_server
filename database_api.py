@@ -1,4 +1,5 @@
 import sqlite3
+import re
 
 import shared.constants
 from shared.string_utils import remove_special_characters
@@ -428,3 +429,181 @@ def copyDescriptionEngToLanguagePackTitle(language: str):
     conn.commit()
     conn.close()
     print(f"Successfully copied {len(missing_packs)} pack descriptions to LanguagePackWithTitle.")
+
+# ------------------ SUBTITLE DATABASE FUNCTIONS ------------------
+
+def initialize_subtitle_tables():
+    """Create subtitle tables if they don't exist"""
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+    
+    # Create Subtitles table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Subtitles (
+            subtitle_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            video_title TEXT,
+            season TEXT,
+            episode TEXT,
+            series TEXT,
+            music_title TEXT,
+            language TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # Create Segments table
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Segments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            subtitle_id INTEGER NOT NULL,
+            time_start TEXT NOT NULL,
+            time_end TEXT NOT NULL,
+            text TEXT NOT NULL,
+            segment_number INTEGER NOT NULL,
+            FOREIGN KEY (subtitle_id) REFERENCES Subtitles(subtitle_id) ON DELETE CASCADE
+        )
+    ''')
+    
+    # Create indexes
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_segments_subtitle_id ON Segments(subtitle_id)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_segments_segment_number ON Segments(segment_number)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_subtitles_language ON Subtitles(language)')
+    
+    conn.commit()
+    conn.close()
+
+def create_subtitle_record(video_title=None, season=None, episode=None, series=None, music_title=None, language="en"):
+    """Create a new subtitle record and return its ID"""
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        INSERT INTO Subtitles (video_title, season, episode, series, music_title, language)
+        VALUES (?, ?, ?, ?, ?, ?)
+    ''', (video_title, season, episode, series, music_title, language))
+    
+    subtitle_id = cursor.lastrowid
+    conn.commit()
+    conn.close()
+    
+    return subtitle_id
+
+def create_segments(subtitle_id, segments):
+    """Create segments for a subtitle"""
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+    
+    for segment in segments:
+        cursor.execute('''
+            INSERT INTO Segments (subtitle_id, time_start, time_end, text, segment_number)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (subtitle_id, segment['time_start'], segment['time_end'], segment['text'], segment['segment_number']))
+    
+    conn.commit()
+    conn.close()
+
+def parse_srt_content(srt_content):
+    """Parse SRT content and return list of segments"""
+    segments = []
+    pattern = r'(\d+)\n(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})\n(.*?)(?=\n\d+\n|\n*$)'
+    
+    matches = re.findall(pattern, srt_content, re.DOTALL)
+    
+    for match in matches:
+        segment_number, time_start, time_end, text = match
+        segments.append({
+            'segment_number': int(segment_number),
+            'time_start': time_start.strip(),
+            'time_end': time_end.strip(),
+            'text': text.strip().replace('\n', ' ')
+        })
+    
+    return segments
+
+def save_srt_to_database(srt_file_path, video_title=None, season=None, episode=None, series=None, music_title=None, language="en"):
+    """Parse SRT file and save to database"""
+    try:
+        # Initialize tables if they don't exist
+        initialize_subtitle_tables()
+        
+        # Read SRT file
+        with open(srt_file_path, 'r', encoding='utf-8') as f:
+            srt_content = f.read()
+        
+        # Parse segments
+        segments = parse_srt_content(srt_content)
+        
+        if not segments:
+            print(f"⚠️ No segments found in {srt_file_path}")
+            return None
+        
+        # Create subtitle record
+        subtitle_id = create_subtitle_record(
+            video_title=video_title,
+            season=season,
+            episode=episode,
+            series=series,
+            music_title=music_title,
+            language=language
+        )
+        
+        # Create segments
+        create_segments(subtitle_id, segments)
+        
+        print(f"✅ Successfully saved {len(segments)} segments to database with subtitle_id {subtitle_id}")
+        return subtitle_id
+        
+    except Exception as e:
+        print(f"❌ Error saving SRT to database: {e}")
+        return None
+
+def get_subtitles_by_criteria(video_title=None, season=None, episode=None, series=None, music_title=None, language=None):
+    """Query subtitles with optional filters"""
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+    
+    query = "SELECT * FROM Subtitles WHERE 1=1"
+    params = []
+    
+    if video_title:
+        query += " AND video_title LIKE ?"
+        params.append(f"%{video_title}%")
+    if season:
+        query += " AND season = ?"
+        params.append(season)
+    if episode:
+        query += " AND episode = ?"
+        params.append(episode)
+    if series:
+        query += " AND series LIKE ?"
+        params.append(f"%{series}%")
+    if music_title:
+        query += " AND music_title LIKE ?"
+        params.append(f"%{music_title}%")
+    if language:
+        query += " AND language = ?"
+        params.append(language)
+    
+    query += " ORDER BY created_at DESC"
+    
+    cursor.execute(query, params)
+    results = cursor.fetchall()
+    conn.close()
+    
+    return results
+
+def get_segments_by_subtitle_id(subtitle_id):
+    """Get all segments for a specific subtitle"""
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT * FROM Segments 
+        WHERE subtitle_id = ? 
+        ORDER BY segment_number
+    ''', (subtitle_id,))
+    
+    results = cursor.fetchall()
+    conn.close()
+    
+    return results

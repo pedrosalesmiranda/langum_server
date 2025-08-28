@@ -1,7 +1,11 @@
 import subprocess
 import datetime
 import os
+import re
 from pywhispercpp.model import Model
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from database_api import save_srt_to_database, get_subtitles_by_criteria, initialize_subtitle_tables
 
 # ------------------ CONFIG ------------------
 VIDEO_FOLDER = "./videos/duck_tales/season1"
@@ -164,6 +168,84 @@ def list_audios(folder=AUDIO_FOLDER) -> list[str]:
     ]
 
 
+def list_subtitles(folder=SUBTITLES_FOLDER) -> list[str]:
+    """Return a list of all SRT files in a folder."""
+    if not os.path.isdir(folder):
+        return []
+    return [
+        os.path.join(folder, f)
+        for f in os.listdir(folder)
+        if f.lower().endswith(".srt")
+    ]
+
+
+def extract_season_episode_from_filename(filename):
+    """Extract season and episode numbers from filename using common patterns."""
+    
+    # Get just the filename without path and extension
+    base_filename = os.path.splitext(os.path.basename(filename))[0].lower()
+    
+    # Common patterns for season/episode detection
+    patterns = [
+        # S01E01, s01e01, S1E1
+        r's(\d{1,2})e(\d{1,2})',
+        # Season 1 Episode 1, season 01 episode 01
+        r'season\s*(\d{1,2})\s*episode\s*(\d{1,2})',
+        # 1x01, 01x01
+        r'(\d{1,2})x(\d{1,2})',
+        # Just numbers like _01_01_ or -01-01-
+        r'[\-_](\d{1,2})[\-_](\d{1,2})[\-_]',
+    ]
+    
+    for pattern in patterns:
+        match = re.search(pattern, base_filename)
+        if match:
+            season = int(match.group(1))
+            episode = int(match.group(2))
+            return season, episode
+    
+    return None, None
+
+
+def extract_title_from_filename(filename):
+    """Extract title from filename, removing season/episode patterns and cleaning up."""
+    
+    # Get just the filename without path and extension
+    base_filename = os.path.splitext(os.path.basename(filename))[0]
+    
+    # Patterns to remove (season/episode indicators)
+    removal_patterns = [
+        # S01E01, s01e01, S1E1 variants
+        r's\d{1,2}e\d{1,2}',
+        r'S\d{1,2}E\d{1,2}',
+        # Season X Episode Y variants
+        r'season\s*\d{1,2}\s*episode\s*\d{1,2}',
+        r'Season\s*\d{1,2}\s*Episode\s*\d{1,2}',
+        # 1x01, 01x01 variants
+        r'\d{1,2}x\d{1,2}',
+        # Isolated season/episode numbers with separators
+        r'[\-_]\d{1,2}[\-_]\d{1,2}[\-_]',
+        # Timestamps or dates
+        r'\d{8}_\d{6}',  # YYYYMMDD_HHMMSS format
+        r'\d{4}-\d{2}-\d{2}',  # YYYY-MM-DD format
+    ]
+    
+    # Remove season/episode patterns
+    clean_title = base_filename
+    for pattern in removal_patterns:
+        clean_title = re.sub(pattern, '', clean_title, flags=re.IGNORECASE)
+    
+    # Clean up separators and extra spaces
+    clean_title = re.sub(r'[\-_]+', ' ', clean_title)  # Replace dashes/underscores with spaces
+    clean_title = re.sub(r'\s+', ' ', clean_title)     # Replace multiple spaces with single space
+    clean_title = clean_title.strip()                  # Remove leading/trailing spaces
+    
+    # Convert to title case for better presentation
+    clean_title = clean_title.title()
+    
+    return clean_title if clean_title else None
+
+
 # ------------------ MENU ACTIONS ------------------
 
 def option_extract_wav():
@@ -241,6 +323,192 @@ def option_movie_to_srt():
         print(f"❌ Failed: {e}")
 
 
+def option_save_srt_to_database():
+    """Save an existing SRT file to the database."""
+    try:
+        # Initialize database tables
+        initialize_subtitle_tables()
+        print("✅ Database tables initialized")
+    except Exception as e:
+        print(f"❌ Failed to initialize database: {e}")
+        return
+
+    subtitles = list_subtitles()
+    if not subtitles:
+        print(f"⚠️ No SRT files found in {SUBTITLES_FOLDER}")
+        return
+
+    print("\nAvailable SRT files:")
+    for i, subtitle in enumerate(subtitles, 1):
+        print(f"{i}. {subtitle}")
+
+    choice = input("Select file number (or press Enter for latest): ").strip()
+    if not choice:
+        srt_path = sorted(subtitles)[-1]
+    else:
+        try:
+            idx = int(choice) - 1
+            srt_path = subtitles[idx]
+        except (ValueError, IndexError):
+            print("⚠️ Invalid choice.")
+            return
+
+    print(f"\nSelected: {srt_path}")
+    
+    # Choose subtitle type
+    print("\n🎬 Choose subtitle type:")
+    print("1 - Video (default)")
+    print("2 - Music")
+    print("3 - Serial/TV Show")
+    
+    type_choice = input("Select type (1-3, or press Enter for Video): ").strip()
+    
+    # Initialize variables
+    video_title = None
+    season = None
+    episode = None
+    series = None
+    music_title = None
+    
+    if type_choice == "2":
+        # Music subtitle
+        predicted_title = extract_title_from_filename(srt_path)
+        print("\n🎵 Music subtitle metadata:")
+        
+        if predicted_title:
+            music_prompt = f"Music title (predicted: {predicted_title}, or enter custom): "
+            music_input = input(music_prompt).strip()
+            music_title = music_input if music_input else predicted_title
+        else:
+            music_title = input("Music title: ").strip() or None
+            
+        if not music_title:
+            print("⚠️ Music title is required for music subtitles.")
+            return
+    elif type_choice == "3":
+        # Serial subtitle - try to predict season/episode from filename
+        predicted_season_num, predicted_episode_num = extract_season_episode_from_filename(srt_path)
+        predicted_title = extract_title_from_filename(srt_path)
+        
+        print("\n📺 Serial subtitle metadata:")
+        
+        if predicted_title:
+            series_prompt = f"Series name (predicted: {predicted_title}, or enter custom): "
+            series_input = input(series_prompt).strip()
+            series = series_input if series_input else predicted_title
+        else:
+            series = input("Series name: ").strip() or None
+            
+        if not series:
+            print("⚠️ Series name is required for serial subtitles.")
+            return
+        
+        # Show predicted values as defaults (display with S/E but store just numbers)
+        if predicted_season_num:
+            season_prompt = f"Season (predicted: S{predicted_season_num:02d}, or enter number): "
+            season_input = input(season_prompt).strip()
+            if season_input:
+                # Parse user input - handle both "01" and "S01" formats
+                season_match = re.search(r'(\d+)', season_input)
+                season = season_match.group(1) if season_match else None
+            else:
+                season = str(predicted_season_num).zfill(2)  # Store as zero-padded string
+        else:
+            season_input = input("Season number (e.g., '01'): ").strip()
+            season = season_input if season_input else None
+            
+        if predicted_episode_num:
+            episode_prompt = f"Episode (predicted: E{predicted_episode_num:02d}, or enter number): "
+            episode_input = input(episode_prompt).strip()
+            if episode_input:
+                # Parse user input - handle both "01" and "E01" formats
+                episode_match = re.search(r'(\d+)', episode_input)
+                episode = episode_match.group(1) if episode_match else None
+            else:
+                episode = str(predicted_episode_num).zfill(2)  # Store as zero-padded string
+        else:
+            episode_input = input("Episode number (e.g., '01'): ").strip()
+            episode = episode_input if episode_input else None
+    else:
+        # Video subtitle (default)
+        predicted_title = extract_title_from_filename(srt_path)
+        print("\n🎬 Video subtitle metadata:")
+        
+        if predicted_title:
+            video_prompt = f"Video title (predicted: {predicted_title}, or enter custom): "
+            video_input = input(video_prompt).strip()
+            video_title = video_input if video_input else predicted_title
+        else:
+            video_title = input("Video title: ").strip() or None
+            
+        if not video_title:
+            print("⚠️ Video title is required for video subtitles.")
+            return
+    
+    # Common fields for all types
+    language = input("Language (default 'en'): ").strip() or "en"
+
+    try:
+        subtitle_id = save_srt_to_database(
+            srt_file_path=srt_path,
+            video_title=video_title,
+            season=season,
+            episode=episode,
+            series=series,
+            music_title=music_title,
+            language=language
+        )
+        
+        if subtitle_id:
+            print(f"🎯 Subtitle saved to database with ID: {subtitle_id}")
+        else:
+            print("❌ Failed to save subtitle to database")
+            
+    except Exception as e:
+        print(f"❌ Error: {e}")
+
+
+def option_query_subtitles():
+    """Query subtitles from database by criteria."""
+    print("\n🔍 Search subtitles (press Enter to skip filters):")
+    
+    video_title = input("Video title (partial match): ").strip() or None
+    season = input("Season (exact match): ").strip() or None  
+    episode = input("Episode (exact match): ").strip() or None
+    series = input("Series (partial match): ").strip() or None
+    music_title = input("Music title (partial match): ").strip() or None
+    language = input("Language (exact match): ").strip() or None
+    
+    try:
+        results = get_subtitles_by_criteria(
+            video_title=video_title,
+            season=season,
+            episode=episode,
+            series=series,
+            music_title=music_title,
+            language=language
+        )
+        
+        if not results:
+            print("📭 No subtitles found matching your criteria.")
+            return
+            
+        print(f"\n📋 Found {len(results)} subtitle(s):")
+        for row in results:
+            subtitle_id, video_title, season, episode, series, music_title, language, created_at = row
+            print(f"\n🆔 ID: {subtitle_id}")
+            if video_title: print(f"   📹 Video: {video_title}")
+            if season: print(f"   📺 Season: S{season}")
+            if episode: print(f"   📺 Episode: E{episode}")
+            if series: print(f"   🎬 Series: {series}")
+            if music_title: print(f"   🎵 Music: {music_title}")
+            print(f"   🌐 Language: {language}")
+            print(f"   📅 Created: {created_at}")
+            
+    except Exception as e:
+        print(f"❌ Error querying database: {e}")
+
+
 # ------------------ MAIN ------------------
 
 def main():
@@ -249,6 +517,8 @@ def main():
         print("1 - Extract WAV from all movies in folder")
         print("2 - Convert a WAV to SRT")
         print("3 - Create SRT directly from a movie (extract + transcribe)")
+        print("4 - Save SRT file to database")
+        print("5 - Search subtitles in database")
         print("0 - Exit\n")
 
         choice = input("Select option: ").strip()
@@ -259,6 +529,10 @@ def main():
             option_wav_to_srt()
         elif choice == "3":
             option_movie_to_srt()
+        elif choice == "4":
+            option_save_srt_to_database()
+        elif choice == "5":
+            option_query_subtitles()
         elif choice == "0":
             print("👋 Exiting...")
             break
