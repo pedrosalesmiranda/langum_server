@@ -5,7 +5,7 @@ import re
 from pywhispercpp.model import Model
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from database_api import save_srt_to_database, get_subtitles_by_criteria, initialize_subtitle_tables
+from database_api import save_srt_to_database, get_subtitles_by_criteria, initialize_subtitle_tables, search_segments_by_text
 
 # ------------------ CONFIG ------------------
 VIDEO_FOLDER = "./videos/duck_tales/season1"
@@ -468,45 +468,49 @@ def option_save_srt_to_database():
         print(f"❌ Error: {e}")
 
 
-def option_query_subtitles():
-    """Query subtitles from database by criteria."""
-    print("\n🔍 Search subtitles (press Enter to skip filters):")
+def option_search_segments():
+    """Search segments by text content"""
+    print("\n🔍 Search subtitle segments by text:")
+    print("Enter any word or phrase to find in subtitle segments")
     
-    video_title = input("Video title (partial match): ").strip() or None
-    season = input("Season (exact match): ").strip() or None  
-    episode = input("Episode (exact match): ").strip() or None
-    series = input("Series (partial match): ").strip() or None
-    music_title = input("Music title (partial match): ").strip() or None
-    language = input("Language (exact match): ").strip() or None
+    search_text = input("Enter search text: ").strip()
+    if not search_text:
+        print("⚠️ Search text is required.")
+        return
     
     try:
-        results = get_subtitles_by_criteria(
-            video_title=video_title,
-            season=season,
-            episode=episode,
-            series=series,
-            music_title=music_title,
-            language=language
-        )
+        results = search_segments_by_text(search_text)
         
         if not results:
-            print("📭 No subtitles found matching your criteria.")
+            print(f"📭 No segments found containing: '{search_text}'")
             return
+        
+        print(f"\n🔍 Found {len(results)} matching segments:")
+        
+        for result in results:
+            (segment_id, subtitle_id, time_start, time_end, text, segment_number,
+             video_title, season, episode, series, music_title, language) = result
             
-        print(f"\n📋 Found {len(results)} subtitle(s):")
-        for row in results:
-            subtitle_id, video_title, season, episode, series, music_title, language, created_at = row
-            print(f"\n🆔 ID: {subtitle_id}")
-            if video_title: print(f"   📹 Video: {video_title}")
-            if season: print(f"   📺 Season: S{season}")
-            if episode: print(f"   📺 Episode: E{episode}")
-            if series: print(f"   🎬 Series: {series}")
-            if music_title: print(f"   🎵 Music: {music_title}")
-            print(f"   🌐 Language: {language}")
-            print(f"   📅 Created: {created_at}")
+            print(f"\n📺 Segment #{segment_number} ({time_start} → {time_end}):")
+            print(f"    💬 \"{text}\"")
+            
+            # Show subtitle context
+            if series:
+                context = f"{series}"
+                if season: context += f" S{season}"
+                if episode: context += f"E{episode}"
+            elif video_title:
+                context = video_title
+            elif music_title:
+                context = f"🎵 {music_title}"
+            else:
+                context = "Unknown"
+            
+            print(f"    🎬 From: {context} ({language})")
+            print(f"    🆔 Subtitle ID: {subtitle_id}")
             
     except Exception as e:
-        print(f"❌ Error querying database: {e}")
+        print(f"❌ Search error: {e}")
 
 
 # ------------------ MAIN ------------------
@@ -518,7 +522,7 @@ def main():
         print("2 - Convert a WAV to SRT")
         print("3 - Create SRT directly from a movie (extract + transcribe)")
         print("4 - Save SRT file to database")
-        print("5 - Search subtitles in database")
+        print("5 - Search segments by text")
         print("0 - Exit\n")
 
         choice = input("Select option: ").strip()
@@ -532,7 +536,7 @@ def main():
         elif choice == "4":
             option_save_srt_to_database()
         elif choice == "5":
-            option_query_subtitles()
+            option_search_segments()
         elif choice == "0":
             print("👋 Exiting...")
             break

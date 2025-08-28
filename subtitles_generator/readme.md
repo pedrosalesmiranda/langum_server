@@ -1,0 +1,3 @@
+MAYBE series in other table? musics? videos??
+MAYBE reviews: author, timestamp, is native...
+MAYBE fts5 full text search

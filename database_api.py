@@ -607,3 +607,25 @@ def get_segments_by_subtitle_id(subtitle_id):
     conn.close()
     
     return results
+
+def search_segments_by_text(search_query, limit=50):
+    """Search segments by text content using LIKE matching"""
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+    
+    query = '''
+    SELECT 
+        s.id, s.subtitle_id, s.time_start, s.time_end, s.text, s.segment_number,
+        sub.video_title, sub.season, sub.episode, sub.series, sub.music_title, sub.language
+    FROM Segments s
+    JOIN Subtitles sub ON s.subtitle_id = sub.subtitle_id
+    WHERE LOWER(s.text) LIKE LOWER(?)
+    ORDER BY s.subtitle_id, s.segment_number
+    LIMIT ?
+    '''
+    
+    cursor.execute(query, (f'%{search_query}%', limit))
+    results = cursor.fetchall()
+    conn.close()
+    
+    return results
