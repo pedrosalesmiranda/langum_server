@@ -5,12 +5,13 @@ import re
 from pywhispercpp.model import Model
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from database_api import save_srt_to_database, get_subtitles_by_criteria, initialize_subtitle_tables, search_segments_by_text
+from database_api import save_srt_to_database, get_subtitles_by_criteria, initialize_subtitle_tables, search_segments_by_text, get_segment_by_id
 
 # ------------------ CONFIG ------------------
 VIDEO_FOLDER = "./videos/duck_tales/season1"
 SUBTITLES_FOLDER = "./subtitles"
 AUDIO_FOLDER = "./audios"
+VIDEO_SEGMENTS_FOLDER = "./segments"
 MODEL_PATH = "./models/ggml-large-v3-turbo.bin"
 VIDEO_EXTENSIONS = (".mp4", ".mov", ".mkv", ".avi", ".flv", ".wmv")
 
@@ -246,6 +247,81 @@ def extract_title_from_filename(filename):
     return clean_title if clean_title else None
 
 
+def find_video_file_for_segment(segment_data):
+    """Find matching video file based on segment subtitle metadata."""
+    (segment_id, subtitle_id, time_start, time_end, text, segment_number,
+     video_title, season, episode, series, music_title, language, filename) = segment_data
+    
+    videos = list_videos()
+    if not videos:
+        return None
+    
+    # First try to match by stored filename (most reliable)
+    if filename:
+        for video_path in videos:
+            video_filename = os.path.basename(video_path)
+            # Remove extension for comparison
+            stored_name = os.path.splitext(filename)[0] if filename else ""
+            current_name = os.path.splitext(video_filename)[0]
+            
+            if stored_name and stored_name.lower() == current_name.lower():
+                return video_path
+    
+    # Fallback to metadata-based matching
+    for video_path in videos:
+        video_filename = os.path.basename(video_path)
+        
+        # Extract info from video filename
+        video_season, video_episode = extract_season_episode_from_filename(video_filename)
+        video_series_title = extract_title_from_filename(video_filename)
+        
+        # Match by series + season + episode (most specific)
+        if series and season and episode:
+            if (video_series_title and series.lower() in video_series_title.lower() and
+                str(video_season).zfill(2) == str(season).zfill(2) and
+                str(video_episode).zfill(2) == str(episode).zfill(2)):
+                return video_path
+        
+        # Match by video title (for standalone videos)
+        if video_title and video_series_title:
+            if video_title.lower() in video_series_title.lower():
+                return video_path
+    
+    return None
+
+
+def convert_srt_time_to_seconds(srt_time):
+    """Convert SRT timestamp (hh:mm:ss,mmm) to seconds."""
+    time_parts = srt_time.replace(',', '.').split(':')
+    hours = int(time_parts[0])
+    minutes = int(time_parts[1])
+    seconds = float(time_parts[2])
+    return hours * 3600 + minutes * 60 + seconds
+
+
+def extract_video_segment(video_path: str, start_time: float, end_time: float, output_path: str) -> str:
+    """Extract a video segment using ffmpeg."""
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    
+    # Calculate duration instead of using absolute end time
+    duration = end_time - start_time
+
+    command = [
+        "ffmpeg", "-y",
+        "-i", video_path,
+        "-ss", str(start_time),
+        "-t", str(duration),
+        "-c:v", "libx264",
+        "-c:a", "aac",
+        "-crf", "23",
+        "-preset", "fast",
+        output_path
+    ]
+
+    subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    return output_path
+
+
 # ------------------ MENU ACTIONS ------------------
 
 def option_extract_wav():
@@ -319,6 +395,11 @@ def option_movie_to_srt():
         print(f"✅ Extracted audio: {wav_path}")
         output_srt = transcribe_to_srt(wav_path)
         print(f"✅ Transcript saved: {output_srt}")
+        
+        # Store video filename for future reference
+        video_filename = os.path.basename(video_path)
+        print(f"📁 Video filename: {video_filename}")
+        
     except Exception as e:
         print(f"❌ Failed: {e}")
 
@@ -447,6 +528,24 @@ def option_save_srt_to_database():
     
     # Common fields for all types
     language = input("Language (default 'en'): ").strip() or "en"
+    
+    # Generate video filename automatically from SRT filename (remove timestamp)
+    srt_basename = os.path.splitext(os.path.basename(srt_path))[0]
+    
+    # Remove timestamp pattern (YYYY_MM_DD_HH_MM_SS or YYYYMMDD_HHMMSS)
+    media_basename = re.sub(r'_\d{4}[-_]?\d{2}[-_]?\d{2}[-_]?\d{2}[-_]?\d{2}[-_]?\d{2}$', '', srt_basename)
+    # Also handle YYYYMMDD_HHMMSS format
+    media_basename = re.sub(r'_\d{8}_\d{6}$', '', media_basename)
+    
+    print(f"\n📁 Auto-generating video filename from SRT: '{srt_basename}' → '{media_basename}'")
+    
+    # Ask for video file extension only
+    extension = input("Video file extension (default '.avi'): ").strip() or ".avi"
+    if not extension.startswith('.'):
+        extension = '.' + extension
+    
+    video_filename = media_basename + extension
+    print(f"📄 Video filename will be: {video_filename}")
 
     try:
         subtitle_id = save_srt_to_database(
@@ -456,7 +555,8 @@ def option_save_srt_to_database():
             episode=episode,
             series=series,
             music_title=music_title,
-            language=language
+            language=language,
+            filename=video_filename
         )
         
         if subtitle_id:
@@ -489,7 +589,7 @@ def option_search_segments():
         
         for result in results:
             (segment_id, subtitle_id, time_start, time_end, text, segment_number,
-             video_title, season, episode, series, music_title, language) = result
+             video_title, season, episode, series, music_title, language, filename) = result
             
             print(f"\n📺 Segment #{segment_number} ({time_start} → {time_end}):")
             print(f"    💬 \"{text}\"")
@@ -513,6 +613,110 @@ def option_search_segments():
         print(f"❌ Search error: {e}")
 
 
+def option_extract_video_segment():
+    """Extract video segment by segment ID"""
+    print("\n🎬 Extract video segment by segment ID:")
+    
+    segment_id_input = input("Enter segment ID: ").strip()
+    if not segment_id_input:
+        print("⚠️ Segment ID is required.")
+        return
+    
+    try:
+        segment_id = int(segment_id_input)
+    except ValueError:
+        print("⚠️ Segment ID must be a valid integer.")
+        return
+    
+    try:
+        # Get segment data from database
+        segment_data = get_segment_by_id(segment_id)
+        
+        if not segment_data:
+            print(f"❌ Segment with ID {segment_id} not found in database.")
+            return
+        
+        (seg_id, subtitle_id, time_start, time_end, text, segment_number,
+         video_title, season, episode, series, music_title, language, filename) = segment_data
+        
+        print(f"\n📺 Found segment:")
+        print(f"    📝 Text: \"{text}\"")
+        print(f"    ⏱️  Time: {time_start} → {time_end}")
+        
+        # Show context
+        if series:
+            context = f"{series}"
+            if season: context += f" S{season}"
+            if episode: context += f"E{episode}"
+        elif video_title:
+            context = video_title
+        elif music_title:
+            context = f"🎵 {music_title}"
+        else:
+            context = "Unknown"
+        print(f"    🎬 From: {context}")
+        
+        # Find matching video file
+        print("\n🔍 Looking for matching video file...")
+        video_path = find_video_file_for_segment(segment_data)
+        
+        if not video_path:
+            print("❌ Could not find matching video file for this segment.")
+            print("   Available videos:")
+            videos = list_videos()
+            for i, video in enumerate(videos, 1):
+                print(f"     {i}. {os.path.basename(video)}")
+            return
+        
+        print(f"✅ Found video: {os.path.basename(video_path)}")
+        
+        # Convert timestamps to seconds
+        start_seconds = convert_srt_time_to_seconds(time_start)
+        end_seconds = convert_srt_time_to_seconds(time_end)
+        
+        # Add n second margins before and after
+        margin_seconds = 1 # TODO this can be a config setting const
+        start_with_margin = max(0, start_seconds - margin_seconds)  # Don't go below 0
+        end_with_margin = end_seconds + margin_seconds
+        
+        original_duration = end_seconds - start_seconds
+        final_duration = end_with_margin - start_with_margin
+        actual_start_margin = start_seconds - start_with_margin  # How much margin we actually got at start
+        
+        print(f"⏱️  Original segment: {original_duration:.2f} seconds ({time_start} → {time_end})")
+        print(f"⏱️  With margins: {final_duration:.2f} seconds ({actual_start_margin:.1f}s before + {original_duration:.2f}s + {margin_seconds}s after)")
+        print(f"⏱️  Final timing: {start_with_margin:.2f}s → {end_with_margin:.2f}s")
+        
+        # Create output filename
+        os.makedirs(VIDEO_SEGMENTS_FOLDER, exist_ok=True)
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        # Create descriptive filename
+        if series and season and episode:
+            filename = f"{series.replace(' ', '_')}_S{season}E{episode}_segment_{segment_id}_{timestamp}.avi"
+        elif video_title:
+            filename = f"{video_title.replace(' ', '_')}_segment_{segment_id}_{timestamp}.avi"
+        else:
+            filename = f"segment_{segment_id}_{timestamp}.avi"
+        
+        # Clean filename
+        filename = re.sub(r'[<>:"/\\|?*]', '_', filename)  # Remove invalid characters
+        output_path = os.path.join(VIDEO_SEGMENTS_FOLDER, filename)
+        
+        print(f"\n🎬 Extracting segment...")
+        print(f"    📂 Output: {output_path}")
+        
+        # Extract video segment with margins
+        extract_video_segment(video_path, start_with_margin, end_with_margin, output_path)
+        
+        print(f"✅ Video segment extracted successfully!")
+        print(f"    📁 Saved to: {output_path}")
+        print(f"    📝 Text: \"{text}\"")
+        
+    except Exception as e:
+        print(f"❌ Error extracting video segment: {e}")
+
+
 # ------------------ MAIN ------------------
 
 def main():
@@ -523,6 +727,7 @@ def main():
         print("3 - Create SRT directly from a movie (extract + transcribe)")
         print("4 - Save SRT file to database")
         print("5 - Search segments by text")
+        print("6 - Extract video segment by segment ID")
         print("0 - Exit\n")
 
         choice = input("Select option: ").strip()
@@ -537,6 +742,8 @@ def main():
             option_save_srt_to_database()
         elif choice == "5":
             option_search_segments()
+        elif choice == "6":
+            option_extract_video_segment()
         elif choice == "0":
             print("👋 Exiting...")
             break

@@ -447,9 +447,18 @@ def initialize_subtitle_tables():
             series TEXT,
             music_title TEXT,
             language TEXT NOT NULL,
+            filename TEXT,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
+    
+    # Add filename column if it doesn't exist (for existing databases)
+    try:
+        cursor.execute('ALTER TABLE Subtitles ADD COLUMN filename TEXT')
+        conn.commit()
+    except sqlite3.OperationalError:
+        # Column already exists, ignore
+        pass
     
     # Create Segments table
     cursor.execute('''
@@ -468,19 +477,20 @@ def initialize_subtitle_tables():
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_segments_subtitle_id ON Segments(subtitle_id)')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_segments_segment_number ON Segments(segment_number)')
     cursor.execute('CREATE INDEX IF NOT EXISTS idx_subtitles_language ON Subtitles(language)')
+    cursor.execute('CREATE INDEX IF NOT EXISTS idx_subtitles_filename ON Subtitles(filename)')
     
     conn.commit()
     conn.close()
 
-def create_subtitle_record(video_title=None, season=None, episode=None, series=None, music_title=None, language="en"):
+def create_subtitle_record(video_title=None, season=None, episode=None, series=None, music_title=None, language="en", filename=None):
     """Create a new subtitle record and return its ID"""
     conn = sqlite3.connect(database_file_path)
     cursor = conn.cursor()
     
     cursor.execute('''
-        INSERT INTO Subtitles (video_title, season, episode, series, music_title, language)
-        VALUES (?, ?, ?, ?, ?, ?)
-    ''', (video_title, season, episode, series, music_title, language))
+        INSERT INTO Subtitles (video_title, season, episode, series, music_title, language, filename)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', (video_title, season, episode, series, music_title, language, filename))
     
     subtitle_id = cursor.lastrowid
     conn.commit()
@@ -520,7 +530,7 @@ def parse_srt_content(srt_content):
     
     return segments
 
-def save_srt_to_database(srt_file_path, video_title=None, season=None, episode=None, series=None, music_title=None, language="en"):
+def save_srt_to_database(srt_file_path, video_title=None, season=None, episode=None, series=None, music_title=None, language="en", filename=None):
     """Parse SRT file and save to database"""
     try:
         # Initialize tables if they don't exist
@@ -544,7 +554,8 @@ def save_srt_to_database(srt_file_path, video_title=None, season=None, episode=N
             episode=episode,
             series=series,
             music_title=music_title,
-            language=language
+            language=language,
+            filename=filename
         )
         
         # Create segments
@@ -616,7 +627,7 @@ def search_segments_by_text(search_query, limit=50):
     query = '''
     SELECT 
         s.id, s.subtitle_id, s.time_start, s.time_end, s.text, s.segment_number,
-        sub.video_title, sub.season, sub.episode, sub.series, sub.music_title, sub.language
+        sub.video_title, sub.season, sub.episode, sub.series, sub.music_title, sub.language, sub.filename
     FROM Segments s
     JOIN Subtitles sub ON s.subtitle_id = sub.subtitle_id
     WHERE LOWER(s.text) LIKE LOWER(?)
@@ -629,3 +640,23 @@ def search_segments_by_text(search_query, limit=50):
     conn.close()
     
     return results
+
+def get_segment_by_id(segment_id):
+    """Get a specific segment by its ID with subtitle metadata"""
+    conn = sqlite3.connect(database_file_path)
+    cursor = conn.cursor()
+    
+    query = '''
+    SELECT 
+        s.id, s.subtitle_id, s.time_start, s.time_end, s.text, s.segment_number,
+        sub.video_title, sub.season, sub.episode, sub.series, sub.music_title, sub.language, sub.filename
+    FROM Segments s
+    JOIN Subtitles sub ON s.subtitle_id = sub.subtitle_id
+    WHERE s.id = ?
+    '''
+    
+    cursor.execute(query, (segment_id,))
+    result = cursor.fetchone()
+    conn.close()
+    
+    return result
