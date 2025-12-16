@@ -14,3 +14,8 @@ Russian Phrase	Pronunciation	Meaning/Use	Formality / Context
 Прости́ / Простите	prostí / prostíte	"Forgive me" / "Sorry" (asking for forgiveness)	Informal / Formal apology, more personal
 Мне жаль	mnye zhal'	"I'm sorry" / "I feel sorry" (expressing regret or sympathy)	Neutral, expressing empathy or regret
 Сожале́ю	sozháleyu	"I regret" / "I’m sorry" (formal, serious regret)	Formal or serious apologies or expressions of regret
+--------------------------------------------------------------
+Не волнуйся → informal, to friends or peers
+Не переживай → informal, casual, friendly
+Не волнуйтесь → formal or polite
+----------------------------------------------------------------------------------------------------

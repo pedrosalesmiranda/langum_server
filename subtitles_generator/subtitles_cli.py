@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from database_api import save_srt_to_database, get_subtitles_by_criteria, initialize_subtitle_tables, search_segments_by_text, get_segment_by_id
 
 # ------------------ CONFIG ------------------
-VIDEO_FOLDER = "./videos/duck_tales/season1"
+VIDEO_FOLDER = "./videos"
 SUBTITLES_FOLDER = "./subtitles"
 AUDIO_FOLDER = "./audios"
 VIDEO_SEGMENTS_FOLDER = "./segments"
