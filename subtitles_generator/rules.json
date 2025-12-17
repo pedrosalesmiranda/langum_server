@@ -1,0 +1,19 @@
+{
+  "profile": "adult_streaming",
+
+  "timing": {
+    "min_duration_sec": 0.8,
+    "max_duration_sec": 7.0,
+    "min_gap_sec": 0.08,
+    "pause_split_threshold_sec": 0.5
+  },
+
+  "reading_speed": {
+    "max_cps": 17
+  },
+
+  "layout": {
+    "max_lines": 2,
+    "max_chars_per_line": 42
+  }
+}

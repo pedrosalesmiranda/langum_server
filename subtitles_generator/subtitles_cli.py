@@ -6,9 +6,10 @@ from pywhispercpp.model import Model
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from database_api import save_srt_to_database, get_subtitles_by_criteria, initialize_subtitle_tables, search_segments_by_text, get_segment_by_id
+from qc_runner import run_qc
 
 # ------------------ CONFIG ------------------
-VIDEO_FOLDER = "./videos"
+VIDEO_FOLDER = "./videos/better_than_people"
 SUBTITLES_FOLDER = "./subtitles"
 AUDIO_FOLDER = "./audios"
 VIDEO_SEGMENTS_FOLDER = "./segments"
@@ -117,6 +118,39 @@ def _convert_segments_to_srt(segments):
         srt_lines.append(f"{i}\n{start_ts} --> {end_ts}\n{segment.text.strip()}\n")
     return "\n".join(srt_lines)
 
+def _select_srt_file(default_latest=True):
+    """
+    Private helper to let user select an SRT file from SUBTITLES_FOLDER.
+
+    Returns:
+        str: selected SRT path, or None if cancelled/invalid
+    """
+    subtitles = list_subtitles()
+    if not subtitles:
+        print(f"⚠️ No SRT files found in {SUBTITLES_FOLDER}")
+        return None
+
+    print("\nAvailable SRT files:")
+    for i, subtitle in enumerate(subtitles, 1):
+        print(f"{i}. {subtitle}")
+
+    choice = input("Select file number (or press Enter for latest): ").strip()
+    if not choice:
+        if default_latest:
+            srt_path = sorted(subtitles)[-1]
+        else:
+            print("⚠️ No selection made.")
+            return None
+    else:
+        try:
+            idx = int(choice) - 1
+            srt_path = subtitles[idx]
+        except (ValueError, IndexError):
+            print("⚠️ Invalid choice.")
+            return None
+
+    print(f"\n🎯 Selected: {srt_path}")
+    return srt_path
 
 def transcribe_to_srt(
     audio_path: str,
@@ -716,6 +750,24 @@ def option_extract_video_segment():
     except Exception as e:
         print(f"❌ Error extracting video segment: {e}")
 
+def option_run_qc():
+    """Run QC on an existing SRT file."""
+    from qc_runner import run_qc
+
+    srt_path = _select_srt_file()
+    if not srt_path:
+        return
+
+    issues = run_qc(srt_path)
+
+    if not issues:
+        print("✅ No QC issues found")
+        return
+
+    print("\n❌ QC issues:")
+    for i in issues:
+        print(f"Subtitle #{i['index']} | {i['rule']} | {i['message']}")
+
 
 # ------------------ MAIN ------------------
 
@@ -728,6 +780,7 @@ def main():
         print("4 - Save SRT file to database")
         print("5 - Search segments by text")
         print("6 - Extract video segment by segment ID")
+        print("7 - Run subtitle QC on SRT")
         print("0 - Exit\n")
 
         choice = input("Select option: ").strip()
@@ -744,6 +797,8 @@ def main():
             option_search_segments()
         elif choice == "6":
             option_extract_video_segment()
+        elif choice == "7":
+            option_run_qc()
         elif choice == "0":
             print("👋 Exiting...")
             break
