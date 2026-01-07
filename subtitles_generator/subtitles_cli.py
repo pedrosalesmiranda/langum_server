@@ -2,14 +2,16 @@ import subprocess
 import datetime
 import os
 import re
-from pywhispercpp.model import Model
+
+from faster_whisper import WhisperModel
+# from pywhispercpp.model import Model
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from database_api import save_srt_to_database, get_subtitles_by_criteria, initialize_subtitle_tables, search_segments_by_text, get_segment_by_id
 from qc_runner import run_qc
 
 # ------------------ CONFIG ------------------
-VIDEO_FOLDER = "./videos/better_than_people"
+VIDEO_FOLDER = "./videos"
 SUBTITLES_FOLDER = "./subtitles"
 AUDIO_FOLDER = "./audios"
 VIDEO_SEGMENTS_FOLDER = "./segments"
@@ -50,13 +52,13 @@ def format_timestamp(seconds: float) -> str:
     return f"{hours:02}:{minutes:02}:{secs:02},{millis:03}"
 
 
-def _create_model_with_vad_settings(model_path: str, n_threads: int):
-    return Model(
-        model_path, 
-        n_threads=n_threads, 
-        print_progress=True, 
-        print_realtime=False
-    )
+# def _create_model_with_vad_settings(model_path: str, n_threads: int):
+#     return Model(
+#         model_path,
+#         n_threads=n_threads,
+#         print_progress=True,
+#         print_realtime=False
+#     )
 
 
 def _filter_phantom_segments(segments, max_segment_duration: float = 10.0):
@@ -152,27 +154,72 @@ def _select_srt_file(default_latest=True):
     print(f"\n🎯 Selected: {srt_path}")
     return srt_path
 
-def transcribe_to_srt(
+# def transcribe_to_srt(
+#     audio_path: str,
+#     model_path: str = MODEL_PATH,
+#     output_srt: str = None,
+#     language: str = "ru",
+#     translate: bool = False,
+#     n_threads: int = 12,
+#     max_segment_duration: float = 10.0
+# ) -> str:
+#     if output_srt is None:
+#         os.makedirs(SUBTITLES_FOLDER, exist_ok=True)
+#         filename = os.path.splitext(os.path.basename(audio_path))[0]
+#         output_srt = os.path.join(SUBTITLES_FOLDER, filename + ".srt")
+#
+#     model = _create_model_with_vad_settings(model_path, n_threads)
+#     raw_segments = model.transcribe(audio_path, language=language, translate=translate, no_context=True)
+#
+#     filtered_segments = _filter_phantom_segments(raw_segments, max_segment_duration)
+#     validated_segments = _validate_segment_durations(filtered_segments, max_segment_duration)
+#     final_segments = _split_oversized_segments(validated_segments, max_segment_duration)
+#
+#     srt_content = _convert_segments_to_srt(final_segments)
+#
+#     with open(output_srt, "w", encoding="utf-8") as f:
+#         f.write(srt_content)
+#
+#     return output_srt
+
+def transcribe_to_srt_cuda(
     audio_path: str,
     model_path: str = MODEL_PATH,
     output_srt: str = None,
     language: str = "ru",
     translate: bool = False,
-    n_threads: int = 12,
-    max_segment_duration: float = 10.0
+    max_segment_duration: float = 10.0,
+    device: str = "cuda"
 ) -> str:
+
     if output_srt is None:
         os.makedirs(SUBTITLES_FOLDER, exist_ok=True)
         filename = os.path.splitext(os.path.basename(audio_path))[0]
         output_srt = os.path.join(SUBTITLES_FOLDER, filename + ".srt")
 
-    model = _create_model_with_vad_settings(model_path, n_threads)
-    raw_segments = model.transcribe(audio_path, language=language, translate=translate, no_context=True)
-    
+    # Load model with CUDA
+    model = WhisperModel(
+        model_path,
+        device=device,
+        n_threads=0  # let GPU handle it
+    )
+
+    # IMPORTANT: unpack result
+    segments, info = model.transcribe(
+        audio_path,
+        language=language,
+        translate=translate,
+        no_context=True
+    )
+
+    # Convert generator → list
+    raw_segments = list(segments)
+
+    # Post-processing
     filtered_segments = _filter_phantom_segments(raw_segments, max_segment_duration)
     validated_segments = _validate_segment_durations(filtered_segments, max_segment_duration)
     final_segments = _split_oversized_segments(validated_segments, max_segment_duration)
-    
+
     srt_content = _convert_segments_to_srt(final_segments)
 
     with open(output_srt, "w", encoding="utf-8") as f:
@@ -394,9 +441,8 @@ def option_wav_to_srt():
         except (ValueError, IndexError):
             print("⚠️ Invalid choice.")
             return
-
     try:
-        output_srt = transcribe_to_srt(audio_path)
+        output_srt = transcribe_to_srt_cuda(audio_path)
         print(f"✅ Transcript saved: {output_srt}")
     except Exception as e:
         print(f"❌ Failed transcription: {e}")
@@ -423,11 +469,13 @@ def option_movie_to_srt():
         except (ValueError, IndexError):
             print("⚠️ Invalid choice.")
             return
-
     try:
         wav_path = extract_audio(video_path, AUDIO_FOLDER)
+        print("CWD:", os.getcwd())
+        print("Audio path:", wav_path)
+        print("Exists:", os.path.exists(wav_path))
         print(f"✅ Extracted audio: {wav_path}")
-        output_srt = transcribe_to_srt(wav_path)
+        output_srt = transcribe_to_srt_cuda(wav_path)
         print(f"✅ Transcript saved: {output_srt}")
         
         # Store video filename for future reference
